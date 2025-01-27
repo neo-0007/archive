@@ -1,0 +1,12 @@
+# **RoboSoccer Bot**
+
+## **Components Used**
+
+| **Component**          | **Details**                                                                                     | **Links**                                                                                                                                              |
+|-------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Motor Driver**        | Double BTS7960 43A H-Bridge Motor Driver Module                                                | [Datasheet](assets/docs/Double-BTS7960-43A-H-Bridge-High-Power-Stepper-Motor-Driver.pdf)                                                              |
+| **DC-DC Buck Converter**| LM2596 SIMPLE SWITCHER                                                                         | [Datasheet](assets/docs/lm2596.pdf)                                                                                                                   |
+| **Battery**             | 11.1V 3300mAh 35C 3S Lipo Battery                                                              | [Blog](https://robu.in/how-choose-lithium-polymer-battery-for-drone/) <br> [Video](https://www.youtube.com/watch?v=arOXg7y6r8k)                        |
+| **Microcontroller**     | ESPWROOM 32                                                                                   | [Datasheet](assets/docs/SKU-44682-datasheet.pdf) <br> [ESP32 Datasheet](assets/docs/esp-wroom-32_datasheet_en.pdf)                                     |
+| **Transmitter & Receiver** | FLYSKY FS-i6 & FS-IA6B (Receiver)                                                          | [User Manual](assets/docs/fsi6.pdf)                                                                                                                   |
+| **Motors**              | IG32 Planetary Geared DC Motor - 300 RPM                                                       | [Datasheet](assets/docs/IG32-Planetary-geared-dc-motor.pdf)                                                                                           |
