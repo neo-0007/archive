@@ -1,10 +1,13 @@
-# Robosoccer Overview
+# RoboSoccer Overview
 
-Our first robotics project was our robosoccer bot
-It's not a human like robot playing soccer with its robotic legs , its a simple RC controlled four wheeled bot (you can say its a car) that pushes the ball to the goal, and it's mostly a 1v1 match.
+Our first robotics project was our RoboSoccer bot.  
+It’s not a human like robot playing soccer with robotic legs — it’s a simple RC-controlled, four-wheeled bot (you can think of it as a small car) that pushes the ball toward the goal. Matches are usually 1v1.
+
+---
 
 ## **The Bot**
-Here is our first build , it looks good according to me , but it broke during its first fight :(
+
+Here is our first build. I think it looked pretty good — but unfortunately, it broke during its very first match. :(
 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
 
@@ -14,8 +17,7 @@ Here is our first build , it looks good according to me , but it broke during it
   
 </div>
 
-
-Here is our v2 , I do not have a good click of it , it does not looks better than v1, but it was able to score some goals and lasted till the end , it was a good improvement !
+Here is our V2. I don’t have a great photo of it, and it doesn’t look better than V1 — but it managed to score a few goals and lasted until the end. It was a good improvement!
 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
 
@@ -24,40 +26,40 @@ Here is our v2 , I do not have a good click of it , it does not looks better tha
 
 </div>
 
-Here are some images of bots of other teams , which are way better than us and has way more expeience than us 
+Here are some images of bots from other teams. They are much more advanced and built by teams with way more experience than us.
 
 <div style="width: 100%; max-height: 400px; overflow: hidden;">
-  <img src="../assets/images/other-bots-aec.jpg" alt="Full width bot" style="width: 100%; height: auto; object-fit: contain;">
+  <img src="../assets/images/other-bots-aec.jpg" alt="Other Team Bots" style="width: 100%; height: auto; object-fit: contain;">
 </div>
 
+More about the bot in the next pages...
 
-more about the bot in next pages...
 ---
 
 ## **The Arena**
 
-This is how a arena looks like , Its about (2.5m x 2m) 
+This is what an arena looks like. It’s about 2.5m by 2m in size.
 
 <div style="width: 100%; max-height: 400px; overflow: hidden;">
-  <img src="../assets/images/robosoccer-arena.jpg" alt="Full width bot" style="width: 100%; height: auto; object-fit: contain;">
+  <img src="../assets/images/robosoccer-arena.jpg" alt="RoboSoccer Arena" style="width: 100%; height: auto; object-fit: contain;">
 </div>
 
 ---
 
 ## **The Game**
 
-The objective of the game is same as normal football , to score goals , the team that scores the most goals wins the match 
+The objective of the game is the same as in regular football: score goals. The team that scores the most goals wins the match.
 
-Here is a clip from one of our game , as you can see its more like sumo than football 
+Here is a clip from one of our games. As you can see, it’s more like sumo wrestling than football!
+
 <video controls width="100%" style="max-height: 500px;">
   <source src="../assets/videos/robosoccer-jec-game-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
+Here are links to some games that are much better than ours:
 
-Here are links to way more better games than our ones :
-
-[Game 1](https://www.youtube.com/watch?v=LaOmCM-d4z0)
-[Game 2](https://www.youtube.com/watch?v=heDUn-9a-r0)
-[Game 3](https://www.youtube.com/watch?v=lur5Ze4Kxl4)
+- [Game 1](https://www.youtube.com/watch?v=LaOmCM-d4z0)
+- [Game 2](https://www.youtube.com/watch?v=heDUn-9a-r0)
+- [Game 3](https://www.youtube.com/watch?v=lur5Ze4Kxl4)
 
