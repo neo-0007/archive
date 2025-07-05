@@ -1,0 +1,21 @@
+site_name: Robotics Archive
+
+theme:
+  name: material
+  logo: assets/images/caticon.png
+  favicon: assets/images/caticon.png
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.path
+
+nav:
+  - Home: index.md
+  - Robosoccer: 
+    - Overview: robosoccer/index.md
+  - Quadcopter:
+    - Overview: quadcopter/index.md
+  - Maze Solver:
+    - Overview: maze-solver/index.md
+  - Common:
+    - Overview: common/index.md
