@@ -13,9 +13,10 @@ nav:
   - Home: index.md
   - Robosoccer: 
     - Overview: robosoccer/index.md
+    - The Bot: robosoccer/bot.md
   - Quadcopter:
     - Overview: quadcopter/index.md
   - Maze Solver:
     - Overview: maze-solver/index.md
   - Common:
-    - Overview: common/index.md
+    - Motors: common/motors.md
