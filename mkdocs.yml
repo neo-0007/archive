@@ -1,4 +1,4 @@
-site_name: Robotics Archive
+site_name: Hrishi's Archive
 
 theme:
   name: material
@@ -8,6 +8,28 @@ theme:
     - navigation.instant
     - navigation.instant.progress
     - navigation.path
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: black
+      accent: white
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  language: en
+
+  font:
+    text: Fira Sans
+    code: Ubuntu Mono
+
 
 nav:
   - Home: index.md
@@ -16,7 +38,14 @@ nav:
     - The Bot: robosoccer/bot.md
   - Quadcopter:
     - Overview: quadcopter/index.md
+    - Anatomy: quadcopter/anatomy.md
+    - Components:
+        - Motors: quadcopter/motors.md
+        - Frame: quadcopter/frame.md
   - Maze Solver:
     - Overview: maze-solver/index.md
   - Common:
     - Motors: common/motors.md
+  - Random:
+    - ESC interfacing issue with pixhawk: random/pixhawk-simonk-issue.md
+    - Ubuntu wifi not working: random/dual-boot-wifi-issue.md
