@@ -10,6 +10,8 @@ These are the most common types of drones we normally use :
 
 ![drones classification](../assets/images/drone-types.png)
 
+> *Image source: [An Overview of Drone Applications in the Construction Industry](https://www.mdpi.com/2504-446X/7/8/515)*
+
 All of these are just different types of designs used for different purposes , their main goal is to fly.
 
 ## **Quadcopters**
@@ -31,10 +33,12 @@ Quadcopters come in various types, distinguished mainly by their frame shapes an
 
 </div>
 
-
+> *Image source: [Quadcopter Drones: A Comprehensive Beginner’s Guide](https://www.t-drones.com/blog/quadcopter-drones.html)*
 
 The most common quadcopter that you may have seen or used are DJI drones :
 ![dji drone](../assets/images/dji-drone.png)
+
+> *Image source: [DJI Mini 3](https://store.dji.com/product/dji-mini-3?vid=128001)*
 
 And this is what our quadcopter looks like
 ![our drone](../assets/images/our-drone.jpg)
@@ -54,6 +58,8 @@ When a quadcopter’s propellers spin, they push air downward. Using Newton’s 
   <img src="../assets/images/quadcopter-ntl.png" alt="My Image" style="max-width: 80%;">
 </div>
 
+> *Image source: [NASA](https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf)*
+
 Well this is only up and down motion , but a quadcopter can turn and move in any direction and can do flips also , how does it do that ?
 
 #### **Movements of a Quadcopter**
@@ -63,6 +69,8 @@ The three fundamental movements are up & down (vertical movement) , left & right
 <div style="text-align: center;">
   <img src="../assets/images/quad-types-of-movements.png" alt="My Image" style="max-width: 80%;">
 </div>
+
+> *Image source: [NASA](https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf)*
 
 All of these movements can be achieved by varying the speed of the 4 rotors in different ways.
 
@@ -74,12 +82,16 @@ When the propellers spin, they push air down. Similar to a helicopter, pushing t
   <img src="../assets/images/quad-vertical-movement.png" alt="My Image" style="max-width: 80%;">
 </div>
 
+> *Image source: [NASA](https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf)*
+
 When the force of lift acts straight upward, the quadcopter moves vertically. But, when lift acts at an angle, it can also move laterally. This is because part of the force of the lift is upward and part of it is to the side, resulting in lateral movement that can be from side-to-side or forward and backward. 
 
 
 <div style="text-align: center;">
   <img src="../assets/images/quad-lateral-movement.png" alt="My Image" style="max-width: 80%;">
 </div>
+
+> *Image source: [NASA](https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf)*
 
 Lateral movement occurs by varying the speed of the propellers. Increasing the speed of the two propellers on one side of the quadcopter and/or decreasing the speed of the two propellers on the other side creates uneven amounts of lift on the two sides. The lift created on the side with the faster spinning propellers is greater than the lift created on the opposite side. The result is that the quadcopter moves in the direction of the side where less lift is created.
 
@@ -103,12 +115,16 @@ Here are all the movements using lateral movement :
   <img src="../assets/images/quad-right.png" alt="My Image" style="max-width: 80%;">
 </div>
 
+> *Image source: [Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations](https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg)*
+
 And the last type of movement is rotational motion , how does the quadcopter rotates in its own axis ? for that lets learn about the oreantations of the rotors of a quadcopter.
 
 
 <div style="text-align: center;">
   <img src="../assets/images/quadcopter-props-direction.png" alt="My Image" style="max-width: 80%;">
 </div>
+
+> *Image Source: [Ardupilot]()*
 
 As you can see in the above image , Rotor 3 and 4 rotates in Clockwise direction and Rotor 1 and 2 rotates in Anticlockwise direction.
 
@@ -118,6 +134,8 @@ This is done due to a force called torque , a twisting force that causes rotatio
 <div style="text-align: center;">
   <img src="../assets/images/helicopter-example.png" alt="My Image" style="max-width: 80%;">
 </div>
+
+> Image Source: [Air transportation safety investigation report A20A0027](https://www.tsb.gc.ca/eng/rapports-reports/aviation/2020/a20a0027/a20a0027.html)
 
 We see this in action when we look at a helicopter like the one above. When the blades on top of the helicopter (the rotor) spin, torque is created. The equal and opposite force rotates the body of the helicopter in the opposite direction of the blades’ rotation. Since this would make the helicopter unusable, a tail rotor is added. It
 creates a force that counteracts the torque and stops the helicopter from rotating uncontrollably
@@ -143,6 +161,9 @@ propellers 1 and 3, the quadcopter will rotate clockwise.
   <img src="../assets/images/quad-rotate-right.png" alt="My Image" style="max-width: 80%;">
 </div>
 
+> *Image source: [Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations](https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg)*
+
+
 ### **The Propellers**
 
 While having pairs of propellers rotating in opposite directions effectively controls the torque acting on the quadcopter, it presents a new problem for us. If propellers spin in opposite directions, two of the propellers push air upward while two push air downward. When you combine these forces, the total lift is zero and the quadcopter
@@ -152,7 +173,16 @@ cannot take off. To overcome this, we use two different propeller blades.
   <img src="../assets/images/props-direction.png" alt="My Image" style="max-width: 80%;">
 </div>
 
+> *Image Source: [Ardupilot]()*
+
 In above image, you can see that the leftmost propeller has the right edge higher in the front while the other has the left edge higher. This design changes the direction the air is pushed by the two propellers, meaning that when they spin in opposite directions, they actually push the air in the same direction.
 
 
-This was a brief overview of what quadcopters are and how does they work. 
+This was a brief overview of what quadcopters are and how does they work.
+
+## References
+
+1. The Science behind quadcopters - [NASA](https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf)
+2. Quadcopter classification - [T-drones](https://www.t-drones.com/blog/quadcopter-drones.html)
+3. Quadcopter Movements - [Holystone](https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg)
+4. [Wikipedia](https://en.wikipedia.org/wiki/Quadcopter)
