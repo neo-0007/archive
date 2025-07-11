@@ -12,8 +12,8 @@ This site is a collection of my projects, experiments, technical notes, and lear
 
 ## Socials
 
-- GitHub: [github.com/hrishikeshgohain](https://github.com/hrishikeshgohain)  
-- LinkedIn: [linkedin.com/in/hrishikeshgohain](https://linkedin.com/in/hrishikeshgohain)  
+- GitHub: [github.com/neo-0007](https://github.com/neo-0007)  
+- LinkedIn: [linkedin.com/in/hrishiii](https://linkedin.com/in/hrishiii)  
 - Email: `hrishikeshgohain123@gmail.com`
 
 
