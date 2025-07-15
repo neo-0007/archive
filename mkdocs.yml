@@ -44,6 +44,10 @@ nav:
         - Frame: quadcopter/frame.md
   - Maze Solver:
     - Overview: maze-solver/index.md
+  - Data Structures:
+    - Overview: ds/index.md
+  - Algorithms:
+    - Overview: algo/index.md
   - Common:
     - Motors: common/motors.md
   - Random:
