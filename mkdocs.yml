@@ -44,6 +44,9 @@ nav:
         - Frame: quadcopter/frame.md
   - Maze Solver:
     - Overview: maze-solver/index.md
+    - Components: maze-solver/components.md
+    - Mazes: maze-solver/mazes.md
+    - Algorithms: maze-solver/algorithms.md
   - Data Structures:
     - Overview: ds/index.md
   - Algorithms:
