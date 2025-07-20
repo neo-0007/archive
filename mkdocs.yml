@@ -53,10 +53,11 @@ nav:
     - Overview: algo/index.md
   - Common:
     - Motors: common/motors.md
-  - Random:
+  - Blogs:
     - ESC interfacing issue with pixhawk: random/pixhawk-simonk-issue.md
     - Ubuntu wifi not working: random/dual-boot-wifi-issue.md
     - Free Unlimited Cloud Storage: random/free-unlimited-cloud-storage.md
+    - Simple python venv manager: random/simple-python-venv-manager.md 
 
 markdown_extensions:
   - pymdownx.superfences:
