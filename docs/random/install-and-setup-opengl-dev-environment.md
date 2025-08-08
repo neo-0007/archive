@@ -9,13 +9,13 @@ Here is an image of a expensive dedicated GPU:
 
 
 <div style="width: 60% ; overflow: hidden;">
-  <img src="assets/images/gpu-image.png" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+  <img src="../../assets/images/gpu-image.png" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
 </div>
 
 Their main goal is to do calculations in parallel. As we know, we have a CPU that may have a few cores — say 6 — so it can run 6 tasks in parallel. You may say you can run more than 6 applications at a time, but they are not using the CPU at the same time. Your OS handles who gets to do their work when, and it’s pretty efficient at that. But tasks like 3D rendering, simulations, linear algebra calculations require many tasks to be solved in a small amount of time.
 
 <div style="width: 80% ; overflow: hidden;">
-  <img src="assets/images/gpu-vs-cpu.png" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+  <img src="../../assets/images/gpu-vs-cpu.png" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
 </div>
 
 Say you are running a game at 100 FPS — that means 100 frames to be rendered per second. That can't be done by a CPU in such a small amount of time. There comes the GPU — it can do thousands of simple calculations in parallel. So that's a brief about GPUs.
@@ -68,7 +68,7 @@ Here is a Video tutorial if you dont like to read.
 Just copy the commands from below and paste them like i did , I had already installed them but if you have not installed them it will take some time for you.
 
 <video controls width="100%" style="max-height: 500px;">
-  <source src="assets/videos/linux-opengl-tut-cpy.mp4" type="video/mp4">
+  <source src="../../assets/videos/linux-opengl-tut-cpy.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -170,7 +170,7 @@ VS Code:
 Here is a video tutorial of how to use VS Code after installing everything
 
 <video controls width="100%" style="max-height: 500px;">
-  <source src="assets/videos/opengl-in-vscode2.mp4" type="video/mp4">
+  <source src="../../assets/videos/opengl-in-vscode2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
