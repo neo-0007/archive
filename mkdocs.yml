@@ -58,6 +58,7 @@ nav:
     - Ubuntu wifi not working: random/dual-boot-wifi-issue.md
     - Free Unlimited Cloud Storage: random/free-unlimited-cloud-storage.md
     - Simple python venv manager: random/simple-python-venv-manager.md 
+    - Install and Setup OpenGL Developer Environment: random/install-and-setup-opengl-dev-environment.md
 
 markdown_extensions:
   - pymdownx.superfences:

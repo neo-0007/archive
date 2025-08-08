@@ -41,8 +41,8 @@ The most common quadcopter that you may have seen or used are DJI drones :
 > *Image source: [DJI Mini 3](https://store.dji.com/product/dji-mini-3?vid=128001)*
 
 And this is what our quadcopter looks like
-![our drone](../assets/images/our-drone.jpg)
-
+![our drone](../assets/images/our-drone-top.jpg)
+![our drone](../assets/images/our-drone-front.jpg)
 
 ## How does a Quadcopter Fly
 
