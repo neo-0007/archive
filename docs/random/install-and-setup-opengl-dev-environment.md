@@ -62,7 +62,7 @@ These are all the components we need to start our development independent of our
 
 > [Go to MacOS](#macos)
 
-#### **Linux**
+### **Linux**
 
 Here is a Video tutorial if you dont like to read.
 Just copy the commands from below and paste them like i did , I had already installed them but if you have not installed them it will take some time for you.
@@ -232,9 +232,138 @@ OR if you want to avoid typing the long command everytime you can just configure
 You successfully compiled and ran your first application using OpenGL
 
 
-#### **Windows**
+### **Windows**
 
-> TODO
+Windows (MSYS2 and VS Code Method)
+
+**Install MSYS2**
+
+- Go to the official MSYS2 website: https://www.msys2.org/
+- Download the installer.
+- Run the installer and follow the setup as shown in the website.
+
+At the end,type `pacman -Syu` in the terminal (automatically opened one). If it closes after updating, open the MSYS2 terminal again and continue.
+
+**Install Compiler and Build Tools**
+
+Open the MSYS2 MINGW64 terminal and run:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
+
+This installs:
+
+- g++ (C++ compiler)
+
+**Install OpenGL + FreeGLUT Development Libraries**
+
+In the same MINGW64 terminal, run:
+
+```bash
+pacman -S mingw-w64-x86_64-freeglut mingw-w64-x86_64-glu mingw-w64-x86_64-opengl
+```
+
+This installs:
+
+- mingw-w64-x86_64-freeglut – FreeGLUT headers and libraries
+- mingw-w64-x86_64-glu – GLU library
+- mingw-w64-x86_64-opengl – Core OpenGL library
+
+**Write, Compile, and Run the Code**
+
+Below is the same example code from Linux (works the same):
+
+```cpp
+#include <GL/freeglut.h>  // Use FreeGLUT header (cross-platform)
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_POLYGON);
+
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(-0.6f, -0.75f, 0.0f);
+
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.6f, -0.75f, 0.0f);
+
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(0.0f, 0.75f, 0.0f);
+
+    glEnd();
+
+    glFlush();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("FreeGLUT Triangle Example");
+
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    glutDisplayFunc(display);
+    glutMainLoop();
+
+    return 0;
+}
+```
+
+VS Code :
+
+- Open VS Code.
+- Create a .cpp file in your workspace.
+- Open a terminal in VS Code (Ctrl+`).
+- Make sure you’re in the MSYS2 MINGW64 environment (you can launch VS Code from MINGW64 terminal using code . to ensure correct paths).
+
+Compile using:
+
+```bash
+g++ filename.cpp -o outputname -lfreeglut -lopengl32 -lglu32
+```
+
+Run the program:
+```bash
+./outputname
+```
+IF you dont want to type the long command everytime to build you can configure it (kind of a shortcut)
+
+- create a folder in the root named .vscode
+- create a tasks.json inside the folder
+- paste the below given lines in it
+- After this is done you can compile/build the code using `Ctrl+Shift+B`
+- After Compilation you can run the code in same way as before by running `./outputname` in the terminal
+
+tasks.json for Windows (MSYS2)
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build OpenGL App (Windows MSYS2)",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "${file}",
+        "-o", "${fileBasenameNoExtension}",
+        "-lfreeglut",
+        "-lopengl32",
+        "-lglu32"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Builds the current C++ OpenGL/FreeGLUT file for Windows MSYS2"
+    }
+  ]
+}
+```
 
 #### **MacOS**
 
