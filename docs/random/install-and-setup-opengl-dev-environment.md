@@ -384,4 +384,162 @@ tasks.json for Windows (MSYS2)
 
 #### **MacOS**
 
-> TODO
+OpenGL Development Setup on macOS
+
+**Install Requirements**
+
+macOS already includes the OpenGL.framework and GLUT.framework as part of the system SDK — no extra libraries are needed.
+
+However, you must have Apple’s compiler and headers installed via Xcode Command Line Tools.
+
+**Install Xcode Command Line Tools**
+In Terminal, run:
+
+```bash
+xcode-select --install
+```
+<div style="width: 60% ; overflow: hidden;">
+  <img src="../../assets/images/install-xcode-tools.jpg" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+
+Follow the prompts to download and install.
+This gives you:
+
+- clang++ compiler
+- OpenGL and GLUT headers
+- System SDK frameworks
+
+**Create a Simple OpenGL Program**
+Create a file main.cpp:
+
+>for every program using opengl you need to add this libs for macos : `#include <OpenGL/gl.h> #include <GLUT/glut.h>`
+
+Below is a test code you can copy
+
+```cpp
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_POLYGON);
+
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(-0.6f, -0.75f, 0.0f);
+
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.6f, -0.75f, 0.0f);
+
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(0.0f, 0.75f, 0.0f);
+
+    glEnd();
+
+    glFlush();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("FreeGLUT Triangle Example");
+
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    glutDisplayFunc(display);
+    glutMainLoop();
+
+    return 0;
+}
+```
+
+<div style="width: 60% ; overflow: hidden;">
+  <img src="../../assets/images/maincpp-opengl.jpg" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+
+
+**Compile**
+
+<div style="width: 60% ; overflow: hidden;">
+  <img src="../../assets/images/compile-opengl.jpg" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+
+
+For Apple Silicon M1,M2 etc (arm64): 
+
+```bash
+clang++ *.cpp -o app \
+  -framework OpenGL -framework GLUT \
+  -DGL_SILENCE_DEPRECATION -arch arm64
+```
+
+For Intel Macs (x86_64):
+
+```bash
+clang++ *.cpp -o app \
+  -framework OpenGL -framework GLUT \
+  -DGL_SILENCE_DEPRECATION -arch x86_64
+```
+
+**Run**
+
+<div style="width: 60% ; overflow: hidden;">
+  <img src="../../assets/images/run-opengl.jpg" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+
+```bash
+./app
+
+# replace with the name you had given
+```
+
+A 500×500 window should appear with a black background.
+
+**VS Code Build Task (Optional)**
+
+Create .vscode/tasks.json in your project folder:
+
+<div style="width: 60% ; overflow: hidden;">
+  <img src="../../assets/images/tasksjson-opengl.jpg" alt="gpu image" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+
+Paste the below given congig in it 
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build OpenGL App",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "*.cpp",
+                "-o", "app",
+                "-framework", "OpenGL",
+                "-framework", "GLUT",
+                "-DGL_SILENCE_DEPRECATION",
+                "-arch", "arm64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
+```
+
+**Now press Cmd + Shift + B to build.**
+
+Notes
+
+- OpenGL and GLUT are deprecated in macOS but still work.
+- -DGL_SILENCE_DEPRECATION removes deprecation warnings.
+- No extra installs are needed beyond Xcode Command Line Tools.
