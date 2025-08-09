@@ -236,6 +236,13 @@ You successfully compiled and ran your first application using OpenGL
 
 Windows (MSYS2 and VS Code Method)
 
+Here is a Video tutorial if you dont like to read, Some of the commands were little different in video , they are correct in this article now , so you can directly copy and paste them.
+
+<video controls width="100%" style="max-height: 500px;">
+  <source src="../../assets/videos/opengl-in-windows-vscode.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 **Install MSYS2**
 
 - Go to the official MSYS2 website: https://www.msys2.org/
@@ -246,11 +253,11 @@ At the end,type `pacman -Syu` in the terminal (automatically opened one). If it 
 
 **Install Compiler and Build Tools**
 
-Open the MSYS2 MINGW64 terminal and run:
-
+- Open the MSYS2 MINGW64 terminal and run:
 ```bash
-pacman -S mingw-w64-ucrt-x86_64-gcc
+pacman -S mingw-w64-x86_64-toolchain
 ```
+- Slect the option 3 (gcc at the end)
 
 This installs:
 
@@ -261,18 +268,17 @@ This installs:
 In the same MINGW64 terminal, run:
 
 ```bash
-pacman -S mingw-w64-x86_64-freeglut mingw-w64-x86_64-glu mingw-w64-x86_64-opengl
+pacman -S mingw-w64-x86_64-freeglut 
 ```
 
 This installs:
 
 - mingw-w64-x86_64-freeglut – FreeGLUT headers and libraries
-- mingw-w64-x86_64-glu – GLU library
-- mingw-w64-x86_64-opengl – Core OpenGL library
 
 **Add MinGW to your PATH**
 
 - Find where MSYS2 is installed (default: C:\msys64)
+- Copy the path to bin (default is `C:\msys64\mingw64\bin`)
 - Add this to your Windows System Environment Variables
     - Open Searchbar and search for Environment Variables
     - Environment Varibles -> System Variables -> Path -> Edit
