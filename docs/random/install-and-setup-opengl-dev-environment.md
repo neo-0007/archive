@@ -277,6 +277,8 @@ This installs:
 
 **Add MinGW to your PATH**
 
+> Note: **If you have already installed any c/c++ compiler before you need to move the path of msys2 above that compiler path ,I suggest to move `C:\msys64\mingw64\bin` this path to top**
+
 - Find where MSYS2 is installed (default: C:\msys64)
 - Copy the path to bin (default is `C:\msys64\mingw64\bin`)
 - Add this to your Windows System Environment Variables
