@@ -39,6 +39,7 @@ nav:
   - Quadcopter:
     - Overview: quadcopter/index.md
     - Anatomy: quadcopter/anatomy.md
+    - Medicopter: quadcopter/medicopter.md
     - Components:
         - Motors: quadcopter/motors.md
         - Frame: quadcopter/frame.md
