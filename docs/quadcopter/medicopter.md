@@ -50,7 +50,7 @@ I want to combine these two and create something as shown below:
 It may seem like a sci-fi movie but below is a youtube video of such teleoperated arms which works with very precision that can i think perform small medical tasks:
 
 <video controls width="100%" style="max-height: 500px;">
-  <source src="assets/videos/7bot-arm.mp4" type="video/mp4">
+  <source src="../../assets/videos/7bot-arm.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
