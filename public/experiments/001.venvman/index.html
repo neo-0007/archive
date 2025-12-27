@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    venvman | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/experiments/001.venvman/"/>
+
+<meta property="og:url" content="//localhost:1313/experiments/001.venvman/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="venvman">
+  <meta property="og:description" content="A Simple Python venv Manager">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="experiments">
+    <meta property="article:modified_time" content="2025-12-25T04:28:34+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">venvman</h1>
+        <p class="single-summary">A Simple Python venv Manager</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p>Recently, while working on multiple Python projects, I faced some problems with how scattered my virtual environments were. Some were in the project folders, some outside, and I couldn’t remember which ones were important and which ones I could delete.</p>
+<p>There are great tools like Anaconda, Mamba, Poetry, etc. — but they are heavy and come with more features than I needed. I just wanted something lightweight. Something that uses Python&rsquo;s own built-in <code>venv</code> and lets me keep everything in one place. And I think if you&rsquo;re just hacking on side projects, scripts, or learning Python — these tools might feel like overkill.</p>
+<p>So I wrote <strong>venvman</strong> — a tiny Bash script to create, activate, delete, and list Python virtual environments.
+You can find the project on GitHub <a href="https://github.com/neo-0007/venvman">here</a>.</p>
+<p>I didn’t need dependency resolution or Python version management. I just wanted:</p>
+<ul>
+<li>A centralized place for all venvs (no more searching in random project folders)</li>
+<li>A simple CLI command like <code>venvman create myproject</code></li>
+<li>Quick activation from anywhere in the terminal</li>
+<li>Easy cleanup of unused venvs</li>
+</ul>
+<p>That’s it. And I wanted it in one script — no dependencies, no config files, just pure Bash.</p>
+<h2 class="heading" id="what-does-venvman-do">
+  What does venvman do?
+  <a class="anchor" href="#what-does-venvman-do">#</a>
+</h2>
+<p>Once installed, it gives you these commands:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">venvman create &lt;name&gt;     <span class="c1"># Create a new virtual environment</span>
+</span></span><span class="line"><span class="cl">vactivate &lt;name&gt;          <span class="c1"># Activate an existing environment</span>
+</span></span><span class="line"><span class="cl">vdeactivate &lt;name&gt;        <span class="c1"># Deactivate the current venv</span>
+</span></span><span class="line"><span class="cl">venvman list              <span class="c1"># See all venvs</span>
+</span></span><span class="line"><span class="cl">venvman delete &lt;name&gt;     <span class="c1"># Delete a venv you don’t need anymore</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>It stores all environments under <code>~/.venvs/</code></p>
+<p>So now I can do:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">venvman create testapi
+</span></span><span class="line"><span class="cl">vactivate testapi</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="limitations">
+  Limitations
+  <a class="anchor" href="#limitations">#</a>
+</h2>
+<p>This is not a replacement for Anaconda, Mamba, or Poetry.
+It does <strong>not</strong>:</p>
+<ul>
+<li>Manage Python versions (you’ll need <code>pyenv</code> or something similar for that)</li>
+<li>Handle <code>requirements.txt</code> or <code>pyproject.toml</code></li>
+<li>Install any packages for you
+It simply wraps the standard <code>python3 -m venv</code> and gives you CLI access to keep it all clean and centralized.
+Right now, it only works on <strong>Linux</strong> or <strong>Bash-compatible shells</strong>. If you&rsquo;re on macOS (which defaults to <code>zsh</code>) or Windows (CMD or PowerShell), it won’t run without tweaks. But — if you want to help port it, raise a PR.</li>
+</ul>
+<h2 class="heading" id="installation">
+  Installation
+  <a class="anchor" href="#installation">#</a>
+</h2>
+<p>Clone the repo and run the setup:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/neo-0007/venvman.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> venvman
+</span></span><span class="line"><span class="cl">bash setup.sh</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>This adds the <code>venvman</code> command globally (via <code>~/bin</code>) and appends a function + alias to your <code>.bashrc</code>.</p>
+<p>To uninstall:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash uninstall.sh</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Fork it. Hack it. Improve it. That’s the fun part :)</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/experiments/002.cloud-storage/">
+                        Unlimited cloud storage
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Howtos on Hrishikesh Gohain</title>
+    <link>//localhost:1313/howto/</link>
+    <description>Recent content in Howtos on Hrishikesh Gohain</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:1313/howto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A fix for wifi in dual boot systems</title>
+      <link>//localhost:1313/howto/002.fix-wifi-dual-boot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/howto/002.fix-wifi-dual-boot/</guid>
+      <description>Fixing Intel AX200 Wi-Fi Not Working on Ubuntu (Dual Boot with Windows)</description>
+    </item>
+    <item>
+      <title>Install and Setup OpenGL Developer Environment</title>
+      <link>//localhost:1313/howto/001.setup-opengl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/howto/001.setup-opengl/</guid>
+      <description>test</description>
+    </item>
+    <item>
+      <title>Test</title>
+      <link>//localhost:1313/howto/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/howto/test/</guid>
+      <description>test</description>
+    </item>
+  </channel>
+</rss>

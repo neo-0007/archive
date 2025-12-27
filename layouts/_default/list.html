@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<div class="list-container">
+
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+{{ if eq .Section "posts" }}
+<div class="category-filter" id="categoryFilter">
+  <button class="chip active" data-category="all">All</button>
+
+  {{ range $name, $_ := .Site.Taxonomies.categories }}
+    <button class="chip" data-category="{{ $name | urlize }}">
+      {{ $name }}
+    </button>
+  {{ end }}
+</div>
+{{ end }}
+
+    {{ $tagsPage := eq .Title "Tags"}}
+
+    {{ $paginationSize := 1 }}
+    {{ if (gt .Site.Params.paginationSize 0) }}
+        {{ $paginationSize = .Site.Params.paginationSize }}
+    {{ end }}
+
+    {{ $paginator := .Paginate (.Pages) $paginationSize }}
+
+    {{ range $paginator.Pages }}
+        {{ if $tagsPage }}
+            {{ partial "tag-entry.html" . }}
+        {{ else }}
+            {{ partial "post-entry.html" . }}
+        {{ end }}
+    {{ end }}
+
+    {{ partial "pagination-controls.html" $paginator }}
+
+</div>
+{{ end }}

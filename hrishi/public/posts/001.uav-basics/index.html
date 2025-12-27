@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    How does a drone fly ? | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/posts/001.uav-basics/"/>
+
+<meta property="og:url" content="//localhost:1313/posts/001.uav-basics/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="How does a drone fly ?">
+  <meta property="og:description" content="Basics of UAV’s">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:modified_time" content="2025-12-27T03:08:43+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">How does a drone fly ?</h1>
+        <p class="single-summary">Basics of UAV&rsquo;s</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p>A drone is a unmanned aerial vechicle (UAV) , a vechicle that flies and has no humans in it , you can say it as a remote controlled plane in simple terms</p>
+<p>These are the most common types of drones we normally use :</p>
+<p>
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+    
+      <div class="img-container" style="--w: 3928; --h: 2032;">
+        <img loading="lazy"
+             alt="drones classification"
+             src="/posts/001.uav-basics/drone-types.png"
+             width="3928"
+             height="2032">
+      </div>
+    
+  
+
+  
+</figure>
+</p>
+<blockquote>
+<p><em>Image source: <a href="https://www.mdpi.com/2504-446X/7/8/515">An Overview of Drone Applications in the Construction Industry</a></em></p>
+</blockquote>
+<p>All of these are just different types of designs used for different purposes , their main goal is to fly.</p>
+<h2 class="heading" id="quadcopters">
+  Quadcopters
+  <a class="anchor" href="#quadcopters">#</a>
+</h2>
+<p>Quadcopter is a type of drone and as its name suggests it uses quad(four) rotors (or motors) to fly . These spinning propellers let the quadcopter fly, hover, turn, and move in any direction.</p>
+<p>Quadcopters come in various types, distinguished mainly by their frame shapes and intended uses, here are the different types of frame shapes :</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+  <img src="quad-x-frame.png" alt="Image 1" style="width: 30%;">
+  <img src="quad-h-frame.png" alt="Image 2" style="width: 30%;">
+  <img src="quad-plus-frame.png" alt="Image 3" style="width: 30%;">
+  <img src="quad-y4-frame.png" alt="Image 4" style="width: 30%;">
+  <img src="quad-a-tail-frame.png" alt="Image 5" style="width: 30%;">
+  <img src="quad-v-tail-frame.png" alt="Image 6" style="width: 30%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.t-drones.com/blog/quadcopter-drones.html">Quadcopter Drones: A Comprehensive Beginner’s Guide</a></em></p>
+</blockquote>
+<p>The most common quadcopter that you may have seen or used are DJI drones :
+
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+    
+      <div class="img-container" style="--w: 640; --h: 640;">
+        <img loading="lazy"
+             alt="dji drone"
+             src="/posts/001.uav-basics/dji-drone.png"
+             width="640"
+             height="640">
+      </div>
+    
+  
+
+  
+</figure>
+</p>
+<blockquote>
+<p><em>Image source: <a href="https://store.dji.com/product/dji-mini-3?vid=128001">DJI Mini 3</a></em></p>
+</blockquote>
+<p>And this is what our quadcopter looks like
+
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+
+  
+</figure>
+</p>
+<h2 class="heading" id="how-does-a-quadcopter-fly">
+  How does a Quadcopter Fly
+  <a class="anchor" href="#how-does-a-quadcopter-fly">#</a>
+</h2>
+<p>Newton’s Third Law says:</p>
+<p><em>“For every action, there is an equal and opposite reaction.”</em></p>
+<p>This means that whenever one object pushes on another, the second object pushes back with the same force, but in the opposite direction.</p>
+<p>When a quadcopter’s propellers spin, they push air downward. Using Newton’s third law, this represents the action. For Newton’s law to be true, there must be an equal and opposite reaction. This reaction is an upward force pushing on the quadcopter. Once this force exceeds the force of gravity pulling the quadcopter downward, the quadcopte begins to move up.</p>
+<div style="text-align: center;">
+  <img src="quadcopter-ntl.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf">NASA</a></em></p>
+</blockquote>
+<p>Well this is only up and down motion , but a quadcopter can turn and move in any direction and can do flips also , how does it do that ?</p>
+<h4 class="heading" id="movements-of-a-quadcopter">
+  Movements of a Quadcopter
+  <a class="anchor" href="#movements-of-a-quadcopter">#</a>
+</h4>
+<p>The three fundamental movements are up &amp; down (vertical movement) , left &amp; right and front &amp; back(lateral movement) and round and round (rotational movement)</p>
+<div style="text-align: center;">
+  <img src="quad-types-of-movements.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf">NASA</a></em></p>
+</blockquote>
+<p>All of these movements can be achieved by varying the speed of the 4 rotors in different ways.</p>
+<p>When the propellers spin, they push air down. Similar to a helicopter, pushing the air down is the action in Newton’s third law of motion. The reaction is a force, called
+<strong>lift</strong>, which pushes the quadcopter up. Each of the propellers will create lift, and the total lift for the quadcopter will be the sum of the four propellers’ lifts. The total force of the lift must be stronger than the force of gravity for the quadcopter to take off. Once in the air, the quadcopter can hover with no vertical movement by having the forces of lift and gravity equal.</p>
+<div style="text-align: center;">
+  <img src="quad-vertical-movement.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf">NASA</a></em></p>
+</blockquote>
+<p>When the force of lift acts straight upward, the quadcopter moves vertically. But, when lift acts at an angle, it can also move laterally. This is because part of the force of the lift is upward and part of it is to the side, resulting in lateral movement that can be from side-to-side or forward and backward.</p>
+<div style="text-align: center;">
+  <img src="quad-lateral-movement.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf">NASA</a></em></p>
+</blockquote>
+<p>Lateral movement occurs by varying the speed of the propellers. Increasing the speed of the two propellers on one side of the quadcopter and/or decreasing the speed of the two propellers on the other side creates uneven amounts of lift on the two sides. The lift created on the side with the faster spinning propellers is greater than the lift created on the opposite side. The result is that the quadcopter moves in the direction of the side where less lift is created.</p>
+<p>Here are all the movements using lateral movement :</p>
+<div style="text-align: center;">
+  <img src="quad-foreward.png" alt="My Image" style="max-width: 80%;">
+</div>
+<div style="text-align: center;">
+  <img src="quad-backward.png" alt="My Image" style="max-width: 80%;">
+</div>
+<div style="text-align: center;">
+  <img src="quad-left.png" alt="My Image" style="max-width: 80%;">
+</div>
+<div style="text-align: center;">
+  <img src="quad-right.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg">Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations</a></em></p>
+</blockquote>
+<p>And the last type of movement is rotational motion , how does the quadcopter rotates in its own axis ? for that lets learn about the oreantations of the rotors of a quadcopter.</p>
+<div style="text-align: center;">
+  <img src="quadcopter-props-direction.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image Source: <a href="">Ardupilot</a></em></p>
+</blockquote>
+<p>As you can see in the above image , Rotor 3 and 4 rotates in Clockwise direction and Rotor 1 and 2 rotates in Anticlockwise direction.</p>
+<p>This is done due to a force called torque , a twisting force that causes rotation When a propeller spins, this force is produced. And, according to Newton’s third law of motion, an equal and opposite force is produced as well.</p>
+<div style="text-align: center;">
+  <img src="helicopter-example.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p>Image Source: <a href="https://www.tsb.gc.ca/eng/rapports-reports/aviation/2020/a20a0027/a20a0027.html">Air transportation safety investigation report A20A0027</a></p>
+</blockquote>
+<p>We see this in action when we look at a helicopter like the one above. When the blades on top of the helicopter (the rotor) spin, torque is created. The equal and opposite force rotates the body of the helicopter in the opposite direction. Since this would make the helicopter unusable, a tail rotor is added. It
+creates a force that counteracts the torque and stops the helicopter from rotating uncontrollably</p>
+<p>Torque also affects a quadcopter when its propellers spin because each propeller individually creates torque when it rotates. All four torques are added up to determine
+the total torque acting on the quadcopter, If all propellers spins in same direction , the quadcopter body would have been rotating in the opposite direction .Therefore<br>
+Engineers have come up with a clever way of counteracting this torque—two of the propellers spin clockwise and two spin counterclockwise,. This results in two
+propellers creating torque that acts clockwise and two creating torque that acts counterclockwise. Thus, the forces cancel each other out.</p>
+<p>This torque can also be used to create rotational movement for the quadcopter.In the above shown image When propellers 1 and 3 rotate, they produce counterclockwise torque(remember, equal and opposite reactions). If these propellers rotate faster than propellers 2 and 4, the counterclockwise torque acting on the quadcopter will be
+stronger than the clockwise torque acting on it. This results in the quadcopter rotating counterclockwise. Of course, if propellers 2 and 4 rotate faster than
+propellers 1 and 3, the quadcopter will rotate clockwise.</p>
+<div style="text-align: center;">
+  <img src="quad-rotate-left.png" alt="My Image" style="max-width: 80%;">
+</div>
+<div style="text-align: center;">
+  <img src="quad-rotate-right.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image source: <a href="https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg">Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations</a></em></p>
+</blockquote>
+<h3 class="heading" id="the-propellers">
+  The Propellers
+  <a class="anchor" href="#the-propellers">#</a>
+</h3>
+<p>While having pairs of propellers rotating in opposite directions effectively controls the torque acting on the quadcopter, it presents a new problem for us. If propellers spin in opposite directions, two of the propellers push air upward while two push air downward. When you combine these forces, the total lift is zero and the quadcopter
+cannot take off. To overcome this, we use two different propeller blades.</p>
+<div style="text-align: center;">
+  <img src="props-direction.png" alt="My Image" style="max-width: 80%;">
+</div>
+<blockquote>
+<p><em>Image Source: <a href="">Ardupilot</a></em></p>
+</blockquote>
+<p>In above image, you can see that the leftmost propeller has the right edge higher in the front while the other has the left edge higher. This design changes the direction the air is pushed by the two propellers, meaning that when they spin in opposite directions, they actually push the air in the same direction.</p>
+<p>This was a brief overview of what quadcopters are and how does they work.</p>
+<h2 class="heading" id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<ol>
+<li>The Science behind quadcopters - <a href="https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf">NASA</a></li>
+<li>Quadcopter classification - <a href="https://www.t-drones.com/blog/quadcopter-drones.html">T-drones</a></li>
+<li>Quadcopter Movements - <a href="https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg">Holystone</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Quadcopter">Wikipedia</a></li>
+</ol>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/what/">
+                        What is the site ?
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

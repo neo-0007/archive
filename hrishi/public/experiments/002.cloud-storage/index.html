@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    Unlimited cloud storage | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/experiments/002.cloud-storage/"/>
+
+<meta property="og:url" content="//localhost:1313/experiments/002.cloud-storage/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="Unlimited cloud storage">
+  <meta property="og:description" content="A simple trick to demonstrate a problem">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="experiments">
+    <meta property="article:modified_time" content="2025-12-25T04:31:57+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">Unlimited cloud storage</h1>
+        <p class="single-summary">A simple trick to demonstrate a problem</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p>Recently, while I was building a project, I needed a cloud storage provider to store images, videos, etc. — basically a SaaS product. I had a ₹0 budget for the project, so I needed a service with a free tier. Luckily, there are lots of them out there&hellip;</p>
+<p><em>Here is a comparison of various providers</em></p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Free Storage</th>
+<th>Free Bandwidth</th>
+<th>File Size Limit</th>
+<th>Notable Limits / Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amazon S3</strong></td>
+<td>5 GB</td>
+<td>15 GB/month</td>
+<td>5 GB</td>
+<td>20,000 GET &amp; 2,000 PUT requests/month</td>
+</tr>
+<tr>
+<td><strong>Cloudinary</strong></td>
+<td>25 Credits/month</td>
+<td>25 GB bandwidth/month</td>
+<td>100 MB (images, videos)</td>
+<td>25 GB total storage included</td>
+</tr>
+<tr>
+<td><strong>Firebase Storage</strong></td>
+<td>1 GB</td>
+<td>5 GB/month</td>
+<td>2 GB</td>
+<td>50K read, 20K write operations/day</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>1 GB</td>
+<td>2 GB/month</td>
+<td>~50 MB (browser upload)</td>
+<td>File size capped by browser or CDN</td>
+</tr>
+<tr>
+<td><strong>ImageKit</strong></td>
+<td>20 GB</td>
+<td>20 GB/month</td>
+<td>25 MB (browser), 100 MB (API)</td>
+<td>500 transformations/day limit</td>
+</tr>
+<tr>
+<td><strong>Uploadcare</strong></td>
+<td>1.5 GB</td>
+<td>1 GB/month</td>
+<td>100 MB</td>
+<td>300 file uploads/month</td>
+</tr>
+<tr>
+<td><strong>Backblaze B2</strong></td>
+<td>10 GB</td>
+<td>1 GB/day download</td>
+<td>No hard limit</td>
+<td>2,500 downloads/day</td>
+</tr>
+</tbody>
+</table>
+<p>I decided to use Cloudinary for my project because it offered a decent free tier with generous bandwidth and transformation limits. But then I noticed something interesting — all you need to sign up is a Gmail address.</p>
+<p>So&hellip; why not just create multiple Gmail accounts and keep rotating them? Each new account gives you another free tier allowance. You can imagine the potential: 10 Gmail accounts → 10 Cloudinary accounts → 10× the free limit. For a mid-scale application, this setup could be sufficient.</p>
+<p>Here is the logic:</p>
+<pre class="mermaid">flowchart LR
+    A[User uploads image] --&gt; B[API receives image]
+    B --&gt; C{Select Cloudinary account}
+    
+    C --&gt;|1st Upload| D1[Cloudinary Account 1]
+    C --&gt;|2nd Upload| D2[Cloudinary Account 2]
+    C --&gt;|3rd Upload| D3[Cloudinary Account 3]
+    C --&gt;|4th Upload| D1
+    C --&gt;|5th Upload| D2
+    C --&gt;|...| E[Repeat in Round-Robin]
+
+    D1 --&gt; F1[Upload Success]
+    D2 --&gt; F2[Upload Success]
+    D3 --&gt; F3[Upload Success]
+</pre>
+
+<p>I created a demo application using Node.js and Express to demonstrate this (I do not intend to use it in production — and you shouldn&rsquo;t either — it&rsquo;s just for educational purposes):</p>
+<p>The code can be found in my github repo <a href="https://github.com/neo-0007/abuse-the-free-tier">abuse-the-free-tier</a></p>
+<h3 class="heading" id="code-explanation">
+  Code Explanation
+  <a class="anchor" href="#code-explanation">#</a>
+</h3>
+<p>Folder Structure:</p>
+<div class="code-block">
+  <pre tabindex="0"><code>.
+├── uploads/                         # Temp directory for incoming files before upload
+├── views/
+│   └── upload.ejs                   # HTML template for upload form
+├── cloudinaryAccounts.example.json # Example credentials file
+├── cloudinaryAccounts.json         # Actual Cloudinary account credentials (add your accounts)
+├── cloudinary.js                   # Upload logic with account rotation
+├── index.js                        # Main server logic (Express)
+├── package.json                    # Node project dependencies and scripts
+├── package-lock.json               # Dependency lock file
+└── README.md                       # Project description</code></pre>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>I will just explain the main parts here :</p>
+<p>The <code>cloudinaryAccounts.json</code> contains the api keys and secrets and that is not safe but its for demonstration purposes , we can easily make them as environment variables and inject them using packages like dotenv.</p>
+<h3 class="heading" id="cloudinaryjs--round-robin-upload-logic">
+  cloudinary.js — Round-Robin Upload Logic
+  <a class="anchor" href="#cloudinaryjs--round-robin-upload-logic">#</a>
+</h3>
+<p>Handles:</p>
+<ol>
+<li>Account rotation via <code>currentIndex % accounts.length</code></li>
+<li>Configuring Cloudinary SDK per request</li>
+<li>Uploading file to the selected Cloudinary account</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">cloudinary</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;cloudinary&#34;</span><span class="p">).</span><span class="nx">v2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">accounts</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./cloudinaryAccounts.json&#34;</span><span class="p">);</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>We’re importing Cloudinary’s SDK to interact with their API.
+Also importing our cloudinaryAccounts.json file which contains all the account credentials.</p>
+<p>Before this works, make sure to install Cloudinary using:
+<code>npm install cloudinary</code></p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getNextAccount</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">accounts</span><span class="p">[</span><span class="nx">currentIndex</span> <span class="o">%</span> <span class="nx">accounts</span><span class="p">.</span><span class="nx">length</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">currentIndex</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>We’re using a simple trick called modulo (%) to loop through the accounts in a round-robin fashion. currentIndex % accounts.length ensures we never go out of bounds. Each time we upload, currentIndex++ moves us to the next account. Once it reaches the end, it circles back to the first one.</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">uploadImage</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">getNextAccount</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cloudinary</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="nx">account</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">cloudinary</span><span class="p">.</span><span class="nx">uploader</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;Upload failed:&#34;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>This is a example upload function:</p>
+<ol>
+<li>Gets the next account using our round-robin method.</li>
+<li>Sets that account as the active Cloudinary config.</li>
+<li>Uploads the file at filePath.</li>
+<li>Returns the Cloudinary response with url, public_id, etc.</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">uploadImage</span><span class="p">;</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>We export uploadImage so we can use it in other files (like index.js).</p>
+<h3 class="heading" id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h3>
+<p>This is just for cloud object storage , most of the SaaS products can be exploited in this way , even anything that uses API keys and has a free tier. So Is there a way
+to prevent this ? so that software companies can make more money .</p>
+
+    </div>
+  </article>
+
+  
+  
+  
+  <script defer
+    type="module"
+    id="mermaid_script"
+    data-light-theme="default"
+    data-dark-theme="dark"
+    src='/js/mermaid.js'>
+  </script>
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/experiments/001.venvman/">
+                        venvman
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

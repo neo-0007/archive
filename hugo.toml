@@ -1,0 +1,70 @@
+title = "Hrishikesh Gohain"
+theme = "typo"
+
+languageCode = "en-us"
+defaultContentLanguage = "en"
+
+
+[[params.menu]]
+name = "home"
+url  = "/"
+
+[[params.menu]]
+name = "posts"
+url  = "/posts"
+
+[[params.menu]]
+name = "experiments"
+url  = "/experiments"
+
+[[params.menu]]
+name = "howto"
+url  = "/howto"
+
+[taxonomies]
+category = "categories"
+
+[params]
+description = "Portfolio and blog to post projects and ideas, by Hrishikesh Gohain."
+
+appearance = "auto"        
+colorPalette = "base16-eighties"
+hideHeader = false
+
+paginationSize = 10
+listSummaries = true
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[[params.social]]
+name = "github"
+url = "https://github.com/neo-0007"
+
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/hrishiii/"
+
+[[params.social]]
+name = "discord"
+url = "https://discord.com/users/userid/hrishikeshgohain."
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    style = "catppuccin-macchiato"
+
+enableGitInfo = true
+
+[frontmatter]
+date = [":filename", ":default"]
+lastmod = [":git", "lastmod", "modified", ":fileModTime", ":default"]
+
+[params.giscus]
+enable = false
+repo = "user/repo"
+repoid = "repoId"
+category = "General"
+categoryid = "categoryId"
+mapping = "pathname"
+theme = "preferred_color_scheme"

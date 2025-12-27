@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    A fix for wifi in dual boot systems | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/howto/002.fix-wifi-dual-boot/"/>
+
+<meta property="og:url" content="//localhost:1313/howto/002.fix-wifi-dual-boot/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="A fix for wifi in dual boot systems">
+  <meta property="og:description" content="Fixing Intel AX200 Wi-Fi Not Working on Ubuntu (Dual Boot with Windows)">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="howto">
+    <meta property="article:modified_time" content="2025-12-25T04:26:35+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">A fix for wifi in dual boot systems</h1>
+        <p class="single-summary">Fixing Intel AX200 Wi-Fi Not Working on Ubuntu (Dual Boot with Windows)</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p>Recently, I faced an annoying issue after booting into Ubuntu which was running alongside Windows(dual boot) on my ASUS VivoBook 14 (Model: M413IA) .My Wifi was not working , i switched to Windows and it worked just fine. MyWifi card is Intel Wi-Fi 6 AX200 card.</p>
+<p>After a lot of digging, debugging, and trial-and-error, I figured out the root cause and fixed it. This post documents that journey, in case anyone else is facing the same issue.</p>
+<p><strong>The Symptoms :</strong></p>
+<p>In Ubuntu, running:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmcli device</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>The output</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DEVICE           TYPE      STATE                   CONNECTION         
+</span></span><span class="line"><span class="cl">enxca89f39a6d94  ethernet  connected               Wired connection <span class="m">1</span> 
+</span></span><span class="line"><span class="cl">lo               loopback  connected <span class="o">(</span>externally<span class="o">)</span>  lo                 
+</span></span><span class="line"><span class="cl">docker0          bridge    connected <span class="o">(</span>externally<span class="o">)</span>  docker0</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Wi-Fi was completely missing.</p>
+<p>Then I checked the network hardware:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo lshw -C network</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>The output:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">*-network UNCLAIMED
+</span></span><span class="line"><span class="cl">   description: Network controller
+</span></span><span class="line"><span class="cl">   product: Intel Corporation Wi-Fi <span class="m">6</span> AX200</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>The device was &ldquo;unclaimed&rdquo; — a clear sign that the kernel recognized it, but no driver was managing it.</p>
+<p><strong>The Error in Logs</strong></p>
+<p>To get more detail, I ran:</p>
+<p><code>dmesg | grep iwlwifi </code>
+It showed</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">iwlwifi 0000:01:00.0: probe with driver iwlwifi failed with error -110</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p><code>error -110</code> typically points to a timeout, meaning the device isn’t responding correctly during initialization.</p>
+<p><strong>What Didn’t Work</strong></p>
+<p>I tried a lot of common fixes:</p>
+<ul>
+<li>Reinstalling <code>linux-firmware</code></li>
+<li>Manually loading the <code>iwlwifi</code> module with <code>modprobe</code></li>
+<li>Setting GRUB options like <code>pcie_aspm=off</code> and <code>pci=nomsi</code></li>
+<li>Updating initramfs</li>
+<li>Checking <code>rfkill</code> (nothing was blocked)</li>
+<li>Enabling Network Stack in BIOS</li>
+<li>Disabling Secure Boot and Fast Boot</li>
+</ul>
+<p>None of these worked.</p>
+<p><strong>The Real Cause: Windows Fast Startup</strong></p>
+<p>Eventually, I booted back into Windows to double-check if the card was functional. It was. This confirmed that the hardware wasn’t faulty.</p>
+<p>Then I remembered that <strong>Windows Fast Startup</strong> sometimes causes devices to be left in a low-power or suspended state — especially Wi-Fi and Bluetooth cards.</p>
+<p>This was the key.</p>
+<p><strong>The Fix That Worked</strong></p>
+<p>Here’s exactly what I did:</p>
+<ol>
+<li><strong>Booted into Windows</strong></li>
+<li>Went to <strong>Control Panel → Power Options → Choose what the power buttons do</strong></li>
+<li>Clicked “Change settings that are currently unavailable”</li>
+<li><strong>Disabled</strong>: <em>Turn on fast startup (recommended)</em> <code>remember: turn this off</code></li>
+<li>Performed a <strong>full shutdown</strong> (Shift + Shutdown)</li>
+<li>Booted into Ubuntu</li>
+</ol>
+<p>Now, the Wi-Fi card is detected properly:'</p>
+<p><code>nmcli device</code></p>
+<p><code>wlp1s0  wifi      disconnected  -- </code></p>
+<p>And no more <code>probe failed with error -110</code> in <code>dmesg</code>.</p>
+<p><strong>Summary</strong></p>
+<p>If your Intel AX200 card isn’t working on Ubuntu and you&rsquo;re dual-booting with Windows, disable Fast Startup in Windows and fully power off the system. The card will reset, and Linux will be able to initialize it properly.</p>
+<p>It’s a frustrating issue, but once you know the cause, the fix is pretty simple.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/howto/001.setup-opengl/">
+                        Install and Setup OpenGL Developer Environment
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

@@ -1,0 +1,14 @@
+<div class="post-line"
+     data-categories="{{ with .Params.categories }}{{ delimit . " " }}{{ end }}">
+  <div>
+    <p class="line-title">
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </p>
+
+    {{ if .Site.Params.listSummaries }}
+      <p class="line-summary">{{ .Summary }}</p>
+    {{ end }}
+  </div>
+</div>
