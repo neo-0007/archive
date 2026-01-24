@@ -1,6 +1,6 @@
 ---
 title: "Install and Setup OpenGL Developer Environment"
-summary: "test"
+summary: "opengl setup for linux, windows and mac"
 toc: false
 readTime: false
 autonumber: true

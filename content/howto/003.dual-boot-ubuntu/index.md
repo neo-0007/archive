@@ -9,8 +9,6 @@ showTags: false
 hideBackToTop: true
 ---
 
-## UBUNTU INSTALLATION (DUAL BOOT)
-
 Switching to Linux was one of the best choices i made both for myself and for my computer. If you are not a proffesional user of abdobe products or a hardcore gamer you can and should switch to Linux. I distro hopped many times and made my peace with Ubuntu with KDE. And i truly love my setup, Its efficient It's clean It is the way i want it to be.
 
 This blog will guide you for a dual boot install of Ubuntu that is you will have your Windows system intact and will be able to choose between Windows and Ubuntu while turning on your computer. This is a good way for beginners to try ubuntu first and than you can remove the windows components later.
@@ -20,7 +18,7 @@ Two things you will need :
 - A empty pendrive with minimum 8gb space
 - Minimum 50gb free space on your computer
 
-## 1. Unallocate some free space for your new Operating system
+## Unallocate some free space for your new Operating system
 
 > It is recommended to back up any data since this step may clear up your drive if not done carefully
 
@@ -47,7 +45,7 @@ Two things you will need :
     <img src="5.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
     </div>
 
-## 2. Create a bootable USB drive ( the installer )
+## Create a bootable USB drive ( the installer )
 
 - Download and install **balena etcher** from [here](https://etcher.balena.io/#download-etcher) and insert your USB drive.  
 
@@ -73,7 +71,7 @@ Two things you will need :
     <img src="9.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
     </div>
 
-## 3. Installing the system
+## Installing the system
 
 > Depending upon your computer you may need to go into BIOS and turn off Secure boot and enable boot menu  
 

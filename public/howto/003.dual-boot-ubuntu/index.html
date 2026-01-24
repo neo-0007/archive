@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=32787&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:32787/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:32787/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:32787/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:32787/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:32787/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    Install Ubutnu alongside Windows | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:32787/howto/003.dual-boot-ubuntu/"/>
+
+<meta property="og:url" content="//localhost:32787/howto/003.dual-boot-ubuntu/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="Install Ubutnu alongside Windows">
+  <meta property="og:description" content="guide to getting started with linux">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="howto">
+    <meta property="article:modified_time" content="2026-01-25T01:16:08+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">Install Ubutnu alongside Windows</h1>
+        <p class="single-summary">guide to getting started with linux</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p>Switching to Linux was one of the best choices i made both for myself and for my computer. If you are not a proffesional user of abdobe products or a hardcore gamer you can and should switch to Linux. I distro hopped many times and made my peace with Ubuntu with KDE. And i truly love my setup, Its efficient It&rsquo;s clean It is the way i want it to be.</p>
+<p>This blog will guide you for a dual boot install of Ubuntu that is you will have your Windows system intact and will be able to choose between Windows and Ubuntu while turning on your computer. This is a good way for beginners to try ubuntu first and than you can remove the windows components later.</p>
+<p>Two things you will need :</p>
+<ul>
+<li>A empty pendrive with minimum 8gb space</li>
+<li>Minimum 50gb free space on your computer</li>
+</ul>
+<h2 class="heading" id="unallocate-some-free-space-for-your-new-operating-system">
+  Unallocate some free space for your new Operating system
+  <a class="anchor" href="#unallocate-some-free-space-for-your-new-operating-system">#</a>
+</h2>
+<blockquote>
+<p>It is recommended to back up any data since this step may clear up your drive if not done carefully</p>
+</blockquote>
+<ul>
+<li>
+<p>Press <strong>Win + X</strong> and click on <strong>Disk management</strong></p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="1.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>You will see all the partitions of your drive , right click on the drive which you want to shrink to free up some space and click on <strong>Shrink Volume</strong></p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="3.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Enter the amount of space you want to free for your new OS. I<br>
+am going for 80gb , A minimum of 50gb is recommended</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="4.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>After some time the unallocated space will be created where we will install our Ubuntu</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="5.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+</ul>
+<h2 class="heading" id="create-a-bootable-usb-drive--the-installer-">
+  Create a bootable USB drive ( the installer )
+  <a class="anchor" href="#create-a-bootable-usb-drive--the-installer-">#</a>
+</h2>
+<ul>
+<li>
+<p>Download and install <strong>balena etcher</strong> from <a href="https://etcher.balena.io/#download-etcher">here</a> and insert your USB drive.</p>
+</li>
+<li>
+<p>Download the <strong>Ubuntu 22.04 ISO</strong> image from <a href="https://releases.ubuntu.com/jammy/ubuntu-22.04.5-desktop-amd64.iso">here</a></p>
+</li>
+<li>
+<p>Open balena etcher</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="6.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Click on <strong>Flash from file</strong> and select the Ubuntu ISO you have downloaded</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="7.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Select your USB drive / it was automatically detected in my case</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="8.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Click on <strong>flash</strong> , It will take some time to complete.</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="9.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+</ul>
+<h2 class="heading" id="installing-the-system">
+  Installing the system
+  <a class="anchor" href="#installing-the-system">#</a>
+</h2>
+<blockquote>
+<p>Depending upon your computer you may need to go into BIOS and turn off Secure boot and enable boot menu</p>
+</blockquote>
+<ul>
+<li>
+<p>Shutdown your computer</p>
+</li>
+<li>
+<p>Turn on your computer by continuously pressing the key corresponding to your computer brand.</p>
+<ul>
+<li>Dell : F12</li>
+<li>HP : Esc, then F9</li>
+<li>Lenovo : F12 or Fn + F12</li>
+<li>ASUS : Esc</li>
+<li>Acer : F12</li>
+<li>MSI : F11</li>
+<li>Samsung : Esc or F12</li>
+</ul>
+</li>
+<li>
+<p>The boot menu will open , Select the option like below, Your&rsquo;s may be different just select the one without the name Windows.</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="11.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>You will be in the gnu boot menu now , Select <strong>Try or Install Ubuntu</strong></p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="12.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Click the <strong>Install Ubuntu</strong> option and follow along with the default options</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="13.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="14.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Select the options like below</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="15.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Select <strong>Install alongside windows</strong> (This step is very important)</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="16.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Follow along with the default settings , then this page will be shown , This may take some time.</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="20.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Click <strong>Restart now</strong></p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="22.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>Remove your USB drive and then press <strong>Enter</strong></p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="21.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+<li>
+<p>After the Restart , You will see a boot menu like below. Select <strong>Ubuntu</strong> and you will logged into your New Ubuntu Installation</p>
+  <div style="width: 60% ; overflow: hidden;">
+  <img src="23.jpeg" alt="image 1" style="width: 100%; height: auto; object-fit: contain;">
+  </div>
+</li>
+</ul>
+<p>That was it , Welcome to the world of Free Open and Cool Software where you control what you use not the other way around.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/howto/test/">
+                        Test
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/howto/001.setup-opengl/">
+                        Install and Setup OpenGL Developer Environment
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>
