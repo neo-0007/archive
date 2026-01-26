@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    Robots playing football | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/experiments/003.robots-playing-football/"/>
+
+<meta property="og:url" content="//localhost:1313/experiments/003.robots-playing-football/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="Robots playing football">
+  <meta property="og:description" content="Our robosoccer journey">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="experiments">
+    <meta property="article:modified_time" content="2026-01-27T02:45:00+05:30">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">Robots playing football</h1>
+        <p class="single-summary">Our robosoccer journey</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <p><strong>RoboSoccer Overview</strong></p>
+<p>Our first robotics project was our RoboSoccer bot.<br>
+It’s not a human like robot playing soccer with robotic legs — it’s a simple RC-controlled, four-wheeled bot (you can think of it as a small car) that pushes the ball toward the goal. Matches are usually 1v1.</p>
+<hr>
+<p><strong>The Bot</strong></p>
+<p>Here is our first build. I think it looked pretty good — but unfortunately, it broke during its very first match. :(</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+  <img src="robosoccer-bot-v1-front.jpg" alt="Bot V1 Front" style="width: 30%; border-radius: 8px;">
+  <img src="robosoccer-bot-v1-side.jpg" alt="Bot V1 Side" style="width: 30%; border-radius: 8px;">
+  <img src="robosoccer-bot-v1-top.jpg" alt="Bot V1 Top" style="width: 30%; border-radius: 8px;">
+</div>
+<p>Here is our V2. I don’t have a great photo of it, and it doesn’t look better than V1 — but it managed to score a few goals and lasted until the end. It was a good improvement!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+  <img src="robosoccer-bot-v2-side.jpg" alt="Bot V2 Side" style="width: 30%; border-radius: 8px;">
+  <img src="robosoccer-bot-v2-top.jpg" alt="Bot V2 Top" style="width: 30%; border-radius: 8px;">
+</div>
+<p>Here are some images of bots from other teams. They are much more advanced and built by teams with way more experience than us.</p>
+<div style="width: 100%; max-height: 400px; overflow: hidden;">
+  <img src="other-bots-aec.jpg" alt="Other Team Bots" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+<p>Our v3 bot along with our other it&rsquo;s partner bot won first position in a compeition, Our first win yay.
+It was a 2v2 match and all thanks to our other bot build by some mechanical enginners contrary to me being mostly a computer kind of guy with a hobby for robots. Below are some images</p>
+<div style="
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 900px;
+  margin: auto;
+">
+  <img src="botv3-front.JPG" alt="Bot V3 Front" style="width: 100%; border-radius: 8px;">
+  <img src="botv3-back.jpg" alt="Bot V3 Back" style="width: 100%; border-radius: 8px;">
+  <img src="botv3-with-other.png" alt="Bot V3 With Other" style="width: 100%; border-radius: 8px;">
+  <img src="botv3-with-other-front.jpeg" alt="Bot V3 Front With Other" style="width: 100%; border-radius: 8px;">
+</div>
+<hr>
+<p><strong>The Arena</strong></p>
+<p>This is what an arena looks like. It’s about 2.5m by 2m in size.</p>
+<div style="width: 100%; max-height: 400px; overflow: hidden;">
+  <img src="robosoccer-arena.jpg" alt="RoboSoccer Arena" style="width: 100%; height: auto; object-fit: contain;">
+</div>
+<hr>
+<p><strong>The Game</strong></p>
+<p>The objective of the game is the same as in regular football: score goals. The team that scores the most goals wins the match.</p>
+<p>Here is a clip from one of our games. As you can see, it’s more like sumo wrestling than football!</p>
+<video controls width="100%" style="max-height: 500px;">
+  <source src="robosoccer-jec-game-demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<p>Here are links to some games that are much better than ours:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=LaOmCM-d4z0">Game 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=heDUn-9a-r0">Game 2</a></li>
+<li><a href="https://www.youtube.com/watch?v=lur5Ze4Kxl4">Game 3</a></li>
+</ul>
+<p>Now let&rsquo;s talk about our robot</p>
+<h2 class="heading" id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Here is a dissection of our bot showing all its key components:</p>
+<p>
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+    
+      <div class="img-container" style="--w: 1018; --h: 664;">
+        <img loading="lazy"
+             alt="bot disassembly"
+             src="/experiments/003.robots-playing-football/robosoccer-bot-disassembly.png"
+             width="1018"
+             height="664">
+      </div>
+    
+  
+
+  
+</figure>
+</p>
+<p>The chassis is built out of mild steel, and the whole bot weighs around 5 kg with the battery included. Most competitions allow a weight limit of 5 kg, but some permit up to 7 kg — in such cases, we can add additional weights.</p>
+<p>The key to building a good RoboSoccer bot is ensuring it&rsquo;s sturdy enough to withstand the beating from other heavy bots, while also having enough torque to push opponents. At the same time, it must be agile enough for precise control during fast-paced matches.</p>
+<hr>
+<h2 class="heading" id="components">
+  Components
+  <a class="anchor" href="#components">#</a>
+</h2>
+<h3 class="heading" id="the-motor">
+  The Motor:
+  <a class="anchor" href="#the-motor">#</a>
+</h3>
+<p>These are the most critical components of the bot, so finding the right motor for our use case was a challenging task — especially since it was our first time working with such motors.</p>
+<p>We did a bit of research on different motor types and their specifications. You can find a basic overview of motor fundamentals <a href="../common/motors.md">here</a>.</p>
+<p>We eventually chose 12V 300 RPM planetary geared motors called <strong>IG32</strong> from Rhino Motors. These offered the best value and performance in our budget range.</p>
+<p>This is an image of the motor we used:</p>
+<p>
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+    
+      <div class="img-container" style="--w: 1600; --h: 1200;">
+        <img loading="lazy"
+             alt="motor image"
+             src="/experiments/003.robots-playing-football/robosoccer-ig32-motor.jpg"
+             width="1600"
+             height="1200">
+      </div>
+    
+  
+
+  
+</figure>
+</p>
+<p>Here are its dimensions:</p>
+<p>
+
+
+
+
+
+
+<figure class="">
+  
+
+  
+    
+      <div class="img-container" style="--w: 950; --h: 366;">
+        <img loading="lazy"
+             alt="motor dimensions"
+             src="/experiments/003.robots-playing-football/robosoccer-ig32-dimensions.jpg"
+             width="950"
+             height="366">
+      </div>
+    
+  
+
+  
+</figure>
+</p>
+<p>And below are its detailed specifications:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Specification</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>12V DC Geared Motor with Metal Planetary Gearbox</td>
+</tr>
+<tr>
+<td><strong>Base Motor RPM</strong></td>
+<td>18000 RPM</td>
+</tr>
+<tr>
+<td><strong>Output RPM</strong></td>
+<td>300 RPM</td>
+</tr>
+<tr>
+<td><strong>Gearbox Stages</strong></td>
+<td>3-stage planetary</td>
+</tr>
+<tr>
+<td><strong>Rated Torque</strong></td>
+<td>10 kg·cm</td>
+</tr>
+<tr>
+<td><strong>Stall Torque</strong></td>
+<td>&gt; 40 kg·cm (use at rated torque for longevity)</td>
+</tr>
+<tr>
+<td><strong>Shaft Type</strong></td>
+<td>D-type</td>
+</tr>
+<tr>
+<td><strong>Shaft Diameter</strong></td>
+<td>6 mm</td>
+</tr>
+<tr>
+<td><strong>Shaft Length</strong></td>
+<td>16 mm total (12 mm D-shaped)</td>
+</tr>
+<tr>
+<td><strong>Shaft Thread</strong></td>
+<td>M3 threaded hole</td>
+</tr>
+<tr>
+<td><strong>Back Shaft Length</strong></td>
+<td>9 mm</td>
+</tr>
+<tr>
+<td><strong>Gearbox Diameter</strong></td>
+<td>32 mm</td>
+</tr>
+<tr>
+<td><strong>Motor Diameter</strong></td>
+<td>28.5 mm</td>
+</tr>
+<tr>
+<td><strong>Motor Length</strong></td>
+<td>70 mm (without shaft)</td>
+</tr>
+<tr>
+<td><strong>Weight</strong></td>
+<td>300 g</td>
+</tr>
+<tr>
+<td><strong>Supply Voltage</strong></td>
+<td>12V DC</td>
+</tr>
+<tr>
+<td><strong>No-load Current</strong></td>
+<td>800 mA</td>
+</tr>
+<tr>
+<td><strong>Load Current (Max)</strong></td>
+<td>Up to 7.5 A</td>
+</tr>
+<tr>
+<td><strong>Coupling Options</strong></td>
+<td>CNC coupling (6 mm) or fixed coupling</td>
+</tr>
+</tbody>
+</table>
+<p>You can buy these motors <a href="https://robokits.co.in/motors/rhino-ig32-12v-20w-dc-motors/dc-geared-12v-motor/rhino-12v-dc-300rpm-10kgcm-ig32-heavy-duty-planetary-geared-motor?srsltid=AfmBOoqVHB813jvnOhRy1lyMDQRM1ZH16Mm-hzgd4kq7T1jpzu9Uoq_w">here</a></p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/experiments/002.cloud-storage/">
+                        Unlimited cloud storage
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

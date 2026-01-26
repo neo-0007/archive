@@ -36,6 +36,13 @@
       <description>guide to getting started with linux</description>
     </item>
     <item>
+      <title>Robots playing football</title>
+      <link>//localhost:1313/experiments/003.robots-playing-football/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/experiments/003.robots-playing-football/</guid>
+      <description>Our robosoccer journey</description>
+    </item>
+    <item>
       <title>Test</title>
       <link>//localhost:1313/howto/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -64,7 +71,7 @@
       <description>I finally ported from mkdocs to hugo</description>
     </item>
     <item>
-      <title>Whay Measure energy usage of Software</title>
+      <title>Why Measure energy usage of Software</title>
       <link>//localhost:1313/posts/002.why-measure-software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/002.why-measure-software/</guid>
