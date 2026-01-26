@@ -2,49 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:32787/howto/002.fix-wifi-dual-boot/</loc>
+    <loc>//localhost:1313/howto/002.fix-wifi-dual-boot/</loc>
     <lastmod>2025-12-25T04:26:35+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/categories/</loc>
-    <lastmod>2025-12-27T03:08:43+05:30</lastmod>
+    <loc>//localhost:1313/categories/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/experiments/</loc>
+    <loc>//localhost:1313/experiments/</loc>
     <lastmod>2025-12-25T04:31:57+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2025-12-25T03:42:02+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/posts/001.uav-basics/</loc>
+    <loc>//localhost:1313/posts/001.uav-basics/</loc>
     <lastmod>2025-12-27T03:08:43+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/howto/</loc>
+    <loc>//localhost:1313/howto/</loc>
     <lastmod>2026-01-25T01:16:08+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/howto/001.setup-opengl/</loc>
+    <loc>//localhost:1313/howto/001.setup-opengl/</loc>
     <lastmod>2026-01-25T01:15:11+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/howto/003.dual-boot-ubuntu/</loc>
+    <loc>//localhost:1313/howto/003.dual-boot-ubuntu/</loc>
     <lastmod>2026-01-25T01:16:08+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/categories/life/</loc>
+    <loc>//localhost:1313/tags/kde/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/kde/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/life/</loc>
     <lastmod>2025-12-25T16:00:00+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/posts/</loc>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/tech/</loc>
     <lastmod>2025-12-27T03:08:43+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/categories/tech/</loc>
-    <lastmod>2025-12-27T03:08:43+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:32787/howto/test/</loc>
+    <loc>//localhost:1313/howto/test/</loc>
     <lastmod>2025-12-25T02:45:18+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/experiments/002.cloud-storage/</loc>
+    <loc>//localhost:1313/experiments/002.cloud-storage/</loc>
     <lastmod>2025-12-25T04:31:57+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/experiments/001.venvman/</loc>
+    <loc>//localhost:1313/experiments/001.venvman/</loc>
     <lastmod>2025-12-25T04:28:34+05:30</lastmod>
   </url><url>
-    <loc>//localhost:32787/posts/what/</loc>
+    <loc>//localhost:1313/posts/what/</loc>
     <lastmod>2025-12-25T16:00:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/002.why-measure-software/</loc>
+    <lastmod>2026-01-27T00:52:41+05:30</lastmod>
   </url>
 </urlset>

@@ -23,6 +23,7 @@ url  = "/howto"
 
 [taxonomies]
 category = "categories"
+tag = "tags"
 
 [params]
 description = "Portfolio and blog to post projects and ideas, by Hrishikesh Gohain."
