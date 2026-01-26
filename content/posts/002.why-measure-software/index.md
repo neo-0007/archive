@@ -32,7 +32,7 @@ You may still think that the effect by software is still very small compared to 
 
 If you are convinced by my words above that's very good welcome to the world of Free, Kool, Open, and Sustanaible software , If not let me explain to you about a project developed by some really kool people from the KDE Community and I am fortunate enough to work with them starting this January as part of Season of KDE, A mentorship programme
 
-[KEcoLab](https://invent.kde.org/sdk/kecolab) is a lab located in Berlin that you can access remotely via GitLab. It allows you to measure the energy usage of software using a CI/CD pipeline. Yes you can actually measure and analyze how much energy the software you use consumes. The lab is currently under development due to some recent changes, and I’m working on getting it running again. Sounds cool, right?
+[KEcoLab](https://invent.kde.org/sdk/kecolab) is a lab located in Berlin that you can access remotely via GitLab. It allows you to measure the energy usage of software using a CI/CD pipeline and some scripting. Yes you can actually measure and analyze how much energy the software you use consumes. The current measurements of lab is currently under development due to some recent changes, and I’m working on getting the existing measurement scripts running again. Sounds cool, right?
 
 In the near future,i hope to see the lab be able to measure almost any software. And since this is an open source project, you can help with that too the people working on it are incredibly friendly and welcoming.
 
