@@ -1,5 +1,5 @@
 ---
-title: "Whay Measure energy usage of Software"
+title: "Why Measure energy usage of Software"
 summary: "a kool project i stumbled upon"
 toc: false
 readTime: false
