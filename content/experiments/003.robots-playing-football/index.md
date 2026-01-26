@@ -42,7 +42,7 @@ Here are some images of bots from other teams. They are much more advanced and b
   <img src="other-bots-aec.jpg" alt="Other Team Bots" style="width: 100%; height: auto; object-fit: contain;">
 </div>
 
-Our v3 bot along with our other it's partner bot won first position in a compeition, Our first win yay.
+Our v3 bot along with our other partner bot won first position in a compeition, Our first win yay.
 It was a 2v2 match and all thanks to our other bot which is a beast. Below are some images 
 
 <div style="
