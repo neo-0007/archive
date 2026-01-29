@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    How to write automation scripts | Hrishikesh Gohain
+    
+</title>
+
+<link rel="canonical" href="//localhost:1313/posts/003.how-to-do-automation/"/>
+
+<meta property="og:url" content="//localhost:1313/posts/003.how-to-do-automation/">
+  <meta property="og:site_name" content="Hrishikesh Gohain">
+  <meta property="og:title" content="How to write automation scripts">
+  <meta property="og:description" content="be lazy, let the computer do your work">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:modified_time" content="2026-01-30T03:41:43+05:30">
+    <meta property="article:tag" content="Kde">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+<script src="/js/category-filter.js"></script>
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    <div class="language-switcher">
+
+  
+    <a class="lang-link">
+        neo-0007     
+    </a>
+  
+</div>
+
+<style>
+  .header {
+    position: relative;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 3.5rem;          
+    left: 40%;
+    transform: translateX(250px); 
+    z-index: 50;
+
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  .lang-link.active-lang {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .language-switcher {
+      top: 0.4rem;
+      left: auto;
+      right: 1rem;
+      transform: none;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+    <button id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch between dark and bright themes">
+  <span class="theme-toggle__icon sun">☀️</span>
+  <span class="theme-toggle__icon moon">🌙</span>
+</button>
+
+<script>
+  (function () {
+    const storageKey = 'typo-color-mode';
+    const toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) return;
+
+    function isDark() {
+      return document.body.classList.contains('dark');
+    }
+
+    function syncHtmlDataTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+    }
+
+    function applyStoredPreference() {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        syncHtmlDataTheme();
+        return;
+      }
+
+      const wantsDark = stored === 'dark';
+
+      if (typeof invertBody === 'function' && wantsDark !== isDark()) {
+        invertBody();
+      } else if (typeof invertBody !== 'function') {
+        document.body.classList.toggle('dark', wantsDark);
+        document.body.classList.toggle('light', !wantsDark);
+      }
+
+      syncHtmlDataTheme();
+    }
+
+    toggle.addEventListener('click', function () {
+      if (typeof invertBody === 'function') {
+        invertBody();
+      } else {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+      }
+
+      const theme = isDark() ? 'dark' : 'light';
+      localStorage.setItem(storageKey, theme);
+      syncHtmlDataTheme();
+    });
+
+    document.addEventListener('DOMContentLoaded', applyStoredPreference);
+  })();
+</script>
+
+<style>
+    
+.theme-toggle {
+  position: absolute;
+  top: 3.5rem;
+  left: 27%;
+  transform: translateX(300px);
+  z-index: 50;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.5;
+}
+
+.theme-toggle__icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.theme-toggle__icon.sun,
+.theme-toggle__icon.moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon.moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-toggle__icon.sun {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    top: 0.4rem;
+    left: auto;
+    right: 6rem;
+    transform: none;
+
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+
+    
+
+    <h1 class="header-title">
+        Hrishikesh Gohain
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/experiments" >
+                /experiments
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/howto" >
+                /howto
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+    </header>
+
+    <main class="main">
+      
+
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">How to write automation scripts</h1>
+        <p class="single-summary">be lazy, let the computer do your work</p>
+        
+        
+    </header>
+    
+    <div class="single-content">
+      <h2 class="heading" id="press-keys">
+  Press keys
+  <a class="anchor" href="#press-keys">#</a>
+</h2>
+<p>For pressing keys we use ydotool , the syntax for pressing keys is a little confusing when you look at it :</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key KEY_CODE:ACTION</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>KEY_CODE</p>
+<p>Linux uses a file named <code>input-event-codes.h</code> that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example LEFTCTRL key is represented by 29 letter T is represented by 20.
+How to find the code for the key you want to press , You can read the original <code>.h</code> file by <code>nano /usr/include/linux/input-event-codes.h</code> if you are in a linux system ( i hope you are using one). or inspect the file <a href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h">here</a></p>
+<p>I use grep to find the code for the key i want since the header file is too long <code>grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h</code> and so on.</p>
+<p>ACTION
+1 : key is pressed
+0 : key is released</p>
+<p>So to press and release <code>Ctrl</code> to open up a terminal you can type the following</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 29:0</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="press-key-combinations">
+  Press key combinations
+  <a class="anchor" href="#press-key-combinations">#</a>
+</h2>
+<p>Key combinations is the same as above , you just need to keep all the keys pressed using the action 1.
+So to press <code>Ctrl+Alt+T</code> which opens up a terminal you can type the following</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 56:1 20:1 29:1 56:0 29:0</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>This will open up a terminal (hopefully).</p>
+<h2 class="heading" id="click--left-right-double">
+  Click ( left, right, double)
+  <a class="anchor" href="#click--left-right-double">#</a>
+</h2>
+<p>For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me i am sorry but again we have codes&hellip;</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click OPTIONS BUTTON_CODE</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>OPTIONS</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--repeat<span class="o">=</span>N : can be used to press a button N <span class="nb">times</span>
+</span></span><span class="line"><span class="cl">--P : can be used to press and release a button as that<span class="err">&#39;</span>s what we mostly <span class="k">do</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>BUTTON_CODE</p>
+<p>This is a hexadecimal value that represents different mouse buttons (left, right, middle, etc.).<br>
+Yes, it looks ugly at first, but once you always open up my blog ( self promotion ).</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0xC0   <span class="c1"># left click</span>
+</span></span><span class="line"><span class="cl">ydotool click 0xC1   <span class="c1"># right click</span>
+</span></span><span class="line"><span class="cl">ydotool click 0xC2   <span class="c1"># middle button click (scroll button)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ydotool click 0x40   <span class="c1"># left button down (press)</span>
+</span></span><span class="line"><span class="cl">ydotool click 0x80   <span class="c1"># left button up (release)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ydotool click 0x41   <span class="c1"># right button down (press)</span>
+</span></span><span class="line"><span class="cl">ydotool click 0x81   <span class="c1"># right button up (release)</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>And some combinations
+This can be useful to select text, drag and drop and so on..</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0x40 <span class="c1"># left down </span>
+</span></span><span class="line"><span class="cl">ydotool mousemove <span class="m">300</span> <span class="m">0</span> <span class="c1"># drag right </span>
+</span></span><span class="line"><span class="cl">ydotool mousemove <span class="m">0</span> <span class="m">200</span> <span class="c1"># drag down </span>
+</span></span><span class="line"><span class="cl">ydotool click 0x80 <span class="c1"># left up</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>same as above but more reliable</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0x40
+</span></span><span class="line"><span class="cl">ydotool mousemove -D <span class="m">20</span> <span class="m">300</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">ydotool mousemove -D <span class="m">20</span> <span class="m">0</span> <span class="m">200</span>
+</span></span><span class="line"><span class="cl">ydotool click 0x80</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="type-text">
+  Type text
+  <a class="anchor" href="#type-text">#</a>
+</h2>
+<p>Typing text is pretty simple using ydotool</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool <span class="nb">type</span> <span class="s2">&#34;string-you-want-to-type&#34;</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="focus-a-specific-app">
+  Focus a specific app
+  <a class="anchor" href="#focus-a-specific-app">#</a>
+</h2>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kdotool search --name <span class="s2">&#34;Window Title&#34;</span> windowactivate
+</span></span><span class="line"><span class="cl">kdotool search --class appname windowactivate
+</span></span><span class="line"><span class="cl">kdotool search --classname org.kde.app windowactivate <span class="o">(</span> <span class="k">for</span> kde apps <span class="o">)</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="send-mouse-and-keyboard-commands-to-a-specific-window">
+  Send mouse and keyboard commands to a specific window
+  <a class="anchor" href="#send-mouse-and-keyboard-commands-to-a-specific-window">#</a>
+</h2>
+<p>Focus the window using kdotool than execute commands using ydotool since commands are executed in the active window always</p>
+<p>Move mouse to a specific coordinate</p>
+<p>There is a command in ydotool</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove --absolute -x x-value -y y-value</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>but that does not work in Wayland properly.</p>
+<p>The</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove -x x-value -y y-value</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>works that moves the mouse reltive to current so we can use that.</p>
+<ol>
+<li>mousemove -9999 -9999 ( moves the mouse to top left 0,0)</li>
+<li>mousemove x y ( now relative to 0,0 so that&rsquo;s like absolute )</li>
+</ol>
+<h2 class="heading" id="move-mouse-inside-a-specific-window">
+  Move mouse inside a specific window
+  <a class="anchor" href="#move-mouse-inside-a-specific-window">#</a>
+</h2>
+<p>Since we cannot directly send mouse events to a window on Wayland, we rely on window geometry that we can get using kdotool and do relative mouse movement using ydotool.</p>
+<p>The steps are:</p>
+<ol>
+<li>Focus the window</li>
+<li>Get the window geometry</li>
+<li>Reset the mouse to <code>(0,0)</code></li>
+<li>Move the mouse relatively using the window coordinates</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># First, focus the window:</span>
+</span></span><span class="line"><span class="cl">kdotool search --class firefox windowactivate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Get the window geometry:</span>
+</span></span><span class="line"><span class="cl">kdotool search --class firefox getwindowgeometry
+</span></span><span class="line"><span class="cl"><span class="c1"># Example output:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># x=120</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># y=80</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># width=1280</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># height=800</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Reset the mouse position to the top-left corner of the screen:</span>
+</span></span><span class="line"><span class="cl">ydotool mousemove -x -9999 -y -9999
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Now move the mouse inside the window (top-left corner of the window):</span>
+</span></span><span class="line"><span class="cl">ydotool mousemove -x <span class="m">120</span> -y <span class="m">80</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#At this point, the mouse cursor is inside the target window. so you can now move inside the window , but only once than again repeat the above steps once again ( i will think of a script to automate this)</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="move-mouse-to-the-center-of-a-window">
+  Move mouse to the center of a window
+  <a class="anchor" href="#move-mouse-to-the-center-of-a-window">#</a>
+</h2>
+<p>Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.</p>
+<p>From the geometry:
+x=120
+y=80
+width=1280
+height=800</p>
+<p>Calculate the center:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">center_x</span> <span class="o">=</span> x + width / <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">center_y</span> <span class="o">=</span> y + height / <span class="m">2</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Reset the mouse again:</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove -x -9999 -y -9999</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Move the mouse to the center of the window:</p>
+<p><code>ydotool mousemove -x center_x -y center_y</code></p>
+<p>These completes all the basic actions that i can think of as required to automate user actions , ofcouse we need to combine many of above to do tasks that simulate real user.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/what/">
+                        What is the site ?
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/001.uav-basics/">
+                        How does a drone fly ?
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+    
+    
+
+
+
+
+
+    
+
+
+
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

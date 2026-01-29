@@ -22,6 +22,13 @@
       <description>Basics of UAV&amp;rsquo;s</description>
     </item>
     <item>
+      <title>How to write automation scripts</title>
+      <link>//localhost:1313/posts/003.how-to-do-automation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/003.how-to-do-automation/</guid>
+      <description>be lazy, let the computer do your work</description>
+    </item>
+    <item>
       <title>Install and Setup OpenGL Developer Environment</title>
       <link>//localhost:1313/howto/001.setup-opengl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
