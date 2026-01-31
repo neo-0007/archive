@@ -45,7 +45,7 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:modified_time" content="2026-01-31T16:24:54+05:30">
+    <meta property="article:modified_time" content="2026-01-31T16:46:10+05:30">
     <meta property="article:tag" content="Kde">
 
 
@@ -436,6 +436,21 @@ This can be useful to select text, drag and drop etc..</p>
 <p>We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kdotool getmouselocation</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>The output :</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">x:42 y:96 screen:0 window:<span class="o">{</span>e8aeec46-5c45-42cc-9839-8ad2edcb7f4f<span class="o">}</span></span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>If you only want to extract the x and y value since thats what&rsquo;s more important you can do that using regex</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Read mouse location</span>
+</span></span><span class="line"><span class="cl"><span class="nv">loc</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>kdotool getmouselocation<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract x and y</span>
+</span></span><span class="line"><span class="cl"><span class="nv">x</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$loc</span><span class="s2">&#34;</span> <span class="p">|</span> sed -n <span class="s1">&#39;s/.*x:\([0-9-]*\).*/\1/p&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">y</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$loc</span><span class="s2">&#34;</span> <span class="p">|</span> sed -n <span class="s1">&#39;s/.*y:\([0-9-]*\).*/\1/p&#39;</span><span class="k">)</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
 <h2 class="heading" id="move-mouse-to-a-specific-coordinate">

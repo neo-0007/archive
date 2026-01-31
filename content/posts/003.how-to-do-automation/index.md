@@ -129,6 +129,23 @@ We can use kdotool for getting the current mouse location which also returns the
 kdotool getmouselocation
 ```
 
+The output :
+
+```bash
+x:42 y:96 screen:0 window:{e8aeec46-5c45-42cc-9839-8ad2edcb7f4f}
+```
+
+If you only want to extract the x and y value since thats what's more important you can do that using regex
+
+```bash
+# Read mouse location
+loc="$(kdotool getmouselocation)"
+
+# Extract x and y
+x=$(echo "$loc" | sed -n 's/.*x:\([0-9-]*\).*/\1/p')
+y=$(echo "$loc" | sed -n 's/.*y:\([0-9-]*\).*/\1/p')
+```
+
 ## Move mouse to a specific coordinate
 
 > Note : We can use ydotool to move the mouse but that will not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the `kdotool getmouselocation` to see how the mouse location gets updated.
