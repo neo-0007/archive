@@ -27,10 +27,11 @@ How to find the code for the key you want to press , You can read the original `
 I use grep to find the code for the key i want since the header file is too long `grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h` and so on.
 
 ACTION
-1 : key is pressed
-0 : key is released
 
-So to press and release `Ctrl` to open up a terminal you can type the following
+- 1 : key is pressed
+- 0 : key is released
+
+So to press and release `Ctrl` you can use the following command
 
 ```bash
 ydotool key 29:1 29:0
@@ -38,18 +39,20 @@ ydotool key 29:1 29:0
 
 ## Press key combinations
 
-Key combinations is the same as above , you just need to keep all the keys pressed using the action 1.
-So to press `Ctrl+Alt+T` which opens up a terminal you can type the following
+Key combinations is the same as above , you just need to keep all the keys pressed.
+So to press `Ctrl+Alt+T` which opens up a terminal you can use the following command
 
 ```bash
 ydotool key 29:1 56:1 20:1 29:1 56:0 29:0
 ```
 
-This will open up a terminal (hopefully).
+This translates to Ctrl(pressed) Alt(pressed) T(pressed) Ctrl(released) Alt(released) T(released)
+
+This will hopefully open up a terminal.
 
 ## Click ( left, right, double)
 
-For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me i am sorry but again we have codes...
+For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me,I am sorry but again we have codes...
 
 ```bash
 ydotool click OPTIONS BUTTON_CODE
@@ -65,7 +68,7 @@ OPTIONS
 BUTTON_CODE
 
 This is a hexadecimal value that represents different mouse buttons (left, right, middle, etc.).  
-Yes, it looks ugly at first, but once you always open up my blog ( self promotion ).
+Yes, it looks ugly at first, but you can always open up my blog.
 
 ```bash
 ydotool click 0xC0   # left click
@@ -80,7 +83,7 @@ ydotool click 0x81   # right button up (release)
 ```
 
 And some combinations
-This can be useful to select text, drag and drop and so on..
+This can be useful to select text, drag and drop etc..
 
 ```bash
 ydotool click 0x40 # left down 
@@ -89,7 +92,7 @@ ydotool mousemove 0 200 # drag down
 ydotool click 0x80 # left up
 ```
 
-same as above but more reliable
+same as above but more reliable with delays to simulate a real user
 
 ```bash
 ydotool click 0x40
@@ -116,9 +119,19 @@ kdotool search --classname org.kde.app windowactivate ( for kde apps )
 
 ## Send mouse and keyboard commands to a specific window
 
-Focus the window using kdotool than execute commands using ydotool since commands are executed in the active window always
+Focus the window using kdotool than execute commands using ydotool since commands are always executed in the active window.
 
-Move mouse to a specific coordinate
+## Get current mouse location
+
+We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location
+
+```bash
+kdotool getmouselocation
+```
+
+## Move mouse to a specific coordinate
+
+> Note : We can use ydotool to move the mouse but that will not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the `kdotool getmouselocation` to see how the mouse location gets updated.
 
 There is a command in ydotool
 
@@ -128,16 +141,14 @@ ydotool mousemove --absolute -x x-value -y y-value
 
 but that does not work in Wayland properly.
 
-The
+We have an another command that moves the mouse relative to current mouse location so we can use that.
 
 ```bash
 ydotool mousemove -x x-value -y y-value
 ```
 
-works that moves the mouse reltive to current so we can use that.
-
 1) mousemove -9999 -9999 ( moves the mouse to top left 0,0)
-2) mousemove x y ( now relative to 0,0 so that's like absolute )
+2) mousemove x y ( now we move relative to 0,0 so that's like absolute mousemove)
 
 ## Move mouse inside a specific window
 

@@ -45,7 +45,7 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:modified_time" content="2026-01-30T03:41:43+05:30">
+    <meta property="article:modified_time" content="2026-01-31T16:24:54+05:30">
     <meta property="article:tag" content="Kde">
 
 
@@ -336,10 +336,12 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
 <p>Linux uses a file named <code>input-event-codes.h</code> that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example LEFTCTRL key is represented by 29 letter T is represented by 20.
 How to find the code for the key you want to press , You can read the original <code>.h</code> file by <code>nano /usr/include/linux/input-event-codes.h</code> if you are in a linux system ( i hope you are using one). or inspect the file <a href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h">here</a></p>
 <p>I use grep to find the code for the key i want since the header file is too long <code>grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h</code> and so on.</p>
-<p>ACTION
-1 : key is pressed
-0 : key is released</p>
-<p>So to press and release <code>Ctrl</code> to open up a terminal you can type the following</p>
+<p>ACTION</p>
+<ul>
+<li>1 : key is pressed</li>
+<li>0 : key is released</li>
+</ul>
+<p>So to press and release <code>Ctrl</code> you can use the following command</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 29:0</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
@@ -348,18 +350,19 @@ How to find the code for the key you want to press , You can read the original <
   Press key combinations
   <a class="anchor" href="#press-key-combinations">#</a>
 </h2>
-<p>Key combinations is the same as above , you just need to keep all the keys pressed using the action 1.
-So to press <code>Ctrl+Alt+T</code> which opens up a terminal you can type the following</p>
+<p>Key combinations is the same as above , you just need to keep all the keys pressed.
+So to press <code>Ctrl+Alt+T</code> which opens up a terminal you can use the following command</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 56:1 20:1 29:1 56:0 29:0</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<p>This will open up a terminal (hopefully).</p>
+<p>This translates to Ctrl(pressed) Alt(pressed) T(pressed) Ctrl(released) Alt(released) T(released)</p>
+<p>This will hopefully open up a terminal.</p>
 <h2 class="heading" id="click--left-right-double">
   Click ( left, right, double)
   <a class="anchor" href="#click--left-right-double">#</a>
 </h2>
-<p>For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me i am sorry but again we have codes&hellip;</p>
+<p>For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me,I am sorry but again we have codes&hellip;</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click OPTIONS BUTTON_CODE</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
@@ -372,7 +375,7 @@ So to press <code>Ctrl+Alt+T</code> which opens up a terminal you can type the f
 </div>
 <p>BUTTON_CODE</p>
 <p>This is a hexadecimal value that represents different mouse buttons (left, right, middle, etc.).<br>
-Yes, it looks ugly at first, but once you always open up my blog ( self promotion ).</p>
+Yes, it looks ugly at first, but you can always open up my blog.</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0xC0   <span class="c1"># left click</span>
 </span></span><span class="line"><span class="cl">ydotool click 0xC1   <span class="c1"># right click</span>
@@ -386,7 +389,7 @@ Yes, it looks ugly at first, but once you always open up my blog ( self promotio
   <button class="copy-code-button">copy</button>
 </div>
 <p>And some combinations
-This can be useful to select text, drag and drop and so on..</p>
+This can be useful to select text, drag and drop etc..</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0x40 <span class="c1"># left down </span>
 </span></span><span class="line"><span class="cl">ydotool mousemove <span class="m">300</span> <span class="m">0</span> <span class="c1"># drag right </span>
@@ -394,7 +397,7 @@ This can be useful to select text, drag and drop and so on..</p>
 </span></span><span class="line"><span class="cl">ydotool click 0x80 <span class="c1"># left up</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<p>same as above but more reliable</p>
+<p>same as above but more reliable with delays to simulate a real user</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click 0x40
 </span></span><span class="line"><span class="cl">ydotool mousemove -D <span class="m">20</span> <span class="m">300</span> <span class="m">0</span>
@@ -425,23 +428,37 @@ This can be useful to select text, drag and drop and so on..</p>
   Send mouse and keyboard commands to a specific window
   <a class="anchor" href="#send-mouse-and-keyboard-commands-to-a-specific-window">#</a>
 </h2>
-<p>Focus the window using kdotool than execute commands using ydotool since commands are executed in the active window always</p>
-<p>Move mouse to a specific coordinate</p>
+<p>Focus the window using kdotool than execute commands using ydotool since commands are always executed in the active window.</p>
+<h2 class="heading" id="get-current-mouse-location">
+  Get current mouse location
+  <a class="anchor" href="#get-current-mouse-location">#</a>
+</h2>
+<p>We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kdotool getmouselocation</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<h2 class="heading" id="move-mouse-to-a-specific-coordinate">
+  Move mouse to a specific coordinate
+  <a class="anchor" href="#move-mouse-to-a-specific-coordinate">#</a>
+</h2>
+<blockquote>
+<p>Note : We can use ydotool to move the mouse but that will not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the <code>kdotool getmouselocation</code> to see how the mouse location gets updated.</p>
+</blockquote>
 <p>There is a command in ydotool</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove --absolute -x x-value -y y-value</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
 <p>but that does not work in Wayland properly.</p>
-<p>The</p>
+<p>We have an another command that moves the mouse relative to current mouse location so we can use that.</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove -x x-value -y y-value</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<p>works that moves the mouse reltive to current so we can use that.</p>
 <ol>
 <li>mousemove -9999 -9999 ( moves the mouse to top left 0,0)</li>
-<li>mousemove x y ( now relative to 0,0 so that&rsquo;s like absolute )</li>
+<li>mousemove x y ( now we move relative to 0,0 so that&rsquo;s like absolute mousemove)</li>
 </ol>
 <h2 class="heading" id="move-mouse-inside-a-specific-window">
   Move mouse inside a specific window
