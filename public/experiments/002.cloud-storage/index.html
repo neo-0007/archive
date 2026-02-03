@@ -45,7 +45,7 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="experiments">
-    <meta property="article:modified_time" content="2025-12-25T04:31:57+05:30">
+    <meta property="article:modified_time" content="2026-02-03T11:11:03+05:30">
 
 
 
@@ -58,7 +58,7 @@
 
 
 
-<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+<link rel="stylesheet" href="/assets/combined.min.fb55e2bf0db840409672a9cef99820efa329a8ed3acbfd64144362740d432f24.css" media="all">
 
 
 
@@ -324,69 +324,71 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
     <div class="single-content">
       <p>Recently, while I was building a project, I needed a cloud storage provider to store images, videos, etc. — basically a SaaS product. I had a ₹0 budget for the project, so I needed a service with a free tier. Luckily, there are lots of them out there&hellip;</p>
 <p><em>Here is a comparison of various providers</em></p>
-<table>
-<thead>
-<tr>
-<th>Provider</th>
-<th>Free Storage</th>
-<th>Free Bandwidth</th>
-<th>File Size Limit</th>
-<th>Notable Limits / Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Amazon S3</strong></td>
-<td>5 GB</td>
-<td>15 GB/month</td>
-<td>5 GB</td>
-<td>20,000 GET &amp; 2,000 PUT requests/month</td>
-</tr>
-<tr>
-<td><strong>Cloudinary</strong></td>
-<td>25 Credits/month</td>
-<td>25 GB bandwidth/month</td>
-<td>100 MB (images, videos)</td>
-<td>25 GB total storage included</td>
-</tr>
-<tr>
-<td><strong>Firebase Storage</strong></td>
-<td>1 GB</td>
-<td>5 GB/month</td>
-<td>2 GB</td>
-<td>50K read, 20K write operations/day</td>
-</tr>
-<tr>
-<td><strong>Supabase</strong></td>
-<td>1 GB</td>
-<td>2 GB/month</td>
-<td>~50 MB (browser upload)</td>
-<td>File size capped by browser or CDN</td>
-</tr>
-<tr>
-<td><strong>ImageKit</strong></td>
-<td>20 GB</td>
-<td>20 GB/month</td>
-<td>25 MB (browser), 100 MB (API)</td>
-<td>500 transformations/day limit</td>
-</tr>
-<tr>
-<td><strong>Uploadcare</strong></td>
-<td>1.5 GB</td>
-<td>1 GB/month</td>
-<td>100 MB</td>
-<td>300 file uploads/month</td>
-</tr>
-<tr>
-<td><strong>Backblaze B2</strong></td>
-<td>10 GB</td>
-<td>1 GB/day download</td>
-<td>No hard limit</td>
-<td>2,500 downloads/day</td>
-</tr>
-</tbody>
-</table>
-<p>I decided to use Cloudinary for my project because it offered a decent free tier with generous bandwidth and transformation limits. But then I noticed something interesting — all you need to sign up is a Gmail address.</p>
+
+<div class="table-outer">
+    <table>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Free Storage</th>
+                <th>Free Bandwidth</th>
+                <th>File Size Limit</th>
+                <th>Notable Limits / Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Amazon S3</strong></td>
+                <td>5 GB</td>
+                <td>15 GB/month</td>
+                <td>5 GB</td>
+                <td>20,000 GET &amp; 2,000 PUT requests/month</td>
+            </tr>
+            <tr>
+                <td><strong>Cloudinary</strong></td>
+                <td>25 Credits/month</td>
+                <td>25 GB bandwidth/month</td>
+                <td>100 MB (images, videos)</td>
+                <td>25 GB total storage included</td>
+            </tr>
+            <tr>
+                <td><strong>Firebase Storage</strong></td>
+                <td>1 GB</td>
+                <td>5 GB/month</td>
+                <td>2 GB</td>
+                <td>50K read, 20K write operations/day</td>
+            </tr>
+            <tr>
+                <td><strong>Supabase</strong></td>
+                <td>1 GB</td>
+                <td>2 GB/month</td>
+                <td>~50 MB (browser upload)</td>
+                <td>File size capped by browser or CDN</td>
+            </tr>
+            <tr>
+                <td><strong>ImageKit</strong></td>
+                <td>20 GB</td>
+                <td>20 GB/month</td>
+                <td>25 MB (browser), 100 MB (API)</td>
+                <td>500 transformations/day limit</td>
+            </tr>
+            <tr>
+                <td><strong>Uploadcare</strong></td>
+                <td>1.5 GB</td>
+                <td>1 GB/month</td>
+                <td>100 MB</td>
+                <td>300 file uploads/month</td>
+            </tr>
+            <tr>
+                <td><strong>Backblaze B2</strong></td>
+                <td>10 GB</td>
+                <td>1 GB/day download</td>
+                <td>No hard limit</td>
+                <td>2,500 downloads/day</td>
+            </tr>
+        </tbody>
+    </table>
+</div><p>I decided to use Cloudinary for my project because it offered a decent free tier with generous bandwidth and transformation limits. But then I noticed something interesting — all you need to sign up is a Gmail address.</p>
 <p>So&hellip; why not just create multiple Gmail accounts and keep rotating them? Each new account gives you another free tier allowance. You can imagine the potential: 10 Gmail accounts → 10 Cloudinary accounts → 10× the free limit. For a mid-scale application, this setup could be sufficient.</p>
 <p>Here is the logic:</p>
 <pre class="mermaid">flowchart LR

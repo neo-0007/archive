@@ -4,7 +4,7 @@
     <title>Tags on Hrishikesh Gohain</title>
     <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on Hrishikesh Gohain</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,6 +12,27 @@
       <link>//localhost:1313/tags/kde/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/kde/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kde Eco</title>
+      <link>//localhost:1313/tags/kde-eco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/kde-eco/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KEcoLab</title>
+      <link>//localhost:1313/tags/kecolab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/kecolab/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sok2026</title>
+      <link>//localhost:1313/tags/sok2026/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/sok2026/</guid>
       <description></description>
     </item>
   </channel>

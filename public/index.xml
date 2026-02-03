@@ -4,7 +4,7 @@
     <title>Home on Hrishikesh Gohain</title>
     <link>//localhost:1313/</link>
     <description>Recent content in Home on Hrishikesh Gohain</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -26,7 +26,7 @@
       <link>//localhost:1313/posts/003.how-to-do-automation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>be lazy, let the computer do your work</description>
+      <description>Simulate a Standard user Scenario with ease</description>
     </item>
     <item>
       <title>Install and Setup OpenGL Developer Environment</title>

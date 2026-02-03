@@ -41,12 +41,15 @@
 <meta property="og:url" content="//localhost:1313/posts/003.how-to-do-automation/">
   <meta property="og:site_name" content="Hrishikesh Gohain">
   <meta property="og:title" content="How to write automation scripts">
-  <meta property="og:description" content="be lazy, let the computer do your work">
+  <meta property="og:description" content="Simulate a Standard user Scenario with ease">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:modified_time" content="2026-01-31T16:46:10+05:30">
+    <meta property="article:modified_time" content="2026-02-03T22:10:47+05:30">
     <meta property="article:tag" content="Kde">
+    <meta property="article:tag" content="Sok2026">
+    <meta property="article:tag" content="KEcoLab">
+    <meta property="article:tag" content="Kde Eco">
 
 
 
@@ -59,7 +62,7 @@
 
 
 
-<link rel="stylesheet" href="/assets/combined.min.91a74aa149e0b118cde84fca646b73b688386ebe9a759b89c5a8cc825656c991.css" media="all">
+<link rel="stylesheet" href="/assets/combined.min.fb55e2bf0db840409672a9cef99820efa329a8ed3acbfd64144362740d432f24.css" media="all">
 
 
 
@@ -312,28 +315,110 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
 
 
 
-<div  class="autonumber" >
+<div >
   <article>
     <header class="single-intro-container">
         
         <h1 class="single-title">How to write automation scripts</h1>
-        <p class="single-summary">be lazy, let the computer do your work</p>
+        <p class="single-summary">Simulate a Standard user Scenario with ease</p>
         
         
     </header>
     
     <div class="single-content">
-      <h2 class="heading" id="press-keys">
+      <p>KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.</p>
+<p>As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, <a href="https://invent.kde.org/sdk/kecolab">KEcoLab</a> a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in <a href="https://eco.kde.org/handbook/">KDE Eco Handbook</a></p>
+<p>To measure energy usage of a software we need to prepare three scripts <code>baseline.sh</code> , <code>idle.sh</code> and <code>sus.sh</code> and push them via MR to <a href="https://invent.kde.org/sdk/kecolab">this</a> repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found <a href="https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus">here</a>.</p>
+<p>Currently, these scripts rely on <code>xdotool</code> to simulate user interactions. However, <code>xdotool</code> does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
+To solve this problem,</p>
+<p>I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from <code>xdotool</code> to <code>ydotool</code> and <code>kdotool</code>, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.</p>
+<h2 class="heading" id="setup-ydotool-and-kdotool">
+  Setup <code>ydotool</code> and <code>kdotool</code>
+  <a class="anchor" href="#setup-ydotool-and-kdotool">#</a>
+</h2>
+<p>To test the scripts you have written it&rsquo;s recommended to setup locally.</p>
+<blockquote>
+<p>Note: Some features changes and some are removed with updates so it&rsquo;s recommended to build them from source mentioned here</p>
+</blockquote>
+<h3 class="heading" id="ydotool">
+  ydotool
+  <a class="anchor" href="#ydotool">#</a>
+</h3>
+<ol>
+<li>Clone the repository and navigate into it</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+</span></span><span class="line"><span class="cl"> <span class="nb">cd</span> ydotool </span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<ol start="2">
+<li>Run the setup script</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x setup.sh
+</span></span><span class="line"><span class="cl">./setup.sh install</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<ol start="3">
+<li>Give <code>ydotoold</code> permission to uinput so it can run without root</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo touch /etc/udev/rules.d/99-uinput.rules
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;KERNEL==&#34;uinput&#34;, MODE=&#34;0660&#34;, GROUP=&#34;input&#34;&#39;</span> <span class="p">|</span> sudo tee /etc/udev/rules.d/99-uinput.rules &gt; /dev/null
+</span></span><span class="line"><span class="cl">sudo usermod -aG input <span class="s2">&#34;</span><span class="nv">$USER</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo udevadm control --reload-rules
+</span></span><span class="line"><span class="cl">sudo udevadm trigger</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<blockquote>
+<p>Note: A reboot (or full logout/login) is required for the <code>input</code> group change to take effect.</p>
+</blockquote>
+<ol start="4">
+<li>Reboot your computer and run</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl --user start ydotoold</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Verify that you can use ydotool by <code>ydotool type &quot;Hello&quot;</code> you will see Hello typed if installation was successful.</p>
+<h3 class="heading" id="kdotool">
+  kdotool
+  <a class="anchor" href="#kdotool">#</a>
+</h3>
+<ol>
+<li>Clone the repository and navigate into it</li>
+</ol>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+</span></span><span class="line"><span class="cl"> <span class="nb">cd</span> kdotool </span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<ol start="2">
+<li>Run the setup script</li>
+</ol>
+<div class="code-block">
+  <pre tabindex="0"><code>chmod +x setup.sh
+./setup.sh install</code></pre>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>Verify that you can use kdotool by <code>kdotool -h</code></p>
+<h2 class="heading" id="how-to-use-ydotool-and-kdotool-to-perform-various-actions">
+  How to use ydotool and kdotool to perform various actions
+  <a class="anchor" href="#how-to-use-ydotool-and-kdotool-to-perform-various-actions">#</a>
+</h2>
+<h3 class="heading" id="press-keys">
   Press keys
   <a class="anchor" href="#press-keys">#</a>
-</h2>
+</h3>
 <p>For pressing keys we use ydotool , the syntax for pressing keys is a little confusing when you look at it :</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key KEY_CODE:ACTION</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
 <p>KEY_CODE</p>
-<p>Linux uses a file named <code>input-event-codes.h</code> that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example LEFTCTRL key is represented by 29 letter T is represented by 20.
+<p>Linux uses a file named <code>input-event-codes.h</code> that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example, the LEFTCTRL key is represented by 29, and the letter T is represented by 20.
 How to find the code for the key you want to press , You can read the original <code>.h</code> file by <code>nano /usr/include/linux/input-event-codes.h</code> if you are in a linux system ( i hope you are using one). or inspect the file <a href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h">here</a></p>
 <p>I use grep to find the code for the key i want since the header file is too long <code>grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h</code> and so on.</p>
 <p>ACTION</p>
@@ -346,22 +431,22 @@ How to find the code for the key you want to press , You can read the original <
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 29:0</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="press-key-combinations">
+<h3 class="heading" id="press-key-combinations">
   Press key combinations
   <a class="anchor" href="#press-key-combinations">#</a>
-</h2>
+</h3>
 <p>Key combinations is the same as above , you just need to keep all the keys pressed.
 So to press <code>Ctrl+Alt+T</code> which opens up a terminal you can use the following command</p>
 <div class="code-block">
-  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 56:1 20:1 29:1 56:0 29:0</span></span></code></pre></div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool key 29:1 56:1 20:1 29:0 56:0 20:0</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
 <p>This translates to Ctrl(pressed) Alt(pressed) T(pressed) Ctrl(released) Alt(released) T(released)</p>
 <p>This will hopefully open up a terminal.</p>
-<h2 class="heading" id="click--left-right-double">
+<h3 class="heading" id="click--left-right-double">
   Click ( left, right, double)
   <a class="anchor" href="#click--left-right-double">#</a>
-</h2>
+</h3>
 <p>For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me,I am sorry but again we have codes&hellip;</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool click OPTIONS BUTTON_CODE</span></span></code></pre></div>
@@ -405,34 +490,34 @@ This can be useful to select text, drag and drop etc..</p>
 </span></span><span class="line"><span class="cl">ydotool click 0x80</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="type-text">
+<h3 class="heading" id="type-text">
   Type text
   <a class="anchor" href="#type-text">#</a>
-</h2>
+</h3>
 <p>Typing text is pretty simple using ydotool</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool <span class="nb">type</span> <span class="s2">&#34;string-you-want-to-type&#34;</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="focus-a-specific-app">
+<h3 class="heading" id="focus-a-specific-app">
   Focus a specific app
   <a class="anchor" href="#focus-a-specific-app">#</a>
-</h2>
+</h3>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kdotool search --name <span class="s2">&#34;Window Title&#34;</span> windowactivate
 </span></span><span class="line"><span class="cl">kdotool search --class appname windowactivate
 </span></span><span class="line"><span class="cl">kdotool search --classname org.kde.app windowactivate <span class="o">(</span> <span class="k">for</span> kde apps <span class="o">)</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="send-mouse-and-keyboard-commands-to-a-specific-window">
+<h3 class="heading" id="send-mouse-and-keyboard-commands-to-a-specific-window">
   Send mouse and keyboard commands to a specific window
   <a class="anchor" href="#send-mouse-and-keyboard-commands-to-a-specific-window">#</a>
-</h2>
+</h3>
 <p>Focus the window using kdotool than execute commands using ydotool since commands are always executed in the active window.</p>
-<h2 class="heading" id="get-current-mouse-location">
+<h3 class="heading" id="get-current-mouse-location">
   Get current mouse location
   <a class="anchor" href="#get-current-mouse-location">#</a>
-</h2>
+</h3>
 <p>We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location</p>
 <div class="code-block">
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kdotool getmouselocation</span></span></code></pre></div>
@@ -453,12 +538,12 @@ This can be useful to select text, drag and drop etc..</p>
 </span></span><span class="line"><span class="cl"><span class="nv">y</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$loc</span><span class="s2">&#34;</span> <span class="p">|</span> sed -n <span class="s1">&#39;s/.*y:\([0-9-]*\).*/\1/p&#39;</span><span class="k">)</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="move-mouse-to-a-specific-coordinate">
+<h3 class="heading" id="move-mouse-to-a-specific-coordinate">
   Move mouse to a specific coordinate
   <a class="anchor" href="#move-mouse-to-a-specific-coordinate">#</a>
-</h2>
+</h3>
 <blockquote>
-<p>Note : We can use ydotool to move the mouse but that will not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the <code>kdotool getmouselocation</code> to see how the mouse location gets updated.</p>
+<p>Note : We can use ydotool to move the mouse but that may not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the <code>kdotool getmouselocation</code> to see how the mouse location gets updated.</p>
 </blockquote>
 <p>There is a command in ydotool</p>
 <div class="code-block">
@@ -475,10 +560,10 @@ This can be useful to select text, drag and drop etc..</p>
 <li>mousemove -9999 -9999 ( moves the mouse to top left 0,0)</li>
 <li>mousemove x y ( now we move relative to 0,0 so that&rsquo;s like absolute mousemove)</li>
 </ol>
-<h2 class="heading" id="move-mouse-inside-a-specific-window">
+<h3 class="heading" id="move-mouse-inside-a-specific-window">
   Move mouse inside a specific window
   <a class="anchor" href="#move-mouse-inside-a-specific-window">#</a>
-</h2>
+</h3>
 <p>Since we cannot directly send mouse events to a window on Wayland, we rely on window geometry that we can get using kdotool and do relative mouse movement using ydotool.</p>
 <p>The steps are:</p>
 <ol>
@@ -508,10 +593,10 @@ This can be useful to select text, drag and drop etc..</p>
 </span></span><span class="line"><span class="cl"><span class="c1">#At this point, the mouse cursor is inside the target window. so you can now move inside the window , but only once than again repeat the above steps once again ( i will think of a script to automate this)</span></span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<h2 class="heading" id="move-mouse-to-the-center-of-a-window">
+<h3 class="heading" id="move-mouse-to-the-center-of-a-window">
   Move mouse to the center of a window
   <a class="anchor" href="#move-mouse-to-the-center-of-a-window">#</a>
-</h2>
+</h3>
 <p>Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.</p>
 <p>From the geometry:
 x=120
@@ -531,8 +616,11 @@ height=800</p>
   <button class="copy-code-button">copy</button>
 </div>
 <p>Move the mouse to the center of the window:</p>
-<p><code>ydotool mousemove -x center_x -y center_y</code></p>
-<p>These completes all the basic actions that i can think of as required to automate user actions , ofcouse we need to combine many of above to do tasks that simulate real user.</p>
+<div class="code-block">
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove -x center_x -y center_y</span></span></code></pre></div>
+  <button class="copy-code-button">copy</button>
+</div>
+<p>These completes all the basic actions that are required to automate user actions , of couse we need to combine many of above to do tasks that simulate real user.</p>
 
     </div>
   </article>

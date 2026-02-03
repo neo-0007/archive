@@ -7,8 +7,7 @@ autonumber: true
 math: false
 showTags: false
 hideBackToTop: true
-categories: ['kde']
-tags: ['kde']
+categories: ['tech']
 ---
 
 <div style="text-align: center;">
