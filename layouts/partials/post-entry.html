@@ -7,7 +7,7 @@
       </a>
     </p>
 
-    {{ if .Site.Params.listSummaries }}
+    {{ if and .Site.Params.listSummaries (ne .Section "posts") }}
       <p class="line-summary">{{ .Summary }}</p>
     {{ end }}
   </div>

@@ -4,6 +4,7 @@ summary: " Simulate a Standard user Scenario with ease "
 toc: false
 readTime: false
 autonumber: false
+date: 2026-02-02T10:00:00+05:30
 math: false
 showTags: false
 hideBackToTop: true
@@ -22,6 +23,7 @@ To solve this problem,
 
 I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from `xdotool` to `ydotool` and `kdotool`, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily. 
 
+<!--more-->
 
 ## Setup `ydotool` and `kdotool`
 

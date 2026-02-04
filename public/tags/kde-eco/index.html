@@ -20,13 +20,13 @@
 
 
 
-<link rel="icon" type="image/ico" href="//localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="//localhost:1313/android-chrome-192x192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+<link rel="icon" type="image/ico" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
 
-<link rel="alternate" type="application/rss+xml" href="//localhost:1313/tags/kde-eco/index.xml" title="Hrishikesh Gohain">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/kde-eco/index.xml" title="Hrishikesh Gohain">
 <meta name="description" content=""/>
 
 
@@ -37,9 +37,9 @@
     
 </title>
 
-<link rel="canonical" href="//localhost:1313/tags/kde-eco/"/>
+<link rel="canonical" href="http://localhost:1313/tags/kde-eco/"/>
 
-<meta property="og:url" content="//localhost:1313/tags/kde-eco/">
+<meta property="og:url" content="http://localhost:1313/tags/kde-eco/">
   <meta property="og:site_name" content="Hrishikesh Gohain">
   <meta property="og:title" content="Kde Eco">
   <meta property="og:description" content="Portfolio and blog to post projects and ideas, by Hrishikesh Gohain.">
@@ -311,7 +311,6 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
 <div class="list-container">
 
     <h1>Kde Eco</h1>
-    
 
 
 
@@ -336,7 +335,12 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
     </p>
 
     
-      <p class="line-summary">Simulate a Standard user Scenario with ease</p>
+      <p class="line-summary"><p>KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.</p>
+<p>As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, <a href="https://invent.kde.org/sdk/kecolab">KEcoLab</a> a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in <a href="https://eco.kde.org/handbook/">KDE Eco Handbook</a></p>
+<p>To measure energy usage of a software we need to prepare three scripts <code>baseline.sh</code> , <code>idle.sh</code> and <code>sus.sh</code> and push them via MR to <a href="https://invent.kde.org/sdk/kecolab">this</a> repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found <a href="https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus">here</a>.</p>
+<p>Currently, these scripts rely on <code>xdotool</code> to simulate user interactions. However, <code>xdotool</code> does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
+To solve this problem,</p>
+<p>I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from <code>xdotool</code> to <code>ydotool</code> and <code>kdotool</code>, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.</p></p>
     
   </div>
 </div>

@@ -1,3 +1,5 @@
+baseURL = "https://hrishikeshgohain.netlify.app/"
+
 title = "Hrishikesh Gohain"
 theme = "typo"
 
@@ -27,6 +29,7 @@ tag = "tags"
 
 [params]
 description = "Portfolio and blog to post projects and ideas, by Hrishikesh Gohain."
+ShowFullTextinRSS = true
 
 appearance = "auto"        
 colorPalette = "base16-eighties"
@@ -58,7 +61,7 @@ url = "https://discord.com/users/userid/hrishikeshgohain."
 enableGitInfo = true
 
 [frontmatter]
-date = [":filename", ":default"]
+date = ["date", ":filename", ":default"]
 lastmod = [":git", "lastmod", "modified", ":fileModTime", ":default"]
 
 [params.giscus]
@@ -69,3 +72,9 @@ category = "General"
 categoryid = "categoryId"
 mapping = "pathname"
 theme = "preferred_color_scheme"
+
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+

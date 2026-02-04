@@ -2,86 +2,86 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Hrishikesh Gohain</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in Home on Hrishikesh Gohain</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to write automation scripts</title>
+      <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
+      <pubDate>Mon, 02 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid>
+      <description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;&#xA;&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.&#xA;To solve this problem,&lt;/p&gt;&#xA;&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>A fix for wifi in dual boot systems</title>
-      <link>//localhost:1313/howto/002.fix-wifi-dual-boot/</link>
+      <link>http://localhost:1313/howto/002.fix-wifi-dual-boot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/howto/002.fix-wifi-dual-boot/</guid>
+      <guid>http://localhost:1313/howto/002.fix-wifi-dual-boot/</guid>
       <description>Fixing Intel AX200 Wi-Fi Not Working on Ubuntu (Dual Boot with Windows)</description>
     </item>
     <item>
       <title>How does a drone fly ?</title>
-      <link>//localhost:1313/posts/001.uav-basics/</link>
+      <link>http://localhost:1313/posts/001.uav-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/001.uav-basics/</guid>
+      <guid>http://localhost:1313/posts/001.uav-basics/</guid>
       <description>Basics of UAV&amp;rsquo;s</description>
     </item>
     <item>
-      <title>How to write automation scripts</title>
-      <link>//localhost:1313/posts/003.how-to-do-automation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>Simulate a Standard user Scenario with ease</description>
-    </item>
-    <item>
       <title>Install and Setup OpenGL Developer Environment</title>
-      <link>//localhost:1313/howto/001.setup-opengl/</link>
+      <link>http://localhost:1313/howto/001.setup-opengl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/howto/001.setup-opengl/</guid>
+      <guid>http://localhost:1313/howto/001.setup-opengl/</guid>
       <description>opengl setup for linux, windows and mac</description>
     </item>
     <item>
       <title>Install Ubutnu alongside Windows</title>
-      <link>//localhost:1313/howto/003.dual-boot-ubuntu/</link>
+      <link>http://localhost:1313/howto/003.dual-boot-ubuntu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/howto/003.dual-boot-ubuntu/</guid>
+      <guid>http://localhost:1313/howto/003.dual-boot-ubuntu/</guid>
       <description>guide to getting started with linux</description>
     </item>
     <item>
       <title>Robots playing football</title>
-      <link>//localhost:1313/experiments/003.robots-playing-football/</link>
+      <link>http://localhost:1313/experiments/003.robots-playing-football/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/experiments/003.robots-playing-football/</guid>
+      <guid>http://localhost:1313/experiments/003.robots-playing-football/</guid>
       <description>Our robosoccer journey</description>
     </item>
     <item>
       <title>Test</title>
-      <link>//localhost:1313/howto/test/</link>
+      <link>http://localhost:1313/howto/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/howto/test/</guid>
+      <guid>http://localhost:1313/howto/test/</guid>
       <description>test</description>
     </item>
     <item>
       <title>Unlimited cloud storage</title>
-      <link>//localhost:1313/experiments/002.cloud-storage/</link>
+      <link>http://localhost:1313/experiments/002.cloud-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/experiments/002.cloud-storage/</guid>
+      <guid>http://localhost:1313/experiments/002.cloud-storage/</guid>
       <description>A simple trick to demonstrate a problem</description>
     </item>
     <item>
       <title>venvman</title>
-      <link>//localhost:1313/experiments/001.venvman/</link>
+      <link>http://localhost:1313/experiments/001.venvman/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/experiments/001.venvman/</guid>
+      <guid>http://localhost:1313/experiments/001.venvman/</guid>
       <description>A Simple Python venv Manager</description>
     </item>
     <item>
       <title>What is the site ?</title>
-      <link>//localhost:1313/posts/what/</link>
+      <link>http://localhost:1313/posts/what/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/what/</guid>
+      <guid>http://localhost:1313/posts/what/</guid>
       <description>I finally ported from mkdocs to hugo</description>
     </item>
     <item>
       <title>Why Measure energy usage of Software</title>
-      <link>//localhost:1313/posts/002.why-measure-software/</link>
+      <link>http://localhost:1313/posts/002.why-measure-software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/002.why-measure-software/</guid>
+      <guid>http://localhost:1313/posts/002.why-measure-software/</guid>
       <description>a kool project i stumbled upon</description>
     </item>
   </channel>

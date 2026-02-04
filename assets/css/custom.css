@@ -153,3 +153,7 @@ a:hover {
   box-shadow: 0 0 0 2px var(--accent);           /* visibility guarantee */
   font-weight: 500;
 }
+
+.post-line {
+  margin-bottom: 1rem;
+}

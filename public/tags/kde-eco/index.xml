@@ -2,17 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kde Eco on Hrishikesh Gohain</title>
-    <link>//localhost:1313/tags/kde-eco/</link>
+    <link>http://localhost:1313/tags/kde-eco/</link>
     <description>Recent content in Kde Eco on Hrishikesh Gohain</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="//localhost:1313/tags/kde-eco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Feb 2026 00:34:01 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kde-eco/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to write automation scripts</title>
-      <link>//localhost:1313/posts/003.how-to-do-automation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>Simulate a Standard user Scenario with ease</description>
+      <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
+      <pubDate>Mon, 02 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid>
+      <description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;&#xA;&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.&#xA;To solve this problem,&lt;/p&gt;&#xA;&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
