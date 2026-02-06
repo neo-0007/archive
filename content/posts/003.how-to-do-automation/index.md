@@ -34,7 +34,7 @@ To test the scripts you have written it's recommended to setup locally.
 
 1. Clone the repository and navigate into it
 ```shell
- git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+ git clone -b feat/setup-script https://invent.kde.org/neogg/ydotool.git
  cd ydotool 
 ```
 
@@ -67,7 +67,7 @@ Verify that you can use ydotool by `ydotool type "Hello"` you will see Hello typ
 
 1. Clone the repository and navigate into it
 ```shell
- git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+ git clone -b feat/setup-script https://invent.kde.org/neogg/kdotool.git
  cd kdotool 
 ```
 
