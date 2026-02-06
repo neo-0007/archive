@@ -32,7 +32,7 @@
 
 <title>
     
-    How to write automation scripts | Hrishikesh Gohain
+    Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab | Hrishikesh Gohain
     
 </title>
 
@@ -40,17 +40,13 @@
 
 <meta property="og:url" content="http://localhost:1313/posts/003.how-to-do-automation/">
   <meta property="og:site_name" content="Hrishikesh Gohain">
-  <meta property="og:title" content="How to write automation scripts">
-  <meta property="og:description" content="KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.
-As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, KEcoLab a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in KDE Eco Handbook
-To measure energy usage of a software we need to prepare three scripts baseline.sh , idle.sh and sus.sh and push them via MR to this repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found here.
-Currently, these scripts rely on xdotool to simulate user interactions. However, xdotool does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work. To solve this problem,
-I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from xdotool to ydotool and kdotool, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.">
+  <meta property="og:title" content="Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab">
+  <meta property="og:description" content="A guide to use ydotool and kdotool">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-02-02T10:00:00+05:30">
-    <meta property="article:modified_time" content="2026-02-05T00:34:01+05:30">
+    <meta property="article:published_time" content="2026-02-06T23:00:00+05:30">
+    <meta property="article:modified_time" content="2026-02-06T23:19:11+05:30">
     <meta property="article:tag" content="Kde">
     <meta property="article:tag" content="Sok2026">
     <meta property="article:tag" content="KEcoLab">
@@ -67,7 +63,7 @@ I am working with my mentors Joseph, Aakarsh, and Karan to port the existing tes
 
 
 
-<link rel="stylesheet" href="/assets/combined.min.fb55e2bf0db840409672a9cef99820efa329a8ed3acbfd64144362740d432f24.css" media="all">
+<link rel="stylesheet" href="/assets/combined.min.193e4fb4b2e204cd9f93863d7a72f7dba6e35cb92c2390519152c3c512de09de.css" media="all">
 
 
 
@@ -324,8 +320,8 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
   <article>
     <header class="single-intro-container">
         
-        <h1 class="single-title">How to write automation scripts</h1>
-        <p class="single-summary">Simulate a Standard user Scenario with ease</p>
+        <h1 class="single-title">Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</h1>
+        <p class="single-summary">A guide to use ydotool and kdotool</p>
         
         <div class="single-subsummary">
           
@@ -344,7 +340,7 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
 <p>To measure energy usage of a software we need to prepare three scripts <code>baseline.sh</code> , <code>idle.sh</code> and <code>sus.sh</code> and push them via MR to <a href="https://invent.kde.org/sdk/kecolab">this</a> repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found <a href="https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus">here</a>.</p>
 <p>Currently, these scripts rely on <code>xdotool</code> to simulate user interactions. However, <code>xdotool</code> does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
 To solve this problem,</p>
-<p>I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from <code>xdotool</code> to <code>ydotool</code> and <code>kdotool</code>, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.</p>
+<p>I am working with my mentors Joseph, Aakarsh, and Karanjot to port the existing test scripts from <code>xdotool</code> to <code>ydotool</code> and <code>kdotool</code>, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.</p>
 <h2 class="heading" id="setup-ydotool-and-kdotool">
   Setup <code>ydotool</code> and <code>kdotool</code>
   <a class="anchor" href="#setup-ydotool-and-kdotool">#</a>
@@ -556,7 +552,7 @@ This can be useful to select text, drag and drop etc..</p>
   <a class="anchor" href="#move-mouse-to-a-specific-coordinate">#</a>
 </h3>
 <blockquote>
-<p>Note : We can use ydotool to move the mouse but that may not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the <code>kdotool getmouselocation</code> to see how the mouse location gets updated.</p>
+<p>Note : We can use ydotool to move the mouse but that may not give us any visual feedback if you are using it in a VM, that is you cannot see the actual mouse cursor move when the commands are executed but you can use the <code>kdotool getmouselocation</code> to see how the mouse location gets updated.</p>
 </blockquote>
 <p>There is a command in ydotool</p>
 <div class="code-block">
@@ -592,13 +588,15 @@ This can be useful to select text, drag and drop etc..</p>
 </span></span><span class="line"><span class="cl"><span class="c1"># Get the window geometry:</span>
 </span></span><span class="line"><span class="cl">kdotool search --class firefox getwindowgeometry
 </span></span><span class="line"><span class="cl"><span class="c1"># Example output:</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># x=120</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># y=80</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># width=1280</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># height=800</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Window {a24d3d34-85f6-4915-821b-54a71a959f6a}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   Position: 340.23748404968967,68.49159882293117</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   Geometry: 768x864</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">#Reset the mouse position to the top-left corner of the screen:</span>
 </span></span><span class="line"><span class="cl">ydotool mousemove -x -9999 -y -9999
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Move the mouse to the Position you got from above command (top left corner of the window )</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Now move the mouse inside the window (top-left corner of the window):</span>
 </span></span><span class="line"><span class="cl">ydotool mousemove -x <span class="m">120</span> -y <span class="m">80</span>
@@ -611,7 +609,7 @@ This can be useful to select text, drag and drop etc..</p>
   <a class="anchor" href="#move-mouse-to-the-center-of-a-window">#</a>
 </h3>
 <p>Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.</p>
-<p>From the geometry:
+<p>From the geometry we extract :
 x=120
 y=80
 width=1280
@@ -633,7 +631,8 @@ height=800</p>
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ydotool mousemove -x center_x -y center_y</span></span></code></pre></div>
   <button class="copy-code-button">copy</button>
 </div>
-<p>These completes all the basic actions that are required to automate user actions , of couse we need to combine many of above to do tasks that simulate real user.</p>
+<p>These completes all the basic actions that are required to automate user actions , We may need to combine many of above to do tasks that simulate real user.</p>
+
     </div>
   </article>
 

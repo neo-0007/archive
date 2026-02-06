@@ -1,10 +1,10 @@
 ---
-title: "How to write automation scripts"
-summary: " Simulate a Standard user Scenario with ease "
+title: "Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab"
+summary: " A guide to use ydotool and kdotool  "
 toc: false
 readTime: false
 autonumber: false
-date: 2026-02-02T10:00:00+05:30
+date: 2026-02-06T23:00:00+05:30
 math: false
 showTags: false
 hideBackToTop: true
@@ -21,9 +21,8 @@ To measure energy usage of a software we need to prepare three scripts `baseline
 Currently, these scripts rely on `xdotool` to simulate user interactions. However, `xdotool` does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
 To solve this problem, 
 
-I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from `xdotool` to `ydotool` and `kdotool`, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily. 
+I am working with my mentors Joseph, Aakarsh, and Karanjot to port the existing test scripts from `xdotool` to `ydotool` and `kdotool`, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily. 
 
-<!--more-->
 
 ## Setup `ydotool` and `kdotool`
 
@@ -219,7 +218,7 @@ y=$(echo "$loc" | sed -n 's/.*y:\([0-9-]*\).*/\1/p')
 
 ### Move mouse to a specific coordinate
 
-> Note : We can use ydotool to move the mouse but that may not give us any visual feedback , that is you cannot see the actual mouse cursor move when the commands are executed but you can use the `kdotool getmouselocation` to see how the mouse location gets updated.
+> Note : We can use ydotool to move the mouse but that may not give us any visual feedback if you are using it in a VM, that is you cannot see the actual mouse cursor move when the commands are executed but you can use the `kdotool getmouselocation` to see how the mouse location gets updated.
 
 There is a command in ydotool
 
@@ -256,13 +255,15 @@ kdotool search --class firefox windowactivate
 # Get the window geometry:
 kdotool search --class firefox getwindowgeometry
 # Example output:
-# x=120
-# y=80
-# width=1280
-# height=800
+# Window {a24d3d34-85f6-4915-821b-54a71a959f6a}
+#   Position: 340.23748404968967,68.49159882293117
+#   Geometry: 768x864
+
 
 #Reset the mouse position to the top-left corner of the screen:
 ydotool mousemove -x -9999 -y -9999
+
+# Move the mouse to the Position you got from above command (top left corner of the window )
 
 # Now move the mouse inside the window (top-left corner of the window):
 ydotool mousemove -x 120 -y 80
@@ -275,7 +276,7 @@ ydotool mousemove -x 120 -y 80
 
 Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.
 
-From the geometry:
+From the geometry we extract :
 x=120
 y=80
 width=1280
@@ -301,4 +302,4 @@ Move the mouse to the center of the window:
 ydotool mousemove -x center_x -y center_y
 ```
 
-These completes all the basic actions that are required to automate user actions , of couse we need to combine many of above to do tasks that simulate real user.
+These completes all the basic actions that are required to automate user actions , We may need to combine many of above to do tasks that simulate real user.

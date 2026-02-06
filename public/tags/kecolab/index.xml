@@ -4,16 +4,317 @@
     <title>KEcoLab on Hrishikesh Gohain</title>
     <link>http://localhost:1313/tags/kecolab/</link>
     <description>Recent content in KEcoLab on Hrishikesh Gohain</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Feb 2026 00:34:01 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/kecolab/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Feb 2026 23:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/kecolab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
-      <title>How to write automation scripts</title>
+      <title>How to write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</title>
       <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
-      <pubDate>Mon, 02 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;&#xA;&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.&#xA;To solve this problem,&lt;/p&gt;&#xA;&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;</description>
+      <pubDate>Fri, 06 Feb 2026 23:00:00 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid><description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;
+&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
+To solve this problem,&lt;/p&gt;
+&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;setup-ydotool-and-kdotool&#34;&gt;
+  Setup &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#setup-ydotool-and-kdotool&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To test the scripts you have written it&amp;rsquo;s recommended to setup locally.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Some features changes and some are removed with updates so it&amp;rsquo;s recommended to build them from source mentioned here&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;ydotool&#34;&gt;
+  ydotool
+  &lt;a class=&#34;anchor&#34; href=&#34;#ydotool&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ydotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Run the setup script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x setup.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./setup.sh install&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Give &lt;code&gt;ydotoold&lt;/code&gt; permission to uinput so it can run without root&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo touch /etc/udev/rules.d/99-uinput.rules
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;KERNEL==&amp;#34;uinput&amp;#34;, MODE=&amp;#34;0660&amp;#34;, GROUP=&amp;#34;input&amp;#34;&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sudo tee /etc/udev/rules.d/99-uinput.rules &amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo usermod -aG input &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$USER&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo udevadm control --reload-rules
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo udevadm trigger&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: A reboot (or full logout/login) is required for the &lt;code&gt;input&lt;/code&gt; group change to take effect.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Reboot your computer and run&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl --user start ydotoold&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Verify that you can use ydotool by &lt;code&gt;ydotool type &amp;quot;Hello&amp;quot;&lt;/code&gt; you will see Hello typed if installation was successful.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;kdotool&#34;&gt;
+  kdotool
+  &lt;a class=&#34;anchor&#34; href=&#34;#kdotool&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; kdotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Run the setup script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod +x setup.sh
+./setup.sh install&lt;/code&gt;&lt;/pre&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Verify that you can use kdotool by &lt;code&gt;kdotool -h&lt;/code&gt;&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;how-to-use-ydotool-and-kdotool-to-perform-various-actions&#34;&gt;
+  How to use ydotool and kdotool to perform various actions
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-to-use-ydotool-and-kdotool-to-perform-various-actions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;press-keys&#34;&gt;
+  Press keys
+  &lt;a class=&#34;anchor&#34; href=&#34;#press-keys&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;For pressing keys we use ydotool , the syntax for pressing keys is a little confusing when you look at it :&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key KEY_CODE:ACTION&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;KEY_CODE&lt;/p&gt;
+&lt;p&gt;Linux uses a file named &lt;code&gt;input-event-codes.h&lt;/code&gt; that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example, the LEFTCTRL key is represented by 29, and the letter T is represented by 20.
+How to find the code for the key you want to press , You can read the original &lt;code&gt;.h&lt;/code&gt; file by &lt;code&gt;nano /usr/include/linux/input-event-codes.h&lt;/code&gt; if you are in a linux system ( i hope you are using one). or inspect the file &lt;a href=&#34;https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I use grep to find the code for the key i want since the header file is too long &lt;code&gt;grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h&lt;/code&gt; and so on.&lt;/p&gt;
+&lt;p&gt;ACTION&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 : key is pressed&lt;/li&gt;
+&lt;li&gt;0 : key is released&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So to press and release &lt;code&gt;Ctrl&lt;/code&gt; you can use the following command&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key 29:1 29:0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;press-key-combinations&#34;&gt;
+  Press key combinations
+  &lt;a class=&#34;anchor&#34; href=&#34;#press-key-combinations&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Key combinations is the same as above , you just need to keep all the keys pressed.
+So to press &lt;code&gt;Ctrl+Alt+T&lt;/code&gt; which opens up a terminal you can use the following command&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key 29:1 56:1 20:1 29:0 56:0 20:0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This translates to Ctrl(pressed) Alt(pressed) T(pressed) Ctrl(released) Alt(released) T(released)&lt;/p&gt;
+&lt;p&gt;This will hopefully open up a terminal.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;click--left-right-double&#34;&gt;
+  Click ( left, right, double)
+  &lt;a class=&#34;anchor&#34; href=&#34;#click--left-right-double&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me,I am sorry but again we have codes&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click OPTIONS BUTTON_CODE&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;OPTIONS&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--repeat&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;N : can be used to press a button N &lt;span class=&#34;nb&#34;&gt;times&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--P : can be used to press and release a button as that&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s what we mostly &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;BUTTON_CODE&lt;/p&gt;
+&lt;p&gt;This is a hexadecimal value that represents different mouse buttons (left, right, middle, etc.).&lt;br&gt;
+Yes, it looks ugly at first, but you can always open up my blog.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC0   &lt;span class=&#34;c1&#34;&gt;# left click&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC1   &lt;span class=&#34;c1&#34;&gt;# right click&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC2   &lt;span class=&#34;c1&#34;&gt;# middle button click (scroll button)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40   &lt;span class=&#34;c1&#34;&gt;# left button down (press)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80   &lt;span class=&#34;c1&#34;&gt;# left button up (release)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x41   &lt;span class=&#34;c1&#34;&gt;# right button down (press)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x81   &lt;span class=&#34;c1&#34;&gt;# right button up (release)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;And some combinations
+This can be useful to select text, drag and drop etc..&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40 &lt;span class=&#34;c1&#34;&gt;# left down &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove &lt;span class=&#34;m&#34;&gt;300&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# drag right &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# drag down &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80 &lt;span class=&#34;c1&#34;&gt;# left up&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;same as above but more reliable with delays to simulate a real user&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -D &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;300&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -D &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;type-text&#34;&gt;
+  Type text
+  &lt;a class=&#34;anchor&#34; href=&#34;#type-text&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Typing text is pretty simple using ydotool&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string-you-want-to-type&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;focus-a-specific-app&#34;&gt;
+  Focus a specific app
+  &lt;a class=&#34;anchor&#34; href=&#34;#focus-a-specific-app&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Window Title&amp;#34;&lt;/span&gt; windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class appname windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --classname org.kde.app windowactivate &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; kde apps &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;send-mouse-and-keyboard-commands-to-a-specific-window&#34;&gt;
+  Send mouse and keyboard commands to a specific window
+  &lt;a class=&#34;anchor&#34; href=&#34;#send-mouse-and-keyboard-commands-to-a-specific-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Focus the window using kdotool than execute commands using ydotool since commands are always executed in the active window.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;get-current-mouse-location&#34;&gt;
+  Get current mouse location
+  &lt;a class=&#34;anchor&#34; href=&#34;#get-current-mouse-location&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool getmouselocation&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;The output :&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x:42 y:96 screen:0 window:&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;e8aeec46-5c45-42cc-9839-8ad2edcb7f4f&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;If you only want to extract the x and y value since thats what&amp;rsquo;s more important you can do that using regex&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Read mouse location&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;loc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;kdotool getmouselocation&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Extract x and y&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$loc&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/.*x:\([0-9-]*\).*/\1/p&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$loc&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/.*y:\([0-9-]*\).*/\1/p&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-to-a-specific-coordinate&#34;&gt;
+  Move mouse to a specific coordinate
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-to-a-specific-coordinate&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note : We can use ydotool to move the mouse but that may not give us any visual feedback if you are using it in a VM, that is you cannot see the actual mouse cursor move when the commands are executed but you can use the &lt;code&gt;kdotool getmouselocation&lt;/code&gt; to see how the mouse location gets updated.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is a command in ydotool&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove --absolute -x x-value -y y-value&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;but that does not work in Wayland properly.&lt;/p&gt;
+&lt;p&gt;We have an another command that moves the mouse relative to current mouse location so we can use that.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x x-value -y y-value&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;mousemove -9999 -9999 ( moves the mouse to top left 0,0)&lt;/li&gt;
+&lt;li&gt;mousemove x y ( now we move relative to 0,0 so that&amp;rsquo;s like absolute mousemove)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-inside-a-specific-window&#34;&gt;
+  Move mouse inside a specific window
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-inside-a-specific-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Since we cannot directly send mouse events to a window on Wayland, we rely on window geometry that we can get using kdotool and do relative mouse movement using ydotool.&lt;/p&gt;
+&lt;p&gt;The steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Focus the window&lt;/li&gt;
+&lt;li&gt;Get the window geometry&lt;/li&gt;
+&lt;li&gt;Reset the mouse to &lt;code&gt;(0,0)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Move the mouse relatively using the window coordinates&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# First, focus the window:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class firefox windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Get the window geometry:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class firefox getwindowgeometry
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Example output:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Window {a24d3d34-85f6-4915-821b-54a71a959f6a}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#   Position: 340.23748404968967,68.49159882293117&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#   Geometry: 768x864&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Reset the mouse position to the top-left corner of the screen:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x -9999 -y -9999
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Move the mouse to the Position you got from above command (top left corner of the window )&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Now move the mouse inside the window (top-left corner of the window):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt; -y &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#At this point, the mouse cursor is inside the target window. so you can now move inside the window , but only once than again repeat the above steps once again ( i will think of a script to automate this)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-to-the-center-of-a-window&#34;&gt;
+  Move mouse to the center of a window
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-to-the-center-of-a-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.&lt;/p&gt;
+&lt;p&gt;From the geometry we extract :
+x=120
+y=80
+width=1280
+height=800&lt;/p&gt;
+&lt;p&gt;Calculate the center:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;center_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; x + width / &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;center_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; y + height / &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Reset the mouse again:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x -9999 -y -9999&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Move the mouse to the center of the window:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x center_x -y center_y&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;These completes all the basic actions that are required to automate user actions , We may need to combine many of above to do tasks that simulate real user.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

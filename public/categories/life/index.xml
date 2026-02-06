@@ -4,15 +4,21 @@
     <title>Life on Hrishikesh Gohain</title>
     <link>http://localhost:1313/categories/life/</link>
     <description>Recent content in Life on Hrishikesh Gohain</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://localhost:1313/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>What is the site ?</title>
       <link>http://localhost:1313/posts/what/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/what/</guid>
-      <description>I finally ported from mkdocs to hugo</description>
+      
+      <guid>http://localhost:1313/posts/what/</guid><description>&lt;p&gt;After several switches i have finally made peace with hugo for my personal site , From jekyll to zola I tried ot several static site generators , I also used ejs to create my own site but something always seemed missing.&lt;/p&gt;
+&lt;p&gt;Hugo has all the features i want and with the typo theme my personal site is now clean , minimal and that&amp;rsquo;s what i was searching for.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

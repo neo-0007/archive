@@ -57,7 +57,7 @@
 
 
 
-<link rel="stylesheet" href="/assets/combined.min.fb55e2bf0db840409672a9cef99820efa329a8ed3acbfd64144362740d432f24.css" media="all">
+<link rel="stylesheet" href="/assets/combined.min.193e4fb4b2e204cd9f93863d7a72f7dba6e35cb92c2390519152c3c512de09de.css" media="all">
 
 
 
@@ -330,17 +330,10 @@ html[data-theme="dark"] .theme-toggle__icon.sun {
   <div>
     <p class="line-title">
       <a href="/posts/003.how-to-do-automation/">
-        How to write automation scripts
+        How to write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab
       </a>
     </p>
 
-    
-      <p class="line-summary"><p>KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.</p>
-<p>As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, <a href="https://invent.kde.org/sdk/kecolab">KEcoLab</a> a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in <a href="https://eco.kde.org/handbook/">KDE Eco Handbook</a></p>
-<p>To measure energy usage of a software we need to prepare three scripts <code>baseline.sh</code> , <code>idle.sh</code> and <code>sus.sh</code> and push them via MR to <a href="https://invent.kde.org/sdk/kecolab">this</a> repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found <a href="https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus">here</a>.</p>
-<p>Currently, these scripts rely on <code>xdotool</code> to simulate user interactions. However, <code>xdotool</code> does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
-To solve this problem,</p>
-<p>I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from <code>xdotool</code> to <code>ydotool</code> and <code>kdotool</code>, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.</p></p>
     
   </div>
 </div>

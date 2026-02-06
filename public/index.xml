@@ -4,85 +4,1567 @@
     <title>Home on Hrishikesh Gohain</title>
     <link>http://localhost:1313/</link>
     <description>Recent content in Home on Hrishikesh Gohain</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to write automation scripts</title>
-      <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
-      <pubDate>Mon, 02 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;&#xA;&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.&#xA;To solve this problem,&lt;/p&gt;&#xA;&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;</description>
-    </item>
+    
+	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>A fix for wifi in dual boot systems</title>
       <link>http://localhost:1313/howto/002.fix-wifi-dual-boot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/howto/002.fix-wifi-dual-boot/</guid>
-      <description>Fixing Intel AX200 Wi-Fi Not Working on Ubuntu (Dual Boot with Windows)</description>
+      
+      <guid>http://localhost:1313/howto/002.fix-wifi-dual-boot/</guid><description>&lt;p&gt;Recently, I faced an annoying issue after booting into Ubuntu which was running alongside Windows(dual boot) on my ASUS VivoBook 14 (Model: M413IA) .My Wifi was not working , i switched to Windows and it worked just fine. MyWifi card is Intel Wi-Fi 6 AX200 card.&lt;/p&gt;
+&lt;p&gt;After a lot of digging, debugging, and trial-and-error, I figured out the root cause and fixed it. This post documents that journey, in case anyone else is facing the same issue.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Symptoms :&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In Ubuntu, running:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nmcli device&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;The output&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DEVICE           TYPE      STATE                   CONNECTION         
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;enxca89f39a6d94  ethernet  connected               Wired connection &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lo               loopback  connected &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;externally&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  lo                 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker0          bridge    connected &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;externally&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  docker0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Wi-Fi was completely missing.&lt;/p&gt;
+&lt;p&gt;Then I checked the network hardware:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo lshw -C network&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;The output:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*-network UNCLAIMED
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   description: Network controller
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   product: Intel Corporation Wi-Fi &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; AX200&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;The device was &amp;ldquo;unclaimed&amp;rdquo; — a clear sign that the kernel recognized it, but no driver was managing it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Error in Logs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To get more detail, I ran:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dmesg | grep iwlwifi &lt;/code&gt;
+It showed&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iwlwifi 0000:01:00.0: probe with driver iwlwifi failed with error -110&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;error -110&lt;/code&gt; typically points to a timeout, meaning the device isn’t responding correctly during initialization.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What Didn’t Work&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I tried a lot of common fixes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reinstalling &lt;code&gt;linux-firmware&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Manually loading the &lt;code&gt;iwlwifi&lt;/code&gt; module with &lt;code&gt;modprobe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Setting GRUB options like &lt;code&gt;pcie_aspm=off&lt;/code&gt; and &lt;code&gt;pci=nomsi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Updating initramfs&lt;/li&gt;
+&lt;li&gt;Checking &lt;code&gt;rfkill&lt;/code&gt; (nothing was blocked)&lt;/li&gt;
+&lt;li&gt;Enabling Network Stack in BIOS&lt;/li&gt;
+&lt;li&gt;Disabling Secure Boot and Fast Boot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of these worked.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Real Cause: Windows Fast Startup&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eventually, I booted back into Windows to double-check if the card was functional. It was. This confirmed that the hardware wasn’t faulty.&lt;/p&gt;
+&lt;p&gt;Then I remembered that &lt;strong&gt;Windows Fast Startup&lt;/strong&gt; sometimes causes devices to be left in a low-power or suspended state — especially Wi-Fi and Bluetooth cards.&lt;/p&gt;
+&lt;p&gt;This was the key.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Fix That Worked&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here’s exactly what I did:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Booted into Windows&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Went to &lt;strong&gt;Control Panel → Power Options → Choose what the power buttons do&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Clicked “Change settings that are currently unavailable”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disabled&lt;/strong&gt;: &lt;em&gt;Turn on fast startup (recommended)&lt;/em&gt; &lt;code&gt;remember: turn this off&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Performed a &lt;strong&gt;full shutdown&lt;/strong&gt; (Shift + Shutdown)&lt;/li&gt;
+&lt;li&gt;Booted into Ubuntu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, the Wi-Fi card is detected properly:&#39;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nmcli device&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wlp1s0  wifi      disconnected  -- &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And no more &lt;code&gt;probe failed with error -110&lt;/code&gt; in &lt;code&gt;dmesg&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If your Intel AX200 card isn’t working on Ubuntu and you&amp;rsquo;re dual-booting with Windows, disable Fast Startup in Windows and fully power off the system. The card will reset, and Linux will be able to initialize it properly.&lt;/p&gt;
+&lt;p&gt;It’s a frustrating issue, but once you know the cause, the fix is pretty simple.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>How does a drone fly ?</title>
       <link>http://localhost:1313/posts/001.uav-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/001.uav-basics/</guid>
-      <description>Basics of UAV&amp;rsquo;s</description>
+      
+      <guid>http://localhost:1313/posts/001.uav-basics/</guid><description>&lt;p&gt;A drone is a unmanned aerial vechicle (UAV) , a vechicle that flies and has no humans in it , you can say it as a remote controlled plane in simple terms&lt;/p&gt;
+&lt;p&gt;These are the most common types of drones we normally use :&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 3928; --h: 2032;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;drones classification&#34;
+             src=&#34;http://localhost:1313/posts/001.uav-basics/drone-types.png&#34;
+             width=&#34;3928&#34;
+             height=&#34;2032&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.mdpi.com/2504-446X/7/8/515&#34;&gt;An Overview of Drone Applications in the Construction Industry&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All of these are just different types of designs used for different purposes , their main goal is to fly.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;quadcopters&#34;&gt;
+  Quadcopters
+  &lt;a class=&#34;anchor&#34; href=&#34;#quadcopters&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Quadcopter is a type of drone and as its name suggests it uses quad(four) rotors (or motors) to fly . These spinning propellers let the quadcopter fly, hover, turn, and move in any direction.&lt;/p&gt;
+&lt;p&gt;Quadcopters come in various types, distinguished mainly by their frame shapes and intended uses, here are the different types of frame shapes :&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-x-frame.png&#34; alt=&#34;Image 1&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-h-frame.png&#34; alt=&#34;Image 2&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-plus-frame.png&#34; alt=&#34;Image 3&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-y4-frame.png&#34; alt=&#34;Image 4&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-a-tail-frame.png&#34; alt=&#34;Image 5&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-v-tail-frame.png&#34; alt=&#34;Image 6&#34; style=&#34;width: 30%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.t-drones.com/blog/quadcopter-drones.html&#34;&gt;Quadcopter Drones: A Comprehensive Beginner’s Guide&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The most common quadcopter that you may have seen or used are DJI drones :
+
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 640; --h: 640;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;dji drone&#34;
+             src=&#34;http://localhost:1313/posts/001.uav-basics/dji-drone.png&#34;
+             width=&#34;640&#34;
+             height=&#34;640&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://store.dji.com/product/dji-mini-3?vid=128001&#34;&gt;DJI Mini 3&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And this is what our quadcopter looks like
+
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;how-does-a-quadcopter-fly&#34;&gt;
+  How does a Quadcopter Fly
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-does-a-quadcopter-fly&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Newton’s Third Law says:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“For every action, there is an equal and opposite reaction.”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This means that whenever one object pushes on another, the second object pushes back with the same force, but in the opposite direction.&lt;/p&gt;
+&lt;p&gt;When a quadcopter’s propellers spin, they push air downward. Using Newton’s third law, this represents the action. For Newton’s law to be true, there must be an equal and opposite reaction. This reaction is an upward force pushing on the quadcopter. Once this force exceeds the force of gravity pulling the quadcopter downward, the quadcopte begins to move up.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quadcopter-ntl.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Well this is only up and down motion , but a quadcopter can turn and move in any direction and can do flips also , how does it do that ?&lt;/p&gt;
+&lt;h4 class=&#34;heading&#34; id=&#34;movements-of-a-quadcopter&#34;&gt;
+  Movements of a Quadcopter
+  &lt;a class=&#34;anchor&#34; href=&#34;#movements-of-a-quadcopter&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;The three fundamental movements are up &amp;amp; down (vertical movement) , left &amp;amp; right and front &amp;amp; back(lateral movement) and round and round (rotational movement)&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-types-of-movements.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All of these movements can be achieved by varying the speed of the 4 rotors in different ways.&lt;/p&gt;
+&lt;p&gt;When the propellers spin, they push air down. Similar to a helicopter, pushing the air down is the action in Newton’s third law of motion. The reaction is a force, called
+&lt;strong&gt;lift&lt;/strong&gt;, which pushes the quadcopter up. Each of the propellers will create lift, and the total lift for the quadcopter will be the sum of the four propellers’ lifts. The total force of the lift must be stronger than the force of gravity for the quadcopter to take off. Once in the air, the quadcopter can hover with no vertical movement by having the forces of lift and gravity equal.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-vertical-movement.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When the force of lift acts straight upward, the quadcopter moves vertically. But, when lift acts at an angle, it can also move laterally. This is because part of the force of the lift is upward and part of it is to the side, resulting in lateral movement that can be from side-to-side or forward and backward.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-lateral-movement.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lateral movement occurs by varying the speed of the propellers. Increasing the speed of the two propellers on one side of the quadcopter and/or decreasing the speed of the two propellers on the other side creates uneven amounts of lift on the two sides. The lift created on the side with the faster spinning propellers is greater than the lift created on the opposite side. The result is that the quadcopter moves in the direction of the side where less lift is created.&lt;/p&gt;
+&lt;p&gt;Here are all the movements using lateral movement :&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-foreward.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-backward.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-left.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-right.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And the last type of movement is rotational motion , how does the quadcopter rotates in its own axis ? for that lets learn about the oreantations of the rotors of a quadcopter.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quadcopter-props-direction.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image Source: &lt;a href=&#34;&#34;&gt;Ardupilot&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As you can see in the above image , Rotor 3 and 4 rotates in Clockwise direction and Rotor 1 and 2 rotates in Anticlockwise direction.&lt;/p&gt;
+&lt;p&gt;This is done due to a force called torque , a twisting force that causes rotation When a propeller spins, this force is produced. And, according to Newton’s third law of motion, an equal and opposite force is produced as well.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/helicopter-example.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image Source: &lt;a href=&#34;https://www.tsb.gc.ca/eng/rapports-reports/aviation/2020/a20a0027/a20a0027.html&#34;&gt;Air transportation safety investigation report A20A0027&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We see this in action when we look at a helicopter like the one above. When the blades on top of the helicopter (the rotor) spin, torque is created. The equal and opposite force rotates the body of the helicopter in the opposite direction. Since this would make the helicopter unusable, a tail rotor is added. It
+creates a force that counteracts the torque and stops the helicopter from rotating uncontrollably&lt;/p&gt;
+&lt;p&gt;Torque also affects a quadcopter when its propellers spin because each propeller individually creates torque when it rotates. All four torques are added up to determine
+the total torque acting on the quadcopter, If all propellers spins in same direction , the quadcopter body would have been rotating in the opposite direction .Therefore&lt;br&gt;
+Engineers have come up with a clever way of counteracting this torque—two of the propellers spin clockwise and two spin counterclockwise,. This results in two
+propellers creating torque that acts clockwise and two creating torque that acts counterclockwise. Thus, the forces cancel each other out.&lt;/p&gt;
+&lt;p&gt;This torque can also be used to create rotational movement for the quadcopter.In the above shown image When propellers 1 and 3 rotate, they produce counterclockwise torque(remember, equal and opposite reactions). If these propellers rotate faster than propellers 2 and 4, the counterclockwise torque acting on the quadcopter will be
+stronger than the clockwise torque acting on it. This results in the quadcopter rotating counterclockwise. Of course, if propellers 2 and 4 rotate faster than
+propellers 1 and 3, the quadcopter will rotate clockwise.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-rotate-left.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-rotate-right.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;the-propellers&#34;&gt;
+  The Propellers
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-propellers&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;While having pairs of propellers rotating in opposite directions effectively controls the torque acting on the quadcopter, it presents a new problem for us. If propellers spin in opposite directions, two of the propellers push air upward while two push air downward. When you combine these forces, the total lift is zero and the quadcopter
+cannot take off. To overcome this, we use two different propeller blades.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/props-direction.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image Source: &lt;a href=&#34;&#34;&gt;Ardupilot&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In above image, you can see that the leftmost propeller has the right edge higher in the front while the other has the left edge higher. This design changes the direction the air is pushed by the two propellers, meaning that when they spin in opposite directions, they actually push the air in the same direction.&lt;/p&gt;
+&lt;p&gt;This was a brief overview of what quadcopters are and how does they work.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;references&#34;&gt;
+  References
+  &lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The Science behind quadcopters - &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quadcopter classification - &lt;a href=&#34;https://www.t-drones.com/blog/quadcopter-drones.html&#34;&gt;T-drones&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quadcopter Movements - &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Holystone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Quadcopter&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
+    
     <item>
       <title>Install and Setup OpenGL Developer Environment</title>
       <link>http://localhost:1313/howto/001.setup-opengl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/howto/001.setup-opengl/</guid>
-      <description>opengl setup for linux, windows and mac</description>
+      
+      <guid>http://localhost:1313/howto/001.setup-opengl/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/howto/001.setup-opengl/#installation-guide&#34;&gt;Directly go to Installation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;what-is-opengl&#34;&gt;
+  What is OpenGL
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-opengl&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Before we start the setup process and understand what OpenGL is and what the other components are that we need to start development using OpenGL:&lt;/p&gt;
+&lt;p&gt;So we all know about graphics cards or GPUs. All modern-day computers have a GPU. You may not have a big powerful NVIDIA or AMD GPU, but there is always a GPU, like an integrated GPU in the CPU.
+Here is an image of a expensive dedicated GPU:&lt;/p&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/gpu-image.png&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Their main goal is to do calculations in parallel. As we know, we have a CPU that may have a few cores — say 6 — so it can run 6 tasks in parallel. You may say you can run more than 6 applications at a time, but they are not using the CPU at the same time. Your OS handles who gets to do their work when, and it’s pretty efficient at that. But tasks like 3D rendering, simulations, linear algebra calculations require many tasks to be solved in a small amount of time.&lt;/p&gt;
+&lt;div style=&#34;width: 80% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/gpu-vs-cpu.png&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Say you are running a game at 100 FPS — that means 100 frames to be rendered per second. That can&amp;rsquo;t be done by a CPU in such a small amount of time. There comes the GPU — it can do thousands of simple calculations in parallel. So that&amp;rsquo;s a brief about GPUs.&lt;/p&gt;
+&lt;p&gt;Now, say you want to make a game. First, you want to make a character — say Iron Man — and you want to use the GPU to render (draw on the screen) the character for you. So how will you use the GPU?&lt;/p&gt;
+&lt;p&gt;In the early days, people needed to write different code for different GPUs. You can think of this code as the ISA (assembly) of CPUs — they are different for different CPU architectures. Now, that is not good. So, Silicon Graphics — a company — came up with OpenGL, which abstracted the low-level stuff and gave a common interface or an API (you can think of it as a library like you import in C, like stdlib.h, and use functions like printf). These functions can just be called in our code, and the rest is handled by them.&lt;/p&gt;
+&lt;p&gt;So OpenGL provides us with such platform-independent functions which we can use to utilize the GPU and draw something on the screen, as it is a graphics library.&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart TD
+    A[Game/App Code] --&amp;gt; B[OpenGL API]
+    B --&amp;gt; C[GLU/GLM - Utility Libraries]
+    B --&amp;gt; D[GLUT/FreeGLUT - Window &amp;amp; Input Handling]
+    B --&amp;gt; E[Graphics Driver]
+    E --&amp;gt; F[GPU Hardware]
+    F --&amp;gt; G[Display Monitor]
+&lt;/pre&gt;
+
+&lt;p&gt;Now, OpenGL can just render things, but it needs a window (think of it as the portion of the screen where the application is shown) to render these pixels. Also, OpenGL does not manage inputs like mouse, keyboard, etc. So we need something else to manage this. There come these helper libraries (they are also a set of code written by someone to make our lives easier), like GLUT, FreeGLUT, etc.&lt;/p&gt;
+&lt;p&gt;GLUT is no longer supported and maintained, and it was proprietary software. So we can use FreeGLUT, which is its open-source alternative. Of course, there are lots of them out there.&lt;/p&gt;
+&lt;h4 class=&#34;heading&#34; id=&#34;requirements&#34;&gt;
+  Requirements
+  &lt;a class=&#34;anchor&#34; href=&#34;#requirements&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;A Code Editor
+This is to write your code , you can use any like VS Code , CodeBlocks, Vim , Text Editor also :)&lt;/li&gt;
+&lt;li&gt;OpenGL
+This is already installed in all computers ,This is the  OpenGL runtime — the driver and the actual GPU implementation of OpenGL&lt;/li&gt;
+&lt;li&gt;OpenGL Development Headers &amp;amp; Libraries
+These are the header files .h that has the function declarations and all which you import in your code using #include , and their actual implementation is alreay done by the GPU providers or OS , but to access them we need a interface , that will be used by our code which are these libraries they are of different formats in different OS , .lib, .dll in WIndows , .so in Linux and .framework in MacOS&lt;/li&gt;
+&lt;li&gt;FreeGLUT
+for creating windows and handling input as explained above&lt;/li&gt;
+&lt;li&gt;GCC or any compiler like Clang etc.
+To Compile your written code to machine executable (.exe, .out etc)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are all the components we need to start our development independent of our OS , but their installation process is different in different OS&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;installation-guide&#34;&gt;
+  Installation guide
+  &lt;a class=&#34;anchor&#34; href=&#34;#installation-guide&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/howto/001.setup-opengl/#windows&#34;&gt;Go to Windows&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/howto/001.setup-opengl/#macos&#34;&gt;Go to MacOS&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;linux&#34;&gt;
+  Linux
+  &lt;a class=&#34;anchor&#34; href=&#34;#linux&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Here is a Video tutorial if you dont like to read.
+Just copy the commands from below and paste them like i did , I had already installed them but if you have not installed them it will take some time for you.&lt;/p&gt;
+&lt;video controls width=&#34;100%&#34; style=&#34;max-height: 500px;&#34;&gt;
+  &lt;source src=&#34;linux-opengl-tut-cpy.mp4&#34; type=&#34;video/mp4&#34;&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;&lt;strong&gt;1. Get any code editor you want or use any existing one.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In Code::Blocks, the OpenGL Project template already sets up the libraries, so no extra linking flags are needed. This is a big advantage over VS Code. but i was only able to make it work for linux .&lt;/p&gt;
+&lt;p&gt;To use codeblocks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open a Terminal&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;sudo apt install codeblocks&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;This will install the codeblocks ide&lt;/li&gt;
+&lt;li&gt;Open it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Congrats you have successfully installed Codeblocks&lt;/p&gt;
+&lt;p&gt;Or you can use VS Code if you already have it.. or Vim or Nodepad etc..&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Install Build Essentials (Compiler, Make, etc.)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;sudo apt install build-essential&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This installs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;g++ (C++ compiler)&lt;/li&gt;
+&lt;li&gt;make (optional but useful)&lt;/li&gt;
+&lt;li&gt;libstdc++ and other development tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;3. Install OpenGL + FreeGLUT Development Libraries&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;sudo apt install freeglut3-dev libglu1-mesa-dev libglew-dev libgl1-mesa-dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This installs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;freeglut3-dev – FreeGLUT headers and linker files&lt;/li&gt;
+&lt;li&gt;libglu1-mesa-dev – GLU (OpenGL Utility Library)&lt;/li&gt;
+&lt;li&gt;libgl1-mesa-dev – Core OpenGL library (software renderer if no GPU driver)&lt;/li&gt;
+&lt;li&gt;libglew-dev – (optional) for more modern OpenGL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now you are good to go&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. How to write, compile and run the code&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Below is a example code&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;GL/freeglut.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Use FreeGLUT header (cross-platform)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Display callback function
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_COLOR_BUFFER_BIT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// Clear the screen
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glBegin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_POLYGON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// Draw a triangle
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// Red
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// Green
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// Blue
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glEnd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glFlush&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// Execute drawing commands
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                             &lt;span class=&#34;c1&#34;&gt;// Initialize GLUT
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glutInitDisplayMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLUT_SINGLE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GLUT_RGB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;// Single buffer, RGB color
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                      &lt;span class=&#34;c1&#34;&gt;// Window size
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                  &lt;span class=&#34;c1&#34;&gt;// Window position
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glutCreateWindow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FreeGLUT Triangle Example&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;// Create window
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClearColor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;               &lt;span class=&#34;c1&#34;&gt;// Set background color to black
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutDisplayFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                          &lt;span class=&#34;c1&#34;&gt;// Register display callback
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glutMainLoop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;                                    &lt;span class=&#34;c1&#34;&gt;// Start the main loop
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;CodeBlocks: Its easiest here&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Codeblocks&lt;/li&gt;
+&lt;li&gt;Go to File-&amp;gt;New-&amp;gt;Project&lt;/li&gt;
+&lt;li&gt;Scroll and select OpenGL Project&lt;/li&gt;
+&lt;li&gt;Follow the remaining steps&lt;/li&gt;
+&lt;li&gt;Write your code&lt;/li&gt;
+&lt;li&gt;To build/compile the code In toolbar press Build than again Build&lt;/li&gt;
+&lt;li&gt;Than to run the code Go to Build-&amp;gt;Run&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;VS Code:&lt;/p&gt;
+&lt;p&gt;Here is a video tutorial of how to use VS Code after installing everything&lt;/p&gt;
+&lt;video controls width=&#34;100%&#34; style=&#34;max-height: 500px;&#34;&gt;
+  &lt;source src=&#34;opengl-in-vscode2.mp4&#34; type=&#34;video/mp4&#34;&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;ul&gt;
+&lt;li&gt;Open VS Code open a folder , create a c++ file&lt;/li&gt;
+&lt;li&gt;Write your code&lt;/li&gt;
+&lt;li&gt;Open terminal if not opened use Ctrl+` inside vs code&lt;/li&gt;
+&lt;li&gt;make sure you are in the same path as the file&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;g++ filename.cpp -o outputname -lglut -lGLU -lGL&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;This will compile your code&lt;/li&gt;
+&lt;li&gt;Now run &lt;code&gt;./outputname&lt;/code&gt; to run the program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OR if you want to avoid typing the long command everytime you can just configure a tasks.json file&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;Ctrl+Shift+P&lt;/code&gt; inside VS Code (or just create one FOlder name .vscode and a tasks.json file inside it)&lt;/li&gt;
+&lt;li&gt;Search tasks.json&lt;/li&gt;
+&lt;li&gt;Open It&lt;/li&gt;
+&lt;li&gt;Pate the following inside it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;tasks&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;label&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Build OpenGL App&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;g++&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;${file}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;                         
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-o&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;${fileBasenameNoExtension}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// Linux
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lglut&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lGLU&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lGL&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// --- macOS (uncomment if using system GLUT) ---
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// &amp;#34;-framework&amp;#34;, &amp;#34;OpenGL&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// &amp;#34;-framework&amp;#34;, &amp;#34;GLUT&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// --- Windows (uncomment if using MinGW or MSYS2) ---
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// &amp;#34;-lfreeglut&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// &amp;#34;-lopengl32&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// &amp;#34;-lglu32&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;group&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;kind&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;isDefault&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;problemMatcher&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;$gcc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;detail&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Builds the current C++ OpenGL/FreeGLUT file&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Now to compile/build you can just enter &lt;code&gt;Ctrl+Shift+B&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Than run the program by typing &lt;code&gt;./filename&lt;/code&gt; in terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You successfully compiled and ran your first application using OpenGL.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;windows&#34;&gt;
+  Windows
+  &lt;a class=&#34;anchor&#34; href=&#34;#windows&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Windows (MSYS2 and VS Code Method)&lt;/p&gt;
+&lt;p&gt;Here is a Video tutorial if you dont like to read, Some of the commands were little different in video , they are correct in this article now , so you can directly copy and paste them.&lt;/p&gt;
+&lt;video controls width=&#34;100%&#34; style=&#34;max-height: 500px;&#34;&gt;
+  &lt;source src=&#34;opengl-in-windows-vscode.mp4&#34; type=&#34;video/mp4&#34;&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;&lt;strong&gt;Install MSYS2&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the official MSYS2 website: &lt;a href=&#34;https://www.msys2.org/&#34;&gt;https://www.msys2.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download the installer.&lt;/li&gt;
+&lt;li&gt;Run the installer and follow the setup as shown in the website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At the end,type &lt;code&gt;pacman -Syu&lt;/code&gt; in the terminal (automatically opened one). If it closes after updating, open the MSYS2 terminal again and continue.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install Compiler and Build Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the MSYS2 MINGW64 terminal and run:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -S mingw-w64-x86_64-toolchain&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Slect the option 3 (gcc at the end)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This installs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;g++ (C++ compiler)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Install OpenGL + FreeGLUT Development Libraries&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In the same MINGW64 terminal, run:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -S mingw-w64-x86_64-freeglut &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This installs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mingw-w64-x86_64-freeglut – FreeGLUT headers and libraries&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Add MinGW to your PATH&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: &lt;strong&gt;If you have already installed any c/c++ compiler before you need to move the path of msys2 above that compiler path ,I suggest to move &lt;code&gt;C:\msys64\mingw64\bin&lt;/code&gt; this path to top&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Find where MSYS2 is installed (default: C:\msys64)&lt;/li&gt;
+&lt;li&gt;Copy the path to bin (default is &lt;code&gt;C:\msys64\mingw64\bin&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Add this to your Windows System Environment Variables
+&lt;ul&gt;
+&lt;li&gt;Open Searchbar and search for Environment Variables&lt;/li&gt;
+&lt;li&gt;Environment Varibles -&amp;gt; System Variables -&amp;gt; Path -&amp;gt; Edit&lt;/li&gt;
+&lt;li&gt;Add the path to the bin of mingw64 &lt;code&gt;C:\msys64\mingw64\bin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Press Ok in all 3 windows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now you can run g++ from any terminal (PowerShell, CMD, etc.), not just MSYS2.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Write, Compile, and Run the Code&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Below is the same example code from Linux (works the same):&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;GL/freeglut.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Use FreeGLUT header (cross-platform)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_COLOR_BUFFER_BIT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glBegin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_POLYGON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glEnd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glFlush&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitDisplayMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLUT_SINGLE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GLUT_RGB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutCreateWindow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FreeGLUT Triangle Example&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClearColor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutDisplayFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutMainLoop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;VS Code :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open VS Code.&lt;/li&gt;
+&lt;li&gt;Create a .cpp file in your workspace.&lt;/li&gt;
+&lt;li&gt;Open a terminal in VS Code (Ctrl+`).&lt;/li&gt;
+&lt;li&gt;Make sure you’re in the MSYS2 MINGW64 environment (you can launch VS Code from MINGW64 terminal using code . to ensure correct paths).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Compile using:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;g++ filename.cpp -o outputname -lfreeglut -lopengl32 -lglu32&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Run the program:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./outputname&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;IF you dont want to type the long command everytime to build you can configure it (kind of a shortcut)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;create a folder in the root named .vscode&lt;/li&gt;
+&lt;li&gt;create a tasks.json inside the folder&lt;/li&gt;
+&lt;li&gt;paste the below given lines in it&lt;/li&gt;
+&lt;li&gt;After this is done you can compile/build the code using &lt;code&gt;Ctrl+Shift+B&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;After Compilation you can run the code in same way as before by running &lt;code&gt;./outputname&lt;/code&gt; in the terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;tasks.json for Windows (MSYS2)&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;tasks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;label&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Build OpenGL App (Windows MSYS2)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;g++&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;${file}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-o&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;${fileBasenameNoExtension}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lfreeglut&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lopengl32&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;-lglu32&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;group&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;kind&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;isDefault&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;problemMatcher&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;$gcc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;detail&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Builds the current C++ OpenGL/FreeGLUT file for Windows MSYS2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h4 class=&#34;heading&#34; id=&#34;macos&#34;&gt;
+  MacOS
+  &lt;a class=&#34;anchor&#34; href=&#34;#macos&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;OpenGL Development Setup on macOS&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install Requirements&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;macOS already includes the OpenGL.framework and GLUT.framework as part of the system SDK — no extra libraries are needed.&lt;/p&gt;
+&lt;p&gt;However, you must have Apple’s compiler and headers installed via Xcode Command Line Tools.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install Xcode Command Line Tools&lt;/strong&gt;
+In Terminal, run:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xcode-select --install&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/install-xcode-tools.jpg&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Follow the prompts to download and install.
+This gives you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clang++ compiler&lt;/li&gt;
+&lt;li&gt;OpenGL and GLUT headers&lt;/li&gt;
+&lt;li&gt;System SDK frameworks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Create a Simple OpenGL Program&lt;/strong&gt;
+Create a file main.cpp:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;for every program using opengl you need to add this libs for macos : &lt;code&gt;#include &amp;lt;OpenGL/gl.h&amp;gt; #include &amp;lt;GLUT/glut.h&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Below is a test code you can copy&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;OpenGL/gl.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;GLUT/glut.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_COLOR_BUFFER_BIT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glBegin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GL_POLYGON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glColor3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glVertex3f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.75f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glEnd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glFlush&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitDisplayMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLUT_SINGLE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GLUT_RGB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutInitWindowPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutCreateWindow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FreeGLUT Triangle Example&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glClearColor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutDisplayFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;glutMainLoop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/maincpp-opengl.jpg&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Compile&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/compile-opengl.jpg&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;For Apple Silicon M1,M2 etc (arm64):&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clang++ *.cpp -o app &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -framework OpenGL -framework GLUT &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -DGL_SILENCE_DEPRECATION -arch arm64&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;For Intel Macs (x86_64):&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clang++ *.cpp -o app &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -framework OpenGL -framework GLUT &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -DGL_SILENCE_DEPRECATION -arch x86_64&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Run&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/run-opengl.jpg&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./app
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# replace with the name you had given&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;A 500×500 window should appear with a black background.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;VS Code Build Task (Optional)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Create .vscode/tasks.json in your project folder:&lt;/p&gt;
+&lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/001.setup-opengl/tasksjson-opengl.jpg&#34; alt=&#34;gpu image&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Paste the below given congig in it&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;tasks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;label&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Build OpenGL App&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clang++&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;*.cpp&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;-o&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;-framework&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;OpenGL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;-framework&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;GLUT&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;-DGL_SILENCE_DEPRECATION&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;-arch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;arm64&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;options&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nt&#34;&gt;&amp;#34;cwd&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;${workspaceFolder}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;group&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nt&#34;&gt;&amp;#34;kind&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nt&#34;&gt;&amp;#34;isDefault&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;problemMatcher&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;$gcc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Now press Cmd + Shift + B to build.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Notes&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenGL and GLUT are deprecated in macOS but still work.&lt;/li&gt;
+&lt;li&gt;-DGL_SILENCE_DEPRECATION removes deprecation warnings.&lt;/li&gt;
+&lt;li&gt;No extra installs are needed beyond Xcode Command Line Tools.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
+    
     <item>
       <title>Install Ubutnu alongside Windows</title>
       <link>http://localhost:1313/howto/003.dual-boot-ubuntu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/howto/003.dual-boot-ubuntu/</guid>
-      <description>guide to getting started with linux</description>
+      
+      <guid>http://localhost:1313/howto/003.dual-boot-ubuntu/</guid><description>&lt;p&gt;Switching to Linux was one of the best choices i made both for myself and for my computer. If you are not a proffesional user of abdobe products or a hardcore gamer you can and should switch to Linux. I distro hopped many times and made my peace with Ubuntu with KDE. And i truly love my setup, Its efficient It&amp;rsquo;s clean It is the way i want it to be.&lt;/p&gt;
+&lt;p&gt;This blog will guide you for a dual boot install of Ubuntu that is you will have your Windows system intact and will be able to choose between Windows and Ubuntu while turning on your computer. This is a good way for beginners to try ubuntu first and than you can remove the windows components later.&lt;/p&gt;
+&lt;p&gt;Two things you will need :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A empty pendrive with minimum 8gb space&lt;/li&gt;
+&lt;li&gt;Minimum 50gb free space on your computer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;unallocate-some-free-space-for-your-new-operating-system&#34;&gt;
+  Unallocate some free space for your new Operating system
+  &lt;a class=&#34;anchor&#34; href=&#34;#unallocate-some-free-space-for-your-new-operating-system&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is recommended to back up any data since this step may clear up your drive if not done carefully&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Press &lt;strong&gt;Win + X&lt;/strong&gt; and click on &lt;strong&gt;Disk management&lt;/strong&gt;&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/1.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You will see all the partitions of your drive , right click on the drive which you want to shrink to free up some space and click on &lt;strong&gt;Shrink Volume&lt;/strong&gt;&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/3.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Enter the amount of space you want to free for your new OS. I&lt;br&gt;
+am going for 80gb , A minimum of 50gb is recommended&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/4.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After some time the unallocated space will be created where we will install our Ubuntu&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/5.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;create-a-bootable-usb-drive--the-installer-&#34;&gt;
+  Create a bootable USB drive ( the installer )
+  &lt;a class=&#34;anchor&#34; href=&#34;#create-a-bootable-usb-drive--the-installer-&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Download and install &lt;strong&gt;balena etcher&lt;/strong&gt; from &lt;a href=&#34;https://etcher.balena.io/#download-etcher&#34;&gt;here&lt;/a&gt; and insert your USB drive.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download the &lt;strong&gt;Ubuntu 22.04 ISO&lt;/strong&gt; image from &lt;a href=&#34;https://releases.ubuntu.com/jammy/ubuntu-22.04.5-desktop-amd64.iso&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open balena etcher&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/6.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Flash from file&lt;/strong&gt; and select the Ubuntu ISO you have downloaded&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/7.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select your USB drive / it was automatically detected in my case&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/8.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;flash&lt;/strong&gt; , It will take some time to complete.&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/9.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;installing-the-system&#34;&gt;
+  Installing the system
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-system&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Depending upon your computer you may need to go into BIOS and turn off Secure boot and enable boot menu&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Shutdown your computer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Turn on your computer by continuously pressing the key corresponding to your computer brand.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dell : F12&lt;/li&gt;
+&lt;li&gt;HP : Esc, then F9&lt;/li&gt;
+&lt;li&gt;Lenovo : F12 or Fn + F12&lt;/li&gt;
+&lt;li&gt;ASUS : Esc&lt;/li&gt;
+&lt;li&gt;Acer : F12&lt;/li&gt;
+&lt;li&gt;MSI : F11&lt;/li&gt;
+&lt;li&gt;Samsung : Esc or F12&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The boot menu will open , Select the option like below, Your&amp;rsquo;s may be different just select the one without the name Windows.&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/11.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You will be in the gnu boot menu now , Select &lt;strong&gt;Try or Install Ubuntu&lt;/strong&gt;&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/12.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click the &lt;strong&gt;Install Ubuntu&lt;/strong&gt; option and follow along with the default options&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/13.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/14.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select the options like below&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/15.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Install alongside windows&lt;/strong&gt; (This step is very important)&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/16.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Follow along with the default settings , then this page will be shown , This may take some time.&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/20.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click &lt;strong&gt;Restart now&lt;/strong&gt;&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/22.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove your USB drive and then press &lt;strong&gt;Enter&lt;/strong&gt;&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/21.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the Restart , You will see a boot menu like below. Select &lt;strong&gt;Ubuntu&lt;/strong&gt; and you will logged into your New Ubuntu Installation&lt;/p&gt;
+  &lt;div style=&#34;width: 60% ; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/howto/003.dual-boot-ubuntu/23.jpeg&#34; alt=&#34;image 1&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That was it , Welcome to the world of Free Open and Cool Software where you control what you use not the other way around.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Robots playing football</title>
       <link>http://localhost:1313/experiments/003.robots-playing-football/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/003.robots-playing-football/</guid>
-      <description>Our robosoccer journey</description>
+      
+      <guid>http://localhost:1313/experiments/003.robots-playing-football/</guid><description>&lt;p&gt;&lt;strong&gt;RoboSoccer Overview&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Our first robotics project was our RoboSoccer bot.&lt;br&gt;
+It’s not a human like robot playing soccer with robotic legs — it’s a simple RC-controlled, four-wheeled bot (you can think of it as a small car) that pushes the ball toward the goal. Matches are usually 1v1.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Bot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here is our first build. I think it looked pretty good — but unfortunately, it broke during its very first match. :(&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-front.jpg&#34; alt=&#34;Bot V1 Front&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-side.jpg&#34; alt=&#34;Bot V1 Side&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-top.jpg&#34; alt=&#34;Bot V1 Top&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Here is our V2. I don’t have a great photo of it, and it doesn’t look better than V1 — but it managed to score a few goals and lasted until the end. It was a good improvement!&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v2-side.jpg&#34; alt=&#34;Bot V2 Side&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v2-top.jpg&#34; alt=&#34;Bot V2 Top&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Here are some images of bots from other teams. They are much more advanced and built by teams with way more experience than us.&lt;/p&gt;
+&lt;div style=&#34;width: 100%; max-height: 400px; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/other-bots-aec.jpg&#34; alt=&#34;Other Team Bots&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Our v3 bot along with our other partner bot won first position in a compeition, Our first win yay.
+It was a 2v2 match and all thanks to our other bot which is a beast. Below are some images&lt;/p&gt;
+&lt;div style=&#34;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 900px;
+  margin: auto;
+&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-front.JPG&#34; alt=&#34;Bot V3 Front&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-back.jpg&#34; alt=&#34;Bot V3 Back&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-with-other.png&#34; alt=&#34;Bot V3 With Other&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-with-other-front.jpeg&#34; alt=&#34;Bot V3 Front With Other&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Arena&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is what an arena looks like. It’s about 2.5m by 2m in size.&lt;/p&gt;
+&lt;div style=&#34;width: 100%; max-height: 400px; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-arena.jpg&#34; alt=&#34;RoboSoccer Arena&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Game&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The objective of the game is the same as in regular football: score goals. The team that scores the most goals wins the match.&lt;/p&gt;
+&lt;p&gt;Here is a clip from one of our games. As you can see, it’s more like sumo wrestling than football!&lt;/p&gt;
+&lt;video controls width=&#34;100%&#34; style=&#34;max-height: 500px;&#34;&gt;
+  &lt;source src=&#34;robosoccer-jec-game-demo.mp4&#34; type=&#34;video/mp4&#34;&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;Here are links to some games that are much better than ours:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LaOmCM-d4z0&#34;&gt;Game 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=heDUn-9a-r0&#34;&gt;Game 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=lur5Ze4Kxl4&#34;&gt;Game 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now let&amp;rsquo;s talk about our robot&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;introduction&#34;&gt;
+  Introduction
+  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here is a dissection of our bot showing all its key components:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 1018; --h: 664;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;bot disassembly&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-disassembly.png&#34;
+             width=&#34;1018&#34;
+             height=&#34;664&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The chassis is built out of mild steel, and the whole bot weighs around 5 kg with the battery included. Most competitions allow a weight limit of 5 kg, but some permit up to 7 kg — in such cases, we can add additional weights.&lt;/p&gt;
+&lt;p&gt;The key to building a good RoboSoccer bot is ensuring it&amp;rsquo;s sturdy enough to withstand the beating from other heavy bots, while also having enough torque to push opponents. At the same time, it must be agile enough for precise control during fast-paced matches.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;components&#34;&gt;
+  Components
+  &lt;a class=&#34;anchor&#34; href=&#34;#components&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;the-motor&#34;&gt;
+  The Motor:
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-motor&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;These are the most critical components of the bot, so finding the right motor for our use case was a challenging task — especially since it was our first time working with such motors.&lt;/p&gt;
+&lt;p&gt;We did a bit of research on different motor types and their specifications. You can find a basic overview of motor fundamentals &lt;a href=&#34;../common/motors.md&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We eventually chose 12V 300 RPM planetary geared motors called &lt;strong&gt;IG32&lt;/strong&gt; from Rhino Motors. These offered the best value and performance in our budget range.&lt;/p&gt;
+&lt;p&gt;This is an image of the motor we used:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 1600; --h: 1200;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;motor image&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-ig32-motor.jpg&#34;
+             width=&#34;1600&#34;
+             height=&#34;1200&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here are its dimensions:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 950; --h: 366;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;motor dimensions&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-ig32-dimensions.jpg&#34;
+             width=&#34;950&#34;
+             height=&#34;366&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;And below are its detailed specifications:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;Specification&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Details&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;12V DC Geared Motor with Metal Planetary Gearbox&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Base Motor RPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;18000 RPM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Output RPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;300 RPM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Gearbox Stages&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;3-stage planetary&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Rated Torque&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;10 kg·cm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Stall Torque&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&amp;gt; 40 kg·cm (use at rated torque for longevity)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Type&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;D-type&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;6 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;16 mm total (12 mm D-shaped)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Thread&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;M3 threaded hole&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Back Shaft Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;9 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Gearbox Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;32 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Motor Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;28.5 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Motor Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;70 mm (without shaft)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Weight&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;300 g&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Supply Voltage&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;12V DC&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;No-load Current&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;800 mA&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Load Current (Max)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Up to 7.5 A&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Coupling Options&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;CNC coupling (6 mm) or fixed coupling&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can buy these motors &lt;a href=&#34;https://robokits.co.in/motors/rhino-ig32-12v-20w-dc-motors/dc-geared-12v-motor/rhino-12v-dc-300rpm-10kgcm-ig32-heavy-duty-planetary-geared-motor?srsltid=AfmBOoqVHB813jvnOhRy1lyMDQRM1ZH16Mm-hzgd4kq7T1jpzu9Uoq_w&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Test</title>
       <link>http://localhost:1313/howto/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/howto/test/</guid>
-      <description>test</description>
+      
+      <guid>http://localhost:1313/howto/test/</guid><description></description>
     </item>
+    
     <item>
       <title>Unlimited cloud storage</title>
       <link>http://localhost:1313/experiments/002.cloud-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/002.cloud-storage/</guid>
-      <description>A simple trick to demonstrate a problem</description>
+      
+      <guid>http://localhost:1313/experiments/002.cloud-storage/</guid><description>&lt;p&gt;Recently, while I was building a project, I needed a cloud storage provider to store images, videos, etc. — basically a SaaS product. I had a ₹0 budget for the project, so I needed a service with a free tier. Luckily, there are lots of them out there&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Here is a comparison of various providers&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Provider&lt;/th&gt;
+          &lt;th&gt;Free Storage&lt;/th&gt;
+          &lt;th&gt;Free Bandwidth&lt;/th&gt;
+          &lt;th&gt;File Size Limit&lt;/th&gt;
+          &lt;th&gt;Notable Limits / Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Amazon S3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;5 GB&lt;/td&gt;
+          &lt;td&gt;15 GB/month&lt;/td&gt;
+          &lt;td&gt;5 GB&lt;/td&gt;
+          &lt;td&gt;20,000 GET &amp;amp; 2,000 PUT requests/month&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Cloudinary&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;25 Credits/month&lt;/td&gt;
+          &lt;td&gt;25 GB bandwidth/month&lt;/td&gt;
+          &lt;td&gt;100 MB (images, videos)&lt;/td&gt;
+          &lt;td&gt;25 GB total storage included&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Firebase Storage&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1 GB&lt;/td&gt;
+          &lt;td&gt;5 GB/month&lt;/td&gt;
+          &lt;td&gt;2 GB&lt;/td&gt;
+          &lt;td&gt;50K read, 20K write operations/day&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Supabase&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1 GB&lt;/td&gt;
+          &lt;td&gt;2 GB/month&lt;/td&gt;
+          &lt;td&gt;~50 MB (browser upload)&lt;/td&gt;
+          &lt;td&gt;File size capped by browser or CDN&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;ImageKit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;20 GB&lt;/td&gt;
+          &lt;td&gt;20 GB/month&lt;/td&gt;
+          &lt;td&gt;25 MB (browser), 100 MB (API)&lt;/td&gt;
+          &lt;td&gt;500 transformations/day limit&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Uploadcare&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1.5 GB&lt;/td&gt;
+          &lt;td&gt;1 GB/month&lt;/td&gt;
+          &lt;td&gt;100 MB&lt;/td&gt;
+          &lt;td&gt;300 file uploads/month&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Backblaze B2&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;10 GB&lt;/td&gt;
+          &lt;td&gt;1 GB/day download&lt;/td&gt;
+          &lt;td&gt;No hard limit&lt;/td&gt;
+          &lt;td&gt;2,500 downloads/day&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I decided to use Cloudinary for my project because it offered a decent free tier with generous bandwidth and transformation limits. But then I noticed something interesting — all you need to sign up is a Gmail address.&lt;/p&gt;
+&lt;p&gt;So&amp;hellip; why not just create multiple Gmail accounts and keep rotating them? Each new account gives you another free tier allowance. You can imagine the potential: 10 Gmail accounts → 10 Cloudinary accounts → 10× the free limit. For a mid-scale application, this setup could be sufficient.&lt;/p&gt;
+&lt;p&gt;Here is the logic:&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart LR
+    A[User uploads image] --&amp;gt; B[API receives image]
+    B --&amp;gt; C{Select Cloudinary account}
+    
+    C --&amp;gt;|1st Upload| D1[Cloudinary Account 1]
+    C --&amp;gt;|2nd Upload| D2[Cloudinary Account 2]
+    C --&amp;gt;|3rd Upload| D3[Cloudinary Account 3]
+    C --&amp;gt;|4th Upload| D1
+    C --&amp;gt;|5th Upload| D2
+    C --&amp;gt;|...| E[Repeat in Round-Robin]
+
+    D1 --&amp;gt; F1[Upload Success]
+    D2 --&amp;gt; F2[Upload Success]
+    D3 --&amp;gt; F3[Upload Success]
+&lt;/pre&gt;
+
+&lt;p&gt;I created a demo application using Node.js and Express to demonstrate this (I do not intend to use it in production — and you shouldn&amp;rsquo;t either — it&amp;rsquo;s just for educational purposes):&lt;/p&gt;
+&lt;p&gt;The code can be found in my github repo &lt;a href=&#34;https://github.com/neo-0007/abuse-the-free-tier&#34;&gt;abuse-the-free-tier&lt;/a&gt;&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;code-explanation&#34;&gt;
+  Code Explanation
+  &lt;a class=&#34;anchor&#34; href=&#34;#code-explanation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Folder Structure:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;.
+├── uploads/                         # Temp directory for incoming files before upload
+├── views/
+│   └── upload.ejs                   # HTML template for upload form
+├── cloudinaryAccounts.example.json # Example credentials file
+├── cloudinaryAccounts.json         # Actual Cloudinary account credentials (add your accounts)
+├── cloudinary.js                   # Upload logic with account rotation
+├── index.js                        # Main server logic (Express)
+├── package.json                    # Node project dependencies and scripts
+├── package-lock.json               # Dependency lock file
+└── README.md                       # Project description&lt;/code&gt;&lt;/pre&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;I will just explain the main parts here :&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;cloudinaryAccounts.json&lt;/code&gt; contains the api keys and secrets and that is not safe but its for demonstration purposes , we can easily make them as environment variables and inject them using packages like dotenv.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;cloudinaryjs--round-robin-upload-logic&#34;&gt;
+  cloudinary.js — Round-Robin Upload Logic
+  &lt;a class=&#34;anchor&#34; href=&#34;#cloudinaryjs--round-robin-upload-logic&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Handles:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Account rotation via &lt;code&gt;currentIndex % accounts.length&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configuring Cloudinary SDK per request&lt;/li&gt;
+&lt;li&gt;Uploading file to the selected Cloudinary account&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;cloudinary&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;v2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./cloudinaryAccounts.json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We’re importing Cloudinary’s SDK to interact with their API.
+Also importing our cloudinaryAccounts.json file which contains all the account credentials.&lt;/p&gt;
+&lt;p&gt;Before this works, make sure to install Cloudinary using:
+&lt;code&gt;npm install cloudinary&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getNextAccount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We’re using a simple trick called modulo (%) to loop through the accounts in a round-robin fashion. currentIndex % accounts.length ensures we never go out of bounds. Each time we upload, currentIndex++ moves us to the next account. Once it reaches the end, it circles back to the first one.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uploadImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;filePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getNextAccount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;uploader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;upload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;filePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Upload failed:&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This is a example upload function:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Gets the next account using our round-robin method.&lt;/li&gt;
+&lt;li&gt;Sets that account as the active Cloudinary config.&lt;/li&gt;
+&lt;li&gt;Uploads the file at filePath.&lt;/li&gt;
+&lt;li&gt;Returns the Cloudinary response with url, public_id, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uploadImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We export uploadImage so we can use it in other files (like index.js).&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;This is just for cloud object storage , most of the SaaS products can be exploited in this way , even anything that uses API keys and has a free tier. So Is there a way
+to prevent this ? so that software companies can make more money .&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>venvman</title>
       <link>http://localhost:1313/experiments/001.venvman/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/001.venvman/</guid>
-      <description>A Simple Python venv Manager</description>
+      
+      <guid>http://localhost:1313/experiments/001.venvman/</guid><description>&lt;p&gt;Recently, while working on multiple Python projects, I faced some problems with how scattered my virtual environments were. Some were in the project folders, some outside, and I couldn’t remember which ones were important and which ones I could delete.&lt;/p&gt;
+&lt;p&gt;There are great tools like Anaconda, Mamba, Poetry, etc. — but they are heavy and come with more features than I needed. I just wanted something lightweight. Something that uses Python&amp;rsquo;s own built-in &lt;code&gt;venv&lt;/code&gt; and lets me keep everything in one place. And I think if you&amp;rsquo;re just hacking on side projects, scripts, or learning Python — these tools might feel like overkill.&lt;/p&gt;
+&lt;p&gt;So I wrote &lt;strong&gt;venvman&lt;/strong&gt; — a tiny Bash script to create, activate, delete, and list Python virtual environments.
+You can find the project on GitHub &lt;a href=&#34;https://github.com/neo-0007/venvman&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I didn’t need dependency resolution or Python version management. I just wanted:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A centralized place for all venvs (no more searching in random project folders)&lt;/li&gt;
+&lt;li&gt;A simple CLI command like &lt;code&gt;venvman create myproject&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Quick activation from anywhere in the terminal&lt;/li&gt;
+&lt;li&gt;Easy cleanup of unused venvs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That’s it. And I wanted it in one script — no dependencies, no config files, just pure Bash.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;what-does-venvman-do&#34;&gt;
+  What does venvman do?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-does-venvman-do&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once installed, it gives you these commands:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman create &amp;lt;name&amp;gt;     &lt;span class=&#34;c1&#34;&gt;# Create a new virtual environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vactivate &amp;lt;name&amp;gt;          &lt;span class=&#34;c1&#34;&gt;# Activate an existing environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vdeactivate &amp;lt;name&amp;gt;        &lt;span class=&#34;c1&#34;&gt;# Deactivate the current venv&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman list              &lt;span class=&#34;c1&#34;&gt;# See all venvs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman delete &amp;lt;name&amp;gt;     &lt;span class=&#34;c1&#34;&gt;# Delete a venv you don’t need anymore&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;It stores all environments under &lt;code&gt;~/.venvs/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So now I can do:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman create testapi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vactivate testapi&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;limitations&#34;&gt;
+  Limitations
+  &lt;a class=&#34;anchor&#34; href=&#34;#limitations&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is not a replacement for Anaconda, Mamba, or Poetry.
+It does &lt;strong&gt;not&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Manage Python versions (you’ll need &lt;code&gt;pyenv&lt;/code&gt; or something similar for that)&lt;/li&gt;
+&lt;li&gt;Handle &lt;code&gt;requirements.txt&lt;/code&gt; or &lt;code&gt;pyproject.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install any packages for you
+It simply wraps the standard &lt;code&gt;python3 -m venv&lt;/code&gt; and gives you CLI access to keep it all clean and centralized.
+Right now, it only works on &lt;strong&gt;Linux&lt;/strong&gt; or &lt;strong&gt;Bash-compatible shells&lt;/strong&gt;. If you&amp;rsquo;re on macOS (which defaults to &lt;code&gt;zsh&lt;/code&gt;) or Windows (CMD or PowerShell), it won’t run without tweaks. But — if you want to help port it, raise a PR.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;installation&#34;&gt;
+  Installation
+  &lt;a class=&#34;anchor&#34; href=&#34;#installation&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Clone the repo and run the setup:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/neo-0007/venvman.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; venvman
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash setup.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This adds the &lt;code&gt;venvman&lt;/code&gt; command globally (via &lt;code&gt;~/bin&lt;/code&gt;) and appends a function + alias to your &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To uninstall:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash uninstall.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Fork it. Hack it. Improve it. That’s the fun part :)&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>What is the site ?</title>
       <link>http://localhost:1313/posts/what/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/what/</guid>
-      <description>I finally ported from mkdocs to hugo</description>
+      
+      <guid>http://localhost:1313/posts/what/</guid><description>&lt;p&gt;After several switches i have finally made peace with hugo for my personal site , From jekyll to zola I tried ot several static site generators , I also used ejs to create my own site but something always seemed missing.&lt;/p&gt;
+&lt;p&gt;Hugo has all the features i want and with the typo theme my personal site is now clean , minimal and that&amp;rsquo;s what i was searching for.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Why Measure energy usage of Software</title>
       <link>http://localhost:1313/posts/002.why-measure-software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/002.why-measure-software/</guid>
-      <description>a kool project i stumbled upon</description>
+      
+      <guid>http://localhost:1313/posts/002.why-measure-software/</guid><description>&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;konqi-and-katie.jpg&#34;
+    alt=&#34;My Image&#34;
+    style=&#34;width: 100%; height: auto; display: block;&#34;
+  &gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image credit : &lt;a href=&#34;https://krita-artists.org/u/lacaster/&#34;&gt;Lacaster&lt;/a&gt; from Krita artists community&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When we think about things that impact our environment badly , materilistic products like cars, plastic comes to our mind. But software products can also leave a environmental footprint. This effect is mostly not discussed and does not catch our eye easily but on a larger scale they does have a huge environmental impact.&lt;/p&gt;
+&lt;p&gt;I recently bumped into a very interesting project run by a bunch of very kool and friendly people at KDE named as &lt;a href=&#34;https://eco.kde.org/&#34;&gt;KDE Eco&lt;/a&gt; project which aims to promote use of Free, Open Source and Sustainable software. You may think what does the apps you use has to do with environment and Sustaiability right ?&lt;/p&gt;
+&lt;p&gt;The apps you use takes up electricity. Properitary software often collects data, contains ads and uses hardware inefficiently which shortens the lifespan of your device. As a result you will need to buy a new computer or phone more frequently and your old device becomes e waste.&lt;/p&gt;
+&lt;p&gt;Now lets talk about how and why Free and Open Source software are more effiencient and does less harm. Lets take some examples&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows tends to use almost 3 to 4gb RAM in idle mode due to lot&amp;rsquo;s of running background processes that cannot be stopped , compared to Kubuntu which uses it&amp;rsquo;s half. This leads to difference in power consumption as well as performace of your system.&lt;/li&gt;
+&lt;li&gt;Microsoft officially ended mainstream support for Windows 10 on October 14, 2025, meaning it no longer receives security updates, bug fixes, or technical assistance from Microsoft. That means millions of computers in companies using old hardware will most likely become e waste&lt;/li&gt;
+&lt;li&gt;The development of open source projects is done not with the plan to maximize profit by a few individuals but by community as a whole that leads to healthy and fair decisions.&lt;/li&gt;
+&lt;li&gt;The last point i will highlight is that you can see the codebase of open source projects, modify it if you want to and switch to a different version, build it to support on your old phone or computer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You may still think that the effect by software is still very small compared to other industries like automotive, clothing etc. So we should focus on those rather than this small sector.But at scale, small decisions can translate into massive energy savings. The below image shows how this scales up .&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 3000; --h: 807;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;alt text&#34;
+             src=&#34;http://localhost:1313/posts/002.why-measure-software/energy-usage-small-big.png&#34;
+             width=&#34;3000&#34;
+             height=&#34;807&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image source : Kde eco &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;handbook&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For reference 19MWh can roughly power about 10 homes for an entire year.&lt;/p&gt;
+&lt;p&gt;If you are convinced by my words above that&amp;rsquo;s very good welcome to the world of Free, Kool, Open, and Sustanaible software , If not let me explain to you about a project developed by some really kool people from the KDE Community and I am fortunate enough to work with them starting this January as part of Season of KDE.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; is a lab located in Berlin that you can access remotely via GitLab. It allows you to measure the energy usage of software using a CI/CD pipeline and some scripting. Yes you can actually measure and analyze how much energy the software you use consumes. The current measurements of lab is currently under development due to some recent changes, and I’m working on getting the existing measurement scripts running again. Sounds kool, right?&lt;/p&gt;
+&lt;p&gt;In the near future,i hope to see the lab be able to measure almost any software. And since this is an open source project, you can help with that too, The people working on it are incredibly friendly and welcoming.&lt;/p&gt;
+&lt;p&gt;This is a very very informal and personal blog to kick off my season of kde work, Thanks for reading.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

@@ -4,37 +4,606 @@
     <title>Posts on Hrishikesh Gohain</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Hrishikesh Gohain</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Feb 2026 00:34:01 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Feb 2026 23:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
-      <title>How to write automation scripts</title>
+      <title>Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</title>
       <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
-      <pubDate>Mon, 02 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid>
-      <description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;&#xA;&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.&#xA;To solve this problem,&lt;/p&gt;&#xA;&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;</description>
+      <pubDate>Fri, 06 Feb 2026 23:00:00 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/003.how-to-do-automation/</guid><description>&lt;p&gt;KDE Eco is an ongoing initiative taken by the KDE community to support the development and adoption of sustainable Free &amp;amp; Open Source Software worldwide and I am happy to be able to contribute to this mission as part of Season of KDE 2026.&lt;/p&gt;
+&lt;p&gt;As part of this initiative, KDE aims to measure the energy consumption of its software and eco-certify applications with the Blue Angel ecolabel. To make this possible, &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; a dedicated lab based in Berlin provides remote access to energy-measurement hardware via a GitLab CI/CD pipeline to measure the energy usage of software following the guide documented in &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;KDE Eco Handbook&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
+To solve this problem,&lt;/p&gt;
+&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karanjot to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;setup-ydotool-and-kdotool&#34;&gt;
+  Setup &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#setup-ydotool-and-kdotool&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To test the scripts you have written it&amp;rsquo;s recommended to setup locally.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Some features changes and some are removed with updates so it&amp;rsquo;s recommended to build them from source mentioned here&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;ydotool&#34;&gt;
+  ydotool
+  &lt;a class=&#34;anchor&#34; href=&#34;#ydotool&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ydotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Run the setup script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x setup.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./setup.sh install&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Give &lt;code&gt;ydotoold&lt;/code&gt; permission to uinput so it can run without root&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo touch /etc/udev/rules.d/99-uinput.rules
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;KERNEL==&amp;#34;uinput&amp;#34;, MODE=&amp;#34;0660&amp;#34;, GROUP=&amp;#34;input&amp;#34;&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sudo tee /etc/udev/rules.d/99-uinput.rules &amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo usermod -aG input &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$USER&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo udevadm control --reload-rules
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo udevadm trigger&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: A reboot (or full logout/login) is required for the &lt;code&gt;input&lt;/code&gt; group change to take effect.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Reboot your computer and run&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl --user start ydotoold&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Verify that you can use ydotool by &lt;code&gt;ydotool type &amp;quot;Hello&amp;quot;&lt;/code&gt; you will see Hello typed if installation was successful.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;kdotool&#34;&gt;
+  kdotool
+  &lt;a class=&#34;anchor&#34; href=&#34;#kdotool&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; kdotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Run the setup script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod +x setup.sh
+./setup.sh install&lt;/code&gt;&lt;/pre&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Verify that you can use kdotool by &lt;code&gt;kdotool -h&lt;/code&gt;&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;how-to-use-ydotool-and-kdotool-to-perform-various-actions&#34;&gt;
+  How to use ydotool and kdotool to perform various actions
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-to-use-ydotool-and-kdotool-to-perform-various-actions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;press-keys&#34;&gt;
+  Press keys
+  &lt;a class=&#34;anchor&#34; href=&#34;#press-keys&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;For pressing keys we use ydotool , the syntax for pressing keys is a little confusing when you look at it :&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key KEY_CODE:ACTION&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;KEY_CODE&lt;/p&gt;
+&lt;p&gt;Linux uses a file named &lt;code&gt;input-event-codes.h&lt;/code&gt; that defines numeric codes for everything an input device can generate in Linux. Simply speaking for every type of keypress there is a numerical representation. For example, the LEFTCTRL key is represented by 29, and the letter T is represented by 20.
+How to find the code for the key you want to press , You can read the original &lt;code&gt;.h&lt;/code&gt; file by &lt;code&gt;nano /usr/include/linux/input-event-codes.h&lt;/code&gt; if you are in a linux system ( i hope you are using one). or inspect the file &lt;a href=&#34;https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I use grep to find the code for the key i want since the header file is too long &lt;code&gt;grep KEY_LEFTCTRL /usr/include/linux/input-event-codes.h&lt;/code&gt; and so on.&lt;/p&gt;
+&lt;p&gt;ACTION&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 : key is pressed&lt;/li&gt;
+&lt;li&gt;0 : key is released&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So to press and release &lt;code&gt;Ctrl&lt;/code&gt; you can use the following command&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key 29:1 29:0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;press-key-combinations&#34;&gt;
+  Press key combinations
+  &lt;a class=&#34;anchor&#34; href=&#34;#press-key-combinations&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Key combinations is the same as above , you just need to keep all the keys pressed.
+So to press &lt;code&gt;Ctrl+Alt+T&lt;/code&gt; which opens up a terminal you can use the following command&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool key 29:1 56:1 20:1 29:0 56:0 20:0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This translates to Ctrl(pressed) Alt(pressed) T(pressed) Ctrl(released) Alt(released) T(released)&lt;/p&gt;
+&lt;p&gt;This will hopefully open up a terminal.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;click--left-right-double&#34;&gt;
+  Click ( left, right, double)
+  &lt;a class=&#34;anchor&#34; href=&#34;#click--left-right-double&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;For performing mouse clicks we can use the click command in ydotool , If you are do not like codes unlike me,I am sorry but again we have codes&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click OPTIONS BUTTON_CODE&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;OPTIONS&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--repeat&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;N : can be used to press a button N &lt;span class=&#34;nb&#34;&gt;times&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--P : can be used to press and release a button as that&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s what we mostly &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;BUTTON_CODE&lt;/p&gt;
+&lt;p&gt;This is a hexadecimal value that represents different mouse buttons (left, right, middle, etc.).&lt;br&gt;
+Yes, it looks ugly at first, but you can always open up my blog.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC0   &lt;span class=&#34;c1&#34;&gt;# left click&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC1   &lt;span class=&#34;c1&#34;&gt;# right click&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0xC2   &lt;span class=&#34;c1&#34;&gt;# middle button click (scroll button)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40   &lt;span class=&#34;c1&#34;&gt;# left button down (press)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80   &lt;span class=&#34;c1&#34;&gt;# left button up (release)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x41   &lt;span class=&#34;c1&#34;&gt;# right button down (press)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x81   &lt;span class=&#34;c1&#34;&gt;# right button up (release)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;And some combinations
+This can be useful to select text, drag and drop etc..&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40 &lt;span class=&#34;c1&#34;&gt;# left down &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove &lt;span class=&#34;m&#34;&gt;300&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# drag right &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# drag down &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80 &lt;span class=&#34;c1&#34;&gt;# left up&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;same as above but more reliable with delays to simulate a real user&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x40
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -D &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;300&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -D &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool click 0x80&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;type-text&#34;&gt;
+  Type text
+  &lt;a class=&#34;anchor&#34; href=&#34;#type-text&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Typing text is pretty simple using ydotool&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string-you-want-to-type&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;focus-a-specific-app&#34;&gt;
+  Focus a specific app
+  &lt;a class=&#34;anchor&#34; href=&#34;#focus-a-specific-app&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Window Title&amp;#34;&lt;/span&gt; windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class appname windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --classname org.kde.app windowactivate &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; kde apps &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;send-mouse-and-keyboard-commands-to-a-specific-window&#34;&gt;
+  Send mouse and keyboard commands to a specific window
+  &lt;a class=&#34;anchor&#34; href=&#34;#send-mouse-and-keyboard-commands-to-a-specific-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Focus the window using kdotool than execute commands using ydotool since commands are always executed in the active window.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;get-current-mouse-location&#34;&gt;
+  Get current mouse location
+  &lt;a class=&#34;anchor&#34; href=&#34;#get-current-mouse-location&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We can use kdotool for getting the current mouse location which also returns the windowID along with x and y coordinate of current mouse location&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool getmouselocation&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;The output :&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x:42 y:96 screen:0 window:&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;e8aeec46-5c45-42cc-9839-8ad2edcb7f4f&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;If you only want to extract the x and y value since thats what&amp;rsquo;s more important you can do that using regex&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Read mouse location&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;loc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;kdotool getmouselocation&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Extract x and y&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$loc&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/.*x:\([0-9-]*\).*/\1/p&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$loc&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/.*y:\([0-9-]*\).*/\1/p&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-to-a-specific-coordinate&#34;&gt;
+  Move mouse to a specific coordinate
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-to-a-specific-coordinate&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note : We can use ydotool to move the mouse but that may not give us any visual feedback if you are using it in a VM, that is you cannot see the actual mouse cursor move when the commands are executed but you can use the &lt;code&gt;kdotool getmouselocation&lt;/code&gt; to see how the mouse location gets updated.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is a command in ydotool&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove --absolute -x x-value -y y-value&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;but that does not work in Wayland properly.&lt;/p&gt;
+&lt;p&gt;We have an another command that moves the mouse relative to current mouse location so we can use that.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x x-value -y y-value&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;mousemove -9999 -9999 ( moves the mouse to top left 0,0)&lt;/li&gt;
+&lt;li&gt;mousemove x y ( now we move relative to 0,0 so that&amp;rsquo;s like absolute mousemove)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-inside-a-specific-window&#34;&gt;
+  Move mouse inside a specific window
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-inside-a-specific-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Since we cannot directly send mouse events to a window on Wayland, we rely on window geometry that we can get using kdotool and do relative mouse movement using ydotool.&lt;/p&gt;
+&lt;p&gt;The steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Focus the window&lt;/li&gt;
+&lt;li&gt;Get the window geometry&lt;/li&gt;
+&lt;li&gt;Reset the mouse to &lt;code&gt;(0,0)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Move the mouse relatively using the window coordinates&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# First, focus the window:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class firefox windowactivate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Get the window geometry:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kdotool search --class firefox getwindowgeometry
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Example output:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Window {a24d3d34-85f6-4915-821b-54a71a959f6a}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#   Position: 340.23748404968967,68.49159882293117&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#   Geometry: 768x864&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Reset the mouse position to the top-left corner of the screen:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x -9999 -y -9999
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Move the mouse to the Position you got from above command (top left corner of the window )&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Now move the mouse inside the window (top-left corner of the window):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt; -y &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#At this point, the mouse cursor is inside the target window. so you can now move inside the window , but only once than again repeat the above steps once again ( i will think of a script to automate this)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;move-mouse-to-the-center-of-a-window&#34;&gt;
+  Move mouse to the center of a window
+  &lt;a class=&#34;anchor&#34; href=&#34;#move-mouse-to-the-center-of-a-window&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Moving to the center of a window uses the same idea, but instead of moving to x and y, we add half the width and height.&lt;/p&gt;
+&lt;p&gt;From the geometry we extract :
+x=120
+y=80
+width=1280
+height=800&lt;/p&gt;
+&lt;p&gt;Calculate the center:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;center_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; x + width / &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;center_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; y + height / &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Reset the mouse again:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x -9999 -y -9999&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Move the mouse to the center of the window:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ydotool mousemove -x center_x -y center_y&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;These completes all the basic actions that are required to automate user actions , We may need to combine many of above to do tasks that simulate real user.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>How does a drone fly ?</title>
       <link>http://localhost:1313/posts/001.uav-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/001.uav-basics/</guid>
-      <description>Basics of UAV&amp;rsquo;s</description>
+      
+      <guid>http://localhost:1313/posts/001.uav-basics/</guid><description>&lt;p&gt;A drone is a unmanned aerial vechicle (UAV) , a vechicle that flies and has no humans in it , you can say it as a remote controlled plane in simple terms&lt;/p&gt;
+&lt;p&gt;These are the most common types of drones we normally use :&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 3928; --h: 2032;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;drones classification&#34;
+             src=&#34;http://localhost:1313/posts/001.uav-basics/drone-types.png&#34;
+             width=&#34;3928&#34;
+             height=&#34;2032&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.mdpi.com/2504-446X/7/8/515&#34;&gt;An Overview of Drone Applications in the Construction Industry&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All of these are just different types of designs used for different purposes , their main goal is to fly.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;quadcopters&#34;&gt;
+  Quadcopters
+  &lt;a class=&#34;anchor&#34; href=&#34;#quadcopters&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Quadcopter is a type of drone and as its name suggests it uses quad(four) rotors (or motors) to fly . These spinning propellers let the quadcopter fly, hover, turn, and move in any direction.&lt;/p&gt;
+&lt;p&gt;Quadcopters come in various types, distinguished mainly by their frame shapes and intended uses, here are the different types of frame shapes :&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-x-frame.png&#34; alt=&#34;Image 1&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-h-frame.png&#34; alt=&#34;Image 2&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-plus-frame.png&#34; alt=&#34;Image 3&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-y4-frame.png&#34; alt=&#34;Image 4&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-a-tail-frame.png&#34; alt=&#34;Image 5&#34; style=&#34;width: 30%;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-v-tail-frame.png&#34; alt=&#34;Image 6&#34; style=&#34;width: 30%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.t-drones.com/blog/quadcopter-drones.html&#34;&gt;Quadcopter Drones: A Comprehensive Beginner’s Guide&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The most common quadcopter that you may have seen or used are DJI drones :
+
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 640; --h: 640;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;dji drone&#34;
+             src=&#34;http://localhost:1313/posts/001.uav-basics/dji-drone.png&#34;
+             width=&#34;640&#34;
+             height=&#34;640&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://store.dji.com/product/dji-mini-3?vid=128001&#34;&gt;DJI Mini 3&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And this is what our quadcopter looks like
+
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;how-does-a-quadcopter-fly&#34;&gt;
+  How does a Quadcopter Fly
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-does-a-quadcopter-fly&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Newton’s Third Law says:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“For every action, there is an equal and opposite reaction.”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This means that whenever one object pushes on another, the second object pushes back with the same force, but in the opposite direction.&lt;/p&gt;
+&lt;p&gt;When a quadcopter’s propellers spin, they push air downward. Using Newton’s third law, this represents the action. For Newton’s law to be true, there must be an equal and opposite reaction. This reaction is an upward force pushing on the quadcopter. Once this force exceeds the force of gravity pulling the quadcopter downward, the quadcopte begins to move up.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quadcopter-ntl.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Well this is only up and down motion , but a quadcopter can turn and move in any direction and can do flips also , how does it do that ?&lt;/p&gt;
+&lt;h4 class=&#34;heading&#34; id=&#34;movements-of-a-quadcopter&#34;&gt;
+  Movements of a Quadcopter
+  &lt;a class=&#34;anchor&#34; href=&#34;#movements-of-a-quadcopter&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;The three fundamental movements are up &amp;amp; down (vertical movement) , left &amp;amp; right and front &amp;amp; back(lateral movement) and round and round (rotational movement)&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-types-of-movements.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All of these movements can be achieved by varying the speed of the 4 rotors in different ways.&lt;/p&gt;
+&lt;p&gt;When the propellers spin, they push air down. Similar to a helicopter, pushing the air down is the action in Newton’s third law of motion. The reaction is a force, called
+&lt;strong&gt;lift&lt;/strong&gt;, which pushes the quadcopter up. Each of the propellers will create lift, and the total lift for the quadcopter will be the sum of the four propellers’ lifts. The total force of the lift must be stronger than the force of gravity for the quadcopter to take off. Once in the air, the quadcopter can hover with no vertical movement by having the forces of lift and gravity equal.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-vertical-movement.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When the force of lift acts straight upward, the quadcopter moves vertically. But, when lift acts at an angle, it can also move laterally. This is because part of the force of the lift is upward and part of it is to the side, resulting in lateral movement that can be from side-to-side or forward and backward.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-lateral-movement.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lateral movement occurs by varying the speed of the propellers. Increasing the speed of the two propellers on one side of the quadcopter and/or decreasing the speed of the two propellers on the other side creates uneven amounts of lift on the two sides. The lift created on the side with the faster spinning propellers is greater than the lift created on the opposite side. The result is that the quadcopter moves in the direction of the side where less lift is created.&lt;/p&gt;
+&lt;p&gt;Here are all the movements using lateral movement :&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-foreward.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-backward.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-left.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-right.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And the last type of movement is rotational motion , how does the quadcopter rotates in its own axis ? for that lets learn about the oreantations of the rotors of a quadcopter.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quadcopter-props-direction.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image Source: &lt;a href=&#34;&#34;&gt;Ardupilot&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As you can see in the above image , Rotor 3 and 4 rotates in Clockwise direction and Rotor 1 and 2 rotates in Anticlockwise direction.&lt;/p&gt;
+&lt;p&gt;This is done due to a force called torque , a twisting force that causes rotation When a propeller spins, this force is produced. And, according to Newton’s third law of motion, an equal and opposite force is produced as well.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/helicopter-example.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image Source: &lt;a href=&#34;https://www.tsb.gc.ca/eng/rapports-reports/aviation/2020/a20a0027/a20a0027.html&#34;&gt;Air transportation safety investigation report A20A0027&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We see this in action when we look at a helicopter like the one above. When the blades on top of the helicopter (the rotor) spin, torque is created. The equal and opposite force rotates the body of the helicopter in the opposite direction. Since this would make the helicopter unusable, a tail rotor is added. It
+creates a force that counteracts the torque and stops the helicopter from rotating uncontrollably&lt;/p&gt;
+&lt;p&gt;Torque also affects a quadcopter when its propellers spin because each propeller individually creates torque when it rotates. All four torques are added up to determine
+the total torque acting on the quadcopter, If all propellers spins in same direction , the quadcopter body would have been rotating in the opposite direction .Therefore&lt;br&gt;
+Engineers have come up with a clever way of counteracting this torque—two of the propellers spin clockwise and two spin counterclockwise,. This results in two
+propellers creating torque that acts clockwise and two creating torque that acts counterclockwise. Thus, the forces cancel each other out.&lt;/p&gt;
+&lt;p&gt;This torque can also be used to create rotational movement for the quadcopter.In the above shown image When propellers 1 and 3 rotate, they produce counterclockwise torque(remember, equal and opposite reactions). If these propellers rotate faster than propellers 2 and 4, the counterclockwise torque acting on the quadcopter will be
+stronger than the clockwise torque acting on it. This results in the quadcopter rotating counterclockwise. Of course, if propellers 2 and 4 rotate faster than
+propellers 1 and 3, the quadcopter will rotate clockwise.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-rotate-left.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/quad-rotate-right.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image source: &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Mastering the Art of Drone Maneuvers: Exploring Lateral Movements and Rotations&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;the-propellers&#34;&gt;
+  The Propellers
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-propellers&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;While having pairs of propellers rotating in opposite directions effectively controls the torque acting on the quadcopter, it presents a new problem for us. If propellers spin in opposite directions, two of the propellers push air upward while two push air downward. When you combine these forces, the total lift is zero and the quadcopter
+cannot take off. To overcome this, we use two different propeller blades.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/posts/001.uav-basics/props-direction.png&#34; alt=&#34;My Image&#34; style=&#34;max-width: 80%;&#34;&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Image Source: &lt;a href=&#34;&#34;&gt;Ardupilot&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In above image, you can see that the leftmost propeller has the right edge higher in the front while the other has the left edge higher. This design changes the direction the air is pushed by the two propellers, meaning that when they spin in opposite directions, they actually push the air in the same direction.&lt;/p&gt;
+&lt;p&gt;This was a brief overview of what quadcopters are and how does they work.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;references&#34;&gt;
+  References
+  &lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The Science behind quadcopters - &lt;a href=&#34;https://www.nasa.gov/wp-content/uploads/2020/05/aam-science-behind-quadcopters-reader-student-guide_0.pdf&#34;&gt;NASA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quadcopter classification - &lt;a href=&#34;https://www.t-drones.com/blog/quadcopter-drones.html&#34;&gt;T-drones&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quadcopter Movements - &lt;a href=&#34;https://www.holystone.com/en/blog/FlyingFun/DroneManeuvers.html?srsltid=AfmBOoqNSvzxwp2rUDrEzNYTp0H40K7R8PqHS1ID9_oTDKWuo5J6_YXg&#34;&gt;Holystone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Quadcopter&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
+    
     <item>
       <title>What is the site ?</title>
       <link>http://localhost:1313/posts/what/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/what/</guid>
-      <description>I finally ported from mkdocs to hugo</description>
+      
+      <guid>http://localhost:1313/posts/what/</guid><description>&lt;p&gt;After several switches i have finally made peace with hugo for my personal site , From jekyll to zola I tried ot several static site generators , I also used ejs to create my own site but something always seemed missing.&lt;/p&gt;
+&lt;p&gt;Hugo has all the features i want and with the typo theme my personal site is now clean , minimal and that&amp;rsquo;s what i was searching for.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Why Measure energy usage of Software</title>
       <link>http://localhost:1313/posts/002.why-measure-software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/002.why-measure-software/</guid>
-      <description>a kool project i stumbled upon</description>
+      
+      <guid>http://localhost:1313/posts/002.why-measure-software/</guid><description>&lt;div style=&#34;text-align: center;&#34;&gt;
+  &lt;img
+    src=&#34;konqi-and-katie.jpg&#34;
+    alt=&#34;My Image&#34;
+    style=&#34;width: 100%; height: auto; display: block;&#34;
+  &gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image credit : &lt;a href=&#34;https://krita-artists.org/u/lacaster/&#34;&gt;Lacaster&lt;/a&gt; from Krita artists community&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When we think about things that impact our environment badly , materilistic products like cars, plastic comes to our mind. But software products can also leave a environmental footprint. This effect is mostly not discussed and does not catch our eye easily but on a larger scale they does have a huge environmental impact.&lt;/p&gt;
+&lt;p&gt;I recently bumped into a very interesting project run by a bunch of very kool and friendly people at KDE named as &lt;a href=&#34;https://eco.kde.org/&#34;&gt;KDE Eco&lt;/a&gt; project which aims to promote use of Free, Open Source and Sustainable software. You may think what does the apps you use has to do with environment and Sustaiability right ?&lt;/p&gt;
+&lt;p&gt;The apps you use takes up electricity. Properitary software often collects data, contains ads and uses hardware inefficiently which shortens the lifespan of your device. As a result you will need to buy a new computer or phone more frequently and your old device becomes e waste.&lt;/p&gt;
+&lt;p&gt;Now lets talk about how and why Free and Open Source software are more effiencient and does less harm. Lets take some examples&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows tends to use almost 3 to 4gb RAM in idle mode due to lot&amp;rsquo;s of running background processes that cannot be stopped , compared to Kubuntu which uses it&amp;rsquo;s half. This leads to difference in power consumption as well as performace of your system.&lt;/li&gt;
+&lt;li&gt;Microsoft officially ended mainstream support for Windows 10 on October 14, 2025, meaning it no longer receives security updates, bug fixes, or technical assistance from Microsoft. That means millions of computers in companies using old hardware will most likely become e waste&lt;/li&gt;
+&lt;li&gt;The development of open source projects is done not with the plan to maximize profit by a few individuals but by community as a whole that leads to healthy and fair decisions.&lt;/li&gt;
+&lt;li&gt;The last point i will highlight is that you can see the codebase of open source projects, modify it if you want to and switch to a different version, build it to support on your old phone or computer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You may still think that the effect by software is still very small compared to other industries like automotive, clothing etc. So we should focus on those rather than this small sector.But at scale, small decisions can translate into massive energy savings. The below image shows how this scales up .&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 3000; --h: 807;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;alt text&#34;
+             src=&#34;http://localhost:1313/posts/002.why-measure-software/energy-usage-small-big.png&#34;
+             width=&#34;3000&#34;
+             height=&#34;807&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Image source : Kde eco &lt;a href=&#34;https://eco.kde.org/handbook/&#34;&gt;handbook&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For reference 19MWh can roughly power about 10 homes for an entire year.&lt;/p&gt;
+&lt;p&gt;If you are convinced by my words above that&amp;rsquo;s very good welcome to the world of Free, Kool, Open, and Sustanaible software , If not let me explain to you about a project developed by some really kool people from the KDE Community and I am fortunate enough to work with them starting this January as part of Season of KDE.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; is a lab located in Berlin that you can access remotely via GitLab. It allows you to measure the energy usage of software using a CI/CD pipeline and some scripting. Yes you can actually measure and analyze how much energy the software you use consumes. The current measurements of lab is currently under development due to some recent changes, and I’m working on getting the existing measurement scripts running again. Sounds kool, right?&lt;/p&gt;
+&lt;p&gt;In the near future,i hope to see the lab be able to measure almost any software. And since this is an open source project, you can help with that too, The people working on it are incredibly friendly and welcoming.&lt;/p&gt;
+&lt;p&gt;This is a very very informal and personal blog to kick off my season of kde work, Thanks for reading.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

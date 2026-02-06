@@ -4,29 +4,507 @@
     <title>Experiments on Hrishikesh Gohain</title>
     <link>http://localhost:1313/experiments/</link>
     <description>Recent content in Experiments on Hrishikesh Gohain</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/experiments/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://localhost:1313/experiments/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Robots playing football</title>
       <link>http://localhost:1313/experiments/003.robots-playing-football/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/003.robots-playing-football/</guid>
-      <description>Our robosoccer journey</description>
+      
+      <guid>http://localhost:1313/experiments/003.robots-playing-football/</guid><description>&lt;p&gt;&lt;strong&gt;RoboSoccer Overview&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Our first robotics project was our RoboSoccer bot.&lt;br&gt;
+It’s not a human like robot playing soccer with robotic legs — it’s a simple RC-controlled, four-wheeled bot (you can think of it as a small car) that pushes the ball toward the goal. Matches are usually 1v1.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Bot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here is our first build. I think it looked pretty good — but unfortunately, it broke during its very first match. :(&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-front.jpg&#34; alt=&#34;Bot V1 Front&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-side.jpg&#34; alt=&#34;Bot V1 Side&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v1-top.jpg&#34; alt=&#34;Bot V1 Top&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Here is our V2. I don’t have a great photo of it, and it doesn’t look better than V1 — but it managed to score a few goals and lasted until the end. It was a good improvement!&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v2-side.jpg&#34; alt=&#34;Bot V2 Side&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-v2-top.jpg&#34; alt=&#34;Bot V2 Top&#34; style=&#34;width: 30%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Here are some images of bots from other teams. They are much more advanced and built by teams with way more experience than us.&lt;/p&gt;
+&lt;div style=&#34;width: 100%; max-height: 400px; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/other-bots-aec.jpg&#34; alt=&#34;Other Team Bots&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Our v3 bot along with our other partner bot won first position in a compeition, Our first win yay.
+It was a 2v2 match and all thanks to our other bot which is a beast. Below are some images&lt;/p&gt;
+&lt;div style=&#34;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 900px;
+  margin: auto;
+&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-front.JPG&#34; alt=&#34;Bot V3 Front&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-back.jpg&#34; alt=&#34;Bot V3 Back&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-with-other.png&#34; alt=&#34;Bot V3 With Other&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/botv3-with-other-front.jpeg&#34; alt=&#34;Bot V3 Front With Other&#34; style=&#34;width: 100%; border-radius: 8px;&#34;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Arena&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is what an arena looks like. It’s about 2.5m by 2m in size.&lt;/p&gt;
+&lt;div style=&#34;width: 100%; max-height: 400px; overflow: hidden;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-arena.jpg&#34; alt=&#34;RoboSoccer Arena&#34; style=&#34;width: 100%; height: auto; object-fit: contain;&#34;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;The Game&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The objective of the game is the same as in regular football: score goals. The team that scores the most goals wins the match.&lt;/p&gt;
+&lt;p&gt;Here is a clip from one of our games. As you can see, it’s more like sumo wrestling than football!&lt;/p&gt;
+&lt;video controls width=&#34;100%&#34; style=&#34;max-height: 500px;&#34;&gt;
+  &lt;source src=&#34;robosoccer-jec-game-demo.mp4&#34; type=&#34;video/mp4&#34;&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;Here are links to some games that are much better than ours:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LaOmCM-d4z0&#34;&gt;Game 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=heDUn-9a-r0&#34;&gt;Game 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=lur5Ze4Kxl4&#34;&gt;Game 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now let&amp;rsquo;s talk about our robot&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;introduction&#34;&gt;
+  Introduction
+  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here is a dissection of our bot showing all its key components:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 1018; --h: 664;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;bot disassembly&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-bot-disassembly.png&#34;
+             width=&#34;1018&#34;
+             height=&#34;664&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The chassis is built out of mild steel, and the whole bot weighs around 5 kg with the battery included. Most competitions allow a weight limit of 5 kg, but some permit up to 7 kg — in such cases, we can add additional weights.&lt;/p&gt;
+&lt;p&gt;The key to building a good RoboSoccer bot is ensuring it&amp;rsquo;s sturdy enough to withstand the beating from other heavy bots, while also having enough torque to push opponents. At the same time, it must be agile enough for precise control during fast-paced matches.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;components&#34;&gt;
+  Components
+  &lt;a class=&#34;anchor&#34; href=&#34;#components&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;the-motor&#34;&gt;
+  The Motor:
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-motor&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;These are the most critical components of the bot, so finding the right motor for our use case was a challenging task — especially since it was our first time working with such motors.&lt;/p&gt;
+&lt;p&gt;We did a bit of research on different motor types and their specifications. You can find a basic overview of motor fundamentals &lt;a href=&#34;../common/motors.md&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We eventually chose 12V 300 RPM planetary geared motors called &lt;strong&gt;IG32&lt;/strong&gt; from Rhino Motors. These offered the best value and performance in our budget range.&lt;/p&gt;
+&lt;p&gt;This is an image of the motor we used:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 1600; --h: 1200;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;motor image&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-ig32-motor.jpg&#34;
+             width=&#34;1600&#34;
+             height=&#34;1200&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here are its dimensions:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;figure class=&#34;&#34;&gt;
+  
+
+  
+    
+      &lt;div class=&#34;img-container&#34; style=&#34;--w: 950; --h: 366;&#34;&gt;
+        &lt;img loading=&#34;lazy&#34;
+             alt=&#34;motor dimensions&#34;
+             src=&#34;http://localhost:1313/experiments/003.robots-playing-football/robosoccer-ig32-dimensions.jpg&#34;
+             width=&#34;950&#34;
+             height=&#34;366&#34;&gt;
+      &lt;/div&gt;
+    
+  
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;And below are its detailed specifications:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;Specification&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Details&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;12V DC Geared Motor with Metal Planetary Gearbox&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Base Motor RPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;18000 RPM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Output RPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;300 RPM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Gearbox Stages&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;3-stage planetary&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Rated Torque&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;10 kg·cm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Stall Torque&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&amp;gt; 40 kg·cm (use at rated torque for longevity)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Type&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;D-type&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;6 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;16 mm total (12 mm D-shaped)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Shaft Thread&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;M3 threaded hole&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Back Shaft Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;9 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Gearbox Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;32 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Motor Diameter&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;28.5 mm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Motor Length&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;70 mm (without shaft)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Weight&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;300 g&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Supply Voltage&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;12V DC&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;No-load Current&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;800 mA&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Load Current (Max)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Up to 7.5 A&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Coupling Options&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;CNC coupling (6 mm) or fixed coupling&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can buy these motors &lt;a href=&#34;https://robokits.co.in/motors/rhino-ig32-12v-20w-dc-motors/dc-geared-12v-motor/rhino-12v-dc-300rpm-10kgcm-ig32-heavy-duty-planetary-geared-motor?srsltid=AfmBOoqVHB813jvnOhRy1lyMDQRM1ZH16Mm-hzgd4kq7T1jpzu9Uoq_w&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Unlimited cloud storage</title>
       <link>http://localhost:1313/experiments/002.cloud-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/002.cloud-storage/</guid>
-      <description>A simple trick to demonstrate a problem</description>
+      
+      <guid>http://localhost:1313/experiments/002.cloud-storage/</guid><description>&lt;p&gt;Recently, while I was building a project, I needed a cloud storage provider to store images, videos, etc. — basically a SaaS product. I had a ₹0 budget for the project, so I needed a service with a free tier. Luckily, there are lots of them out there&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Here is a comparison of various providers&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Provider&lt;/th&gt;
+          &lt;th&gt;Free Storage&lt;/th&gt;
+          &lt;th&gt;Free Bandwidth&lt;/th&gt;
+          &lt;th&gt;File Size Limit&lt;/th&gt;
+          &lt;th&gt;Notable Limits / Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Amazon S3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;5 GB&lt;/td&gt;
+          &lt;td&gt;15 GB/month&lt;/td&gt;
+          &lt;td&gt;5 GB&lt;/td&gt;
+          &lt;td&gt;20,000 GET &amp;amp; 2,000 PUT requests/month&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Cloudinary&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;25 Credits/month&lt;/td&gt;
+          &lt;td&gt;25 GB bandwidth/month&lt;/td&gt;
+          &lt;td&gt;100 MB (images, videos)&lt;/td&gt;
+          &lt;td&gt;25 GB total storage included&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Firebase Storage&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1 GB&lt;/td&gt;
+          &lt;td&gt;5 GB/month&lt;/td&gt;
+          &lt;td&gt;2 GB&lt;/td&gt;
+          &lt;td&gt;50K read, 20K write operations/day&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Supabase&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1 GB&lt;/td&gt;
+          &lt;td&gt;2 GB/month&lt;/td&gt;
+          &lt;td&gt;~50 MB (browser upload)&lt;/td&gt;
+          &lt;td&gt;File size capped by browser or CDN&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;ImageKit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;20 GB&lt;/td&gt;
+          &lt;td&gt;20 GB/month&lt;/td&gt;
+          &lt;td&gt;25 MB (browser), 100 MB (API)&lt;/td&gt;
+          &lt;td&gt;500 transformations/day limit&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Uploadcare&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1.5 GB&lt;/td&gt;
+          &lt;td&gt;1 GB/month&lt;/td&gt;
+          &lt;td&gt;100 MB&lt;/td&gt;
+          &lt;td&gt;300 file uploads/month&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Backblaze B2&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;10 GB&lt;/td&gt;
+          &lt;td&gt;1 GB/day download&lt;/td&gt;
+          &lt;td&gt;No hard limit&lt;/td&gt;
+          &lt;td&gt;2,500 downloads/day&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I decided to use Cloudinary for my project because it offered a decent free tier with generous bandwidth and transformation limits. But then I noticed something interesting — all you need to sign up is a Gmail address.&lt;/p&gt;
+&lt;p&gt;So&amp;hellip; why not just create multiple Gmail accounts and keep rotating them? Each new account gives you another free tier allowance. You can imagine the potential: 10 Gmail accounts → 10 Cloudinary accounts → 10× the free limit. For a mid-scale application, this setup could be sufficient.&lt;/p&gt;
+&lt;p&gt;Here is the logic:&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart LR
+    A[User uploads image] --&amp;gt; B[API receives image]
+    B --&amp;gt; C{Select Cloudinary account}
+    
+    C --&amp;gt;|1st Upload| D1[Cloudinary Account 1]
+    C --&amp;gt;|2nd Upload| D2[Cloudinary Account 2]
+    C --&amp;gt;|3rd Upload| D3[Cloudinary Account 3]
+    C --&amp;gt;|4th Upload| D1
+    C --&amp;gt;|5th Upload| D2
+    C --&amp;gt;|...| E[Repeat in Round-Robin]
+
+    D1 --&amp;gt; F1[Upload Success]
+    D2 --&amp;gt; F2[Upload Success]
+    D3 --&amp;gt; F3[Upload Success]
+&lt;/pre&gt;
+
+&lt;p&gt;I created a demo application using Node.js and Express to demonstrate this (I do not intend to use it in production — and you shouldn&amp;rsquo;t either — it&amp;rsquo;s just for educational purposes):&lt;/p&gt;
+&lt;p&gt;The code can be found in my github repo &lt;a href=&#34;https://github.com/neo-0007/abuse-the-free-tier&#34;&gt;abuse-the-free-tier&lt;/a&gt;&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;code-explanation&#34;&gt;
+  Code Explanation
+  &lt;a class=&#34;anchor&#34; href=&#34;#code-explanation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Folder Structure:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;.
+├── uploads/                         # Temp directory for incoming files before upload
+├── views/
+│   └── upload.ejs                   # HTML template for upload form
+├── cloudinaryAccounts.example.json # Example credentials file
+├── cloudinaryAccounts.json         # Actual Cloudinary account credentials (add your accounts)
+├── cloudinary.js                   # Upload logic with account rotation
+├── index.js                        # Main server logic (Express)
+├── package.json                    # Node project dependencies and scripts
+├── package-lock.json               # Dependency lock file
+└── README.md                       # Project description&lt;/code&gt;&lt;/pre&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;I will just explain the main parts here :&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;cloudinaryAccounts.json&lt;/code&gt; contains the api keys and secrets and that is not safe but its for demonstration purposes , we can easily make them as environment variables and inject them using packages like dotenv.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;cloudinaryjs--round-robin-upload-logic&#34;&gt;
+  cloudinary.js — Round-Robin Upload Logic
+  &lt;a class=&#34;anchor&#34; href=&#34;#cloudinaryjs--round-robin-upload-logic&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Handles:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Account rotation via &lt;code&gt;currentIndex % accounts.length&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configuring Cloudinary SDK per request&lt;/li&gt;
+&lt;li&gt;Uploading file to the selected Cloudinary account&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;cloudinary&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;v2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./cloudinaryAccounts.json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We’re importing Cloudinary’s SDK to interact with their API.
+Also importing our cloudinaryAccounts.json file which contains all the account credentials.&lt;/p&gt;
+&lt;p&gt;Before this works, make sure to install Cloudinary using:
+&lt;code&gt;npm install cloudinary&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getNextAccount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;accounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;currentIndex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We’re using a simple trick called modulo (%) to loop through the accounts in a round-robin fashion. currentIndex % accounts.length ensures we never go out of bounds. Each time we upload, currentIndex++ moves us to the next account. Once it reaches the end, it circles back to the first one.&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uploadImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;filePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getNextAccount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;account&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cloudinary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;uploader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;upload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;filePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Upload failed:&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This is a example upload function:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Gets the next account using our round-robin method.&lt;/li&gt;
+&lt;li&gt;Sets that account as the active Cloudinary config.&lt;/li&gt;
+&lt;li&gt;Uploads the file at filePath.&lt;/li&gt;
+&lt;li&gt;Returns the Cloudinary response with url, public_id, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uploadImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;We export uploadImage so we can use it in other files (like index.js).&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;This is just for cloud object storage , most of the SaaS products can be exploited in this way , even anything that uses API keys and has a free tier. So Is there a way
+to prevent this ? so that software companies can make more money .&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>venvman</title>
       <link>http://localhost:1313/experiments/001.venvman/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/experiments/001.venvman/</guid>
-      <description>A Simple Python venv Manager</description>
+      
+      <guid>http://localhost:1313/experiments/001.venvman/</guid><description>&lt;p&gt;Recently, while working on multiple Python projects, I faced some problems with how scattered my virtual environments were. Some were in the project folders, some outside, and I couldn’t remember which ones were important and which ones I could delete.&lt;/p&gt;
+&lt;p&gt;There are great tools like Anaconda, Mamba, Poetry, etc. — but they are heavy and come with more features than I needed. I just wanted something lightweight. Something that uses Python&amp;rsquo;s own built-in &lt;code&gt;venv&lt;/code&gt; and lets me keep everything in one place. And I think if you&amp;rsquo;re just hacking on side projects, scripts, or learning Python — these tools might feel like overkill.&lt;/p&gt;
+&lt;p&gt;So I wrote &lt;strong&gt;venvman&lt;/strong&gt; — a tiny Bash script to create, activate, delete, and list Python virtual environments.
+You can find the project on GitHub &lt;a href=&#34;https://github.com/neo-0007/venvman&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I didn’t need dependency resolution or Python version management. I just wanted:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A centralized place for all venvs (no more searching in random project folders)&lt;/li&gt;
+&lt;li&gt;A simple CLI command like &lt;code&gt;venvman create myproject&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Quick activation from anywhere in the terminal&lt;/li&gt;
+&lt;li&gt;Easy cleanup of unused venvs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That’s it. And I wanted it in one script — no dependencies, no config files, just pure Bash.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;what-does-venvman-do&#34;&gt;
+  What does venvman do?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-does-venvman-do&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once installed, it gives you these commands:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman create &amp;lt;name&amp;gt;     &lt;span class=&#34;c1&#34;&gt;# Create a new virtual environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vactivate &amp;lt;name&amp;gt;          &lt;span class=&#34;c1&#34;&gt;# Activate an existing environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vdeactivate &amp;lt;name&amp;gt;        &lt;span class=&#34;c1&#34;&gt;# Deactivate the current venv&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman list              &lt;span class=&#34;c1&#34;&gt;# See all venvs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman delete &amp;lt;name&amp;gt;     &lt;span class=&#34;c1&#34;&gt;# Delete a venv you don’t need anymore&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;It stores all environments under &lt;code&gt;~/.venvs/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So now I can do:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;venvman create testapi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vactivate testapi&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;limitations&#34;&gt;
+  Limitations
+  &lt;a class=&#34;anchor&#34; href=&#34;#limitations&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is not a replacement for Anaconda, Mamba, or Poetry.
+It does &lt;strong&gt;not&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Manage Python versions (you’ll need &lt;code&gt;pyenv&lt;/code&gt; or something similar for that)&lt;/li&gt;
+&lt;li&gt;Handle &lt;code&gt;requirements.txt&lt;/code&gt; or &lt;code&gt;pyproject.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install any packages for you
+It simply wraps the standard &lt;code&gt;python3 -m venv&lt;/code&gt; and gives you CLI access to keep it all clean and centralized.
+Right now, it only works on &lt;strong&gt;Linux&lt;/strong&gt; or &lt;strong&gt;Bash-compatible shells&lt;/strong&gt;. If you&amp;rsquo;re on macOS (which defaults to &lt;code&gt;zsh&lt;/code&gt;) or Windows (CMD or PowerShell), it won’t run without tweaks. But — if you want to help port it, raise a PR.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;installation&#34;&gt;
+  Installation
+  &lt;a class=&#34;anchor&#34; href=&#34;#installation&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Clone the repo and run the setup:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/neo-0007/venvman.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; venvman
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash setup.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;This adds the &lt;code&gt;venvman&lt;/code&gt; command globally (via &lt;code&gt;~/bin&lt;/code&gt;) and appends a function + alias to your &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To uninstall:&lt;/p&gt;
+&lt;div class=&#34;code-block&#34;&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash uninstall.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Fork it. Hack it. Improve it. That’s the fun part :)&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>
