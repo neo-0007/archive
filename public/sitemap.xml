@@ -2,57 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-02-06T23:15:35+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/howto/002.fix-wifi-dual-boot/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-02-03T11:28:40+05:30</lastmod>
+    <lastmod>2026-02-27T22:08:45+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/experiments/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <loc>http://localhost:1313/categories/kde/</loc>
+    <lastmod>2026-02-27T22:08:45+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-02-27T22:08:45+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/001.uav-basics/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/howto/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/howto/001.setup-opengl/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/howto/003.dual-boot-ubuntu/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/life/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/experiments/003.robots-playing-football/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/posts/004.sok-midterm-update/</loc>
+    <lastmod>2026-02-27T22:08:45+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/tech/</loc>
-    <lastmod>2026-02-03T11:28:40+05:30</lastmod>
+    <lastmod>2026-02-27T22:08:45+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kde/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kde-eco/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kecolab/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sok2026/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/003.how-to-do-automation/</loc>
+    <lastmod>2026-02-27T20:17:17+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/howto/002.fix-wifi-dual-boot/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/experiments/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/001.uav-basics/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/howto/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/howto/001.setup-opengl/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/howto/003.dual-boot-ubuntu/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/life/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/experiments/003.robots-playing-football/</loc>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/howto/test/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/experiments/002.cloud-storage/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/experiments/001.venvman/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/what/</loc>
-    <lastmod>2026-02-03T11:11:03+05:30</lastmod>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/002.why-measure-software/</loc>
-    <lastmod>2026-02-03T11:28:40+05:30</lastmod>
+    <lastmod>2026-02-27T20:16:14+05:30</lastmod>
   </url>
 </urlset>

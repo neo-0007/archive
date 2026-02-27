@@ -6,10 +6,71 @@
     <description>Recent content in Posts on Hrishikesh Gohain</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Feb 2026 23:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 26 Feb 2026 23:00:00 +0530</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SOK2026: Porting energy measurement scripts of KEcoLab to Wayland</title>
+      <link>http://localhost:1313/posts/004.sok-midterm-update/</link>
+      <pubDate>Thu, 26 Feb 2026 23:00:00 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/004.sok-midterm-update/</guid><description>&lt;h2 class=&#34;heading&#34; id=&#34;about-me&#34;&gt;
+  About me
+  &lt;a class=&#34;anchor&#34; href=&#34;#about-me&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Hi Everyone ,I am Hrishikesh Gohain a third year undergraduate student in Computer Science &amp;amp; Engineering from India. For the past few weeks I have been working as a Season of KDE mentee with my mentors Joseph P. De Veaugh-Geiss ,Aakarsh MJ and Karanjot Singh.
+This post summarizes the work I have done until Week 5.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;about-kecolab&#34;&gt;
+  About KEcoLab
+  &lt;a class=&#34;anchor&#34; href=&#34;#about-kecolab&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://eco.kde.org/&#34;&gt;KDE Eco&lt;/a&gt; is an ongoing initiative by the KDE Community that promotes the use and development of Free , Open Source and Sustainable Software. &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;KEcoLab&lt;/a&gt; is a lab located in Berlin that you can access remotely via GitLab. The lab allows you to measure the energy usage of software using a CI/CD pipeline and generate a report that can be used to apply for Blue Angel Eco Certification.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;about-the-sok-project&#34;&gt;
+  About the SOK Project
+  &lt;a class=&#34;anchor&#34; href=&#34;#about-the-sok-project&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The Lab computer on which the software runs for testing was migrated to Fedora 43 recently which comes with Wayland by default, In the past to write standard user scenario scripts that automates the actions done by a standard user, xdotool was used which does not work on Wayland. My work is to port the existing test scripts to a wayland compatible tool and add new test scripts to measure energy usage of Plasma Desktop Environment which can also act as a reference for anyone wanting to test the energy usage of their software.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;work-done-so-far&#34;&gt;
+  Work done so Far
+  &lt;a class=&#34;anchor&#34; href=&#34;#work-done-so-far&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;week-1&#34;&gt;
+  Week 1
+  &lt;a class=&#34;anchor&#34; href=&#34;#week-1&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;In the first week I studied the Lab architecture and how testing of software is done using KEcoLab. The work done by past mentees as part of SOK and GSoC was very helpful for my research. I also set up access to the lab computers through SSH. RDP access had some issues which were solved with the help of my mentors. To replicate the lab environment locally, I set up a Fedora 43 Virtual Machine so that I can test scripts under the same Wayland environment as the lab PC.
+I also documented and published a &lt;a href=&#34;https://hrishikeshgohain.netlify.app/posts/002.why-measure-software/&#34;&gt;blog&lt;/a&gt; about the project and shared with my university community to promote the use of Free and Open Source Software and how it relates to sustainability.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;week-2-and-week-3&#34;&gt;
+  Week 2 and Week 3
+  &lt;a class=&#34;anchor&#34; href=&#34;#week-2-and-week-3&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I communicated with my mentors and other community members to decide the new wayland compatible tool. After evaluating different options, we decided to use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ydotool: for key press, mouse clicks and movements (works using the uinput subsystem)&lt;/li&gt;
+&lt;li&gt;kdotool : for working with application windows (focusing, identifying window IDs, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A combination of tools was required to meet all our requirements. To help future contributors, I published my first blog on Planet KDE explaining how to set up and use ydotool and kdotool . I also imported the repositories into KDE Invent for long term compatibility and wrote setup scripts for easier installation and configuration. These tools did not worked out of the box and I had to make some workarounds and setup before usage which i documented in the blog.&lt;/p&gt;
+&lt;h3 class=&#34;heading&#34; id=&#34;week-4-and-week-5&#34;&gt;
+  Week 4 and Week 5
+  &lt;a class=&#34;anchor&#34; href=&#34;#week-4-and-week-5&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;During these weeks, along with my mentors, I installed and set up the required tools on the Lab PC. I then ported the test scripts of Okular from xdotool to ydotool and kdotool and did testing on my local machine first. Currently, the CI/CD infrastructure through which these scripts run on the Lab PC is temporarily broken due to the migration to Fedora 43. Once these issues are fixed, we will test the new Wayland compatible scripts on the actual lab hardware and compare the results with previous measurements.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;next-steps&#34;&gt;
+  Next Steps
+  &lt;a class=&#34;anchor&#34; href=&#34;#next-steps&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I will be working on measuring energy usage of Plasma Desktop Environment itself. It will be more challenging than measuring a normal software application because Plasma is not a single process. It is made up of multiple components such as KWin (compositor), plasmashell, background services, widgets, and system modules. All of these together form the desktop experience.&lt;/p&gt;
+&lt;p&gt;Unlike normal applications like Okular or Kate, Plasma is always running in the background. So we cannot simply “open” and “close” it like a normal app. Because of this, some changes may be required in the current way of testing using KEcoLab.&lt;/p&gt;
+&lt;p&gt;To properly design the Standard User Scenario (SUS) scripts for Plasma, I will discuss closely with my mentors and also seek feedback and suggestions from the Plasma community. defining what should be considered a “standard” usage pattern will require careful discussion and community input.&lt;/p&gt;
+&lt;h2 class=&#34;heading&#34; id=&#34;lessons-learned&#34;&gt;
+  Lessons learned
+  &lt;a class=&#34;anchor&#34; href=&#34;#lessons-learned&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It has been a very amazing journey till now. I learned how to make right choices of tools/software after properly understanding the requirements instead of directly starting implementation.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</title>
@@ -23,7 +84,7 @@
 To solve this problem,&lt;/p&gt;
 &lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karanjot to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;
 &lt;h2 class=&#34;heading&#34; id=&#34;setup-ydotool-and-kdotool&#34;&gt;
-  Setup &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;
+  Setup &amp;lt;code&amp;gt;ydotool&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;kdotool&amp;lt;/code&amp;gt;
   &lt;a class=&#34;anchor&#34; href=&#34;#setup-ydotool-and-kdotool&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;To test the scripts you have written it&amp;rsquo;s recommended to setup locally.&lt;/p&gt;
@@ -38,7 +99,7 @@ To solve this problem,&lt;/p&gt;
 &lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;code-block&#34;&gt;
-  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://invent.kde.org/neogg/ydotool.git
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ydotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
 &lt;/div&gt;
@@ -81,7 +142,7 @@ To solve this problem,&lt;/p&gt;
 &lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;code-block&#34;&gt;
-  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://invent.kde.org/neogg/kdotool.git
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; kdotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
 &lt;/div&gt;

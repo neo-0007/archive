@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>How to write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</title>
+      <title>Write Standard User Scenerio Scripts to measure energy usage of software with KEcoLab</title>
       <link>http://localhost:1313/posts/003.how-to-do-automation/</link>
       <pubDate>Fri, 06 Feb 2026 23:00:00 +0530</pubDate>
       
@@ -21,9 +21,9 @@
 &lt;p&gt;To measure energy usage of a software we need to prepare three scripts &lt;code&gt;baseline.sh&lt;/code&gt; , &lt;code&gt;idle.sh&lt;/code&gt; and &lt;code&gt;sus.sh&lt;/code&gt; and push them via MR to &lt;a href=&#34;https://invent.kde.org/sdk/kecolab&#34;&gt;this&lt;/a&gt; repository, SUS or Standard User Scenario script emulates a standard user in a automated manner without human intervention, more on how to prepare SUS can be found &lt;a href=&#34;https://eco.kde.org/handbook/#preparing-the-standard-usage-scenario-sus&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Currently, these scripts rely on &lt;code&gt;xdotool&lt;/code&gt; to simulate user interactions. However, &lt;code&gt;xdotool&lt;/code&gt; does not work on Wayland. Since the KEcoLab computer have recently migrated to Fedora 43, which uses Wayland by default, the existing scripts no longer work.
 To solve this problem,&lt;/p&gt;
-&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karan to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;
+&lt;p&gt;I am working with my mentors Joseph, Aakarsh, and Karanjot to port the existing test scripts from &lt;code&gt;xdotool&lt;/code&gt; to &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;, which are compatible with Wayland. As part of this effort, I’ve written a guide explaining how to use ydotool and kdotool more easily.&lt;/p&gt;
 &lt;h2 class=&#34;heading&#34; id=&#34;setup-ydotool-and-kdotool&#34;&gt;
-  Setup &lt;code&gt;ydotool&lt;/code&gt; and &lt;code&gt;kdotool&lt;/code&gt;
+  Setup &amp;lt;code&amp;gt;ydotool&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;kdotool&amp;lt;/code&amp;gt;
   &lt;a class=&#34;anchor&#34; href=&#34;#setup-ydotool-and-kdotool&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;To test the scripts you have written it&amp;rsquo;s recommended to setup locally.&lt;/p&gt;
@@ -38,7 +38,7 @@ To solve this problem,&lt;/p&gt;
 &lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;code-block&#34;&gt;
-  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/ydotool.git
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://invent.kde.org/neogg/ydotool.git
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ydotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
 &lt;/div&gt;
@@ -81,7 +81,7 @@ To solve this problem,&lt;/p&gt;
 &lt;li&gt;Clone the repository and navigate into it&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;code-block&#34;&gt;
-  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://github.com/neo-0007/kdotool.git
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; git clone -b feat/setup-script https://invent.kde.org/neogg/kdotool.git
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; kdotool &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;button class=&#34;copy-code-button&#34;&gt;copy&lt;/button&gt;
 &lt;/div&gt;
