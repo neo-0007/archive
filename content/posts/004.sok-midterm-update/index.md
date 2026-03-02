@@ -4,11 +4,12 @@ summary: "Mid term update for SOK2026"
 toc: false
 readTime: false
 autonumber: false
-date: 2026-02-26T23:00:00+05:30
+date: 2026-03-02T23:00:00+06:30
 math: false
 showTags: false
 hideBackToTop: true
 categories: ['kde','tech']
+tags: ['kde','sok2026','KEcoLab','Kde Eco']
 ---
 
 ## About me
