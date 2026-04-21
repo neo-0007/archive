@@ -38,6 +38,8 @@ hideHeader = false
 paginationSize = 10
 listSummaries = true
 
+footerContent = "Built with Hugo | Hosted on Netlify "
+
 [markup.goldmark.renderer]
 unsafe = true
 
@@ -64,14 +66,8 @@ enableGitInfo = true
 date = ["date", ":filename", ":default"]
 lastmod = [":git", "lastmod", "modified", ":fileModTime", ":default"]
 
-[params.giscus]
-enable = false
-repo = "user/repo"
-repoid = "repoId"
-category = "General"
-categoryid = "categoryId"
-mapping = "pathname"
-theme = "preferred_color_scheme"
+[params.zoomment]
+enable = true
 
 [outputs]
 home = ["HTML", "RSS"]

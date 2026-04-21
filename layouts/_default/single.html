@@ -68,7 +68,7 @@
   
   {{- /* Comments */}}
 
-  {{- if and .Site.Params.giscus.enable (not .Params.disableComment) }}
+  {{ if and .Site.Params.zoomment.enable (not .Params.disableComment) }}
     <div class="single-comments">
       {{ partial "comments.html" . }}
     </div>
