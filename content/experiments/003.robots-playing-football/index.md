@@ -456,3 +456,29 @@ else{
   delay(20);  // Small delay to avoid excessive readings
 }
 ```
+
+---
+
+## Bill of Materials
+
+Here is the full list of everything we used to build our bot, along with what each part costs. Prices are in Indian Rupees (₹) and were checked on the shops websites in October 2026, so they may have changed by the time you read this.
+
+| Sl. No. | Component | Specification / Model | Qty. | Unit Price | Total |
+|---|---|---|---|---|---|
+| 1 | DC Gear Motors | [Rhino IG32](https://robokits.co.in/motors/rhino-ig32-12v-20w-dc-motors/dc-geared-12v-motor/rhino-12v-dc-300rpm-10kgcm-ig32-heavy-duty-planetary-geared-motor), 12V, 300 RPM, 10 kg·cm planetary geared | 4 | ₹1,699 | ₹6,796 |
+| 2 | Motor Driver | [BTS7960 (IBT-2)](https://robu.in/product/double-bts7960-43a-h-bridge-high-power-stepper-motor-driver-module/), 43A H-bridge | 2 | ₹329 | ₹658 |
+| 3 | Microcontroller | Arduino UNO R3 (clone, ATmega328P) | 1 | ₹300–₹500 | ₹300–₹500 |
+| 4 | Transmitter + Receiver | FlySky FS-i6 with FS-iA6B, 2.4 GHz, 6 channel | 1 | ₹5,699 | ₹5,699 |
+| 5 | Battery | [Orange 3S 3300 mAh](https://robu.in/product/orange-3300mah-3s-35c-80c-lithium-polymer-battery-pack-lipo/) 11.1V LiPo, 25C/60C | 1 | ₹2,559 | ₹2,559 |
+| 6 | LiPo Charger | [ISDT PD60](https://robu.in/product/isdt-pd60-60w-6a-portable-1-4s-li-po-balance-charger/), 60W/6A, 1–4S balance charger | 1 | ₹1,919 | ₹1,919 |
+| 7 | Wheels | [Polypropylene wheel with hub](https://www.technobotix.in/products/generic-polypropylene-wheel-including-hub-3-x-1-in-black-76-2-x-25-4-mm-/1781252000000067773), 76.2 × 25.4 mm | 4 | ₹125 | ₹500 |
+| 8 | Chassis | Mild steel, fabricated | 1 | ₹1500–₹2,500 | ₹1500–₹2,500 |
+| | **TOTAL** | | | | **₹19,931 to ₹21,131** |
+
+### Things to keep in mind
+
+- **The chassis cost varies a lot.** It depends on who fabricates it and how much steel you use, so treat that row as a rough estimate.
+- **The transmitter and receiver are the biggest single cost.** We were lucky to have a pair lent to us, but if you are buying new, they take up about a third of the budget.
+- **Don't skip the charger.** A LiPo battery needs a proper balance charger, and it is not worth risking the battery to save a bit of money here.
+- **The Arduino clone is fine.** Any UNO R3 compatible board works for this project, and it costs far less than the original board (₹1,879).
+- **Wires, connectors and hardware are not included.** You will also need some wire, XT-60 connectors, nuts and bolts, and a power switch, so keep a little extra budget for them.
