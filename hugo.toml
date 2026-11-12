@@ -93,7 +93,7 @@ public_folder = "/images"
 [params.headless_cms.backend]
 name = "github"
 repo = "neo-0007/archive"
-branch = "main"
+branch = "port/hugo"
 
 # --- Posts ---
 [params.headless_cms.collections.posts]
