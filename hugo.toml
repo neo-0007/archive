@@ -6,6 +6,51 @@ theme = "typo"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 
+# Must stay at the top, above any [table] header
+enableGitInfo = true
+
+# ---------- Modules (CMS) ----------
+[module]
+  [[module.imports]]
+    path = "github.com/privatemaker/headless-cms"
+
+# ---------- Outputs ----------
+[outputs]
+home = ["HTML", "RSS", "HeadlessCMSConfig"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+
+# ---------- Taxonomies ----------
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+# ---------- Markup ----------
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    style = "catppuccin-macchiato"
+
+# ---------- Front matter ----------
+[frontmatter]
+date = ["date", ":filename", ":default"]
+lastmod = [":git", "lastmod", "modified", ":fileModTime", ":default"]
+
+# ---------- Theme params ----------
+[params]
+description = "Portfolio and blog to post projects and ideas, by Hrishikesh Gohain."
+ShowFullTextinRSS = true
+
+appearance = "auto"
+colorPalette = "base16-eighties"
+hideHeader = false
+
+paginationSize = 10
+listSummaries = true
+
+footerContent = "Built with Hugo | Hosted on Netlify "
 
 [[params.menu]]
 name = "home"
@@ -23,26 +68,6 @@ url  = "/experiments"
 name = "howto"
 url  = "/howto"
 
-[taxonomies]
-category = "categories"
-tag = "tags"
-
-[params]
-description = "Portfolio and blog to post projects and ideas, by Hrishikesh Gohain."
-ShowFullTextinRSS = true
-
-appearance = "auto"        
-colorPalette = "base16-eighties"
-hideHeader = false
-
-paginationSize = 10
-listSummaries = true
-
-footerContent = "Built with Hugo | Hosted on Netlify "
-
-[markup.goldmark.renderer]
-unsafe = true
-
 [[params.social]]
 name = "github"
 url = "https://github.com/neo-0007"
@@ -55,22 +80,143 @@ url = "https://www.linkedin.com/in/hrishiii/"
 name = "discord"
 url = "https://discord.com/users/userid/hrishikeshgohain."
 
-[markup]
-  [markup.highlight]
-    noClasses = false
-    style = "catppuccin-macchiato"
-
-enableGitInfo = true
-
-[frontmatter]
-date = ["date", ":filename", ":default"]
-lastmod = [":git", "lastmod", "modified", ":fileModTime", ":default"]
-
 [params.zoomment]
 enable = true
 
-[outputs]
-home = ["HTML", "RSS"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML", "RSS"]
+# ---------- Headless CMS (Sveltia) ----------
+[params.headless_cms]
+engine = "sveltia"
+site_url = "https://hrishikeshgohain.netlify.app"
+media_folder = "static/images"
+public_folder = "/images"
 
+[params.headless_cms.backend]
+name = "github"
+repo = "neo-0007/archive"
+branch = "main"
+
+# --- Posts ---
+[params.headless_cms.collections.posts]
+name = "posts"
+label = "Posts"
+folder = "content/posts"
+create = true
+extension = "md"
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Title"
+  name = "title"
+  widget = "string"
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Date"
+  name = "date"
+  widget = "datetime"
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Description"
+  name = "description"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Tags"
+  name = "tags"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Draft"
+  name = "draft"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Body"
+  name = "body"
+  widget = "markdown"
+
+# --- Experiments ---
+[params.headless_cms.collections.experiments]
+name = "Experiments"
+label = "Experiments"
+folder = "content/experiments"
+create = true
+extension = "md"
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Title"
+  name = "title"
+  widget = "string"
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Date"
+  name = "date"
+  widget = "datetime"
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Description"
+  name = "description"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Tags"
+  name = "tags"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Draft"
+  name = "draft"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Body"
+  name = "body"
+  widget = "markdown"
+
+# --- How-to ---
+[params.headless_cms.collections.howto]
+name = "How-to"
+label = "How-to"
+folder = "content/howto"
+create = true
+extension = "md"
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Title"
+  name = "title"
+  widget = "string"
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Date"
+  name = "date"
+  widget = "datetime"
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Description"
+  name = "description"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Tags"
+  name = "tags"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Draft"
+  name = "draft"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Body"
+  name = "body"
+  widget = "markdown"
