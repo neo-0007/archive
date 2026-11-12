@@ -8,6 +8,7 @@ defaultContentLanguage = "en"
 
 # Must stay at the top, above any [table] header
 enableGitInfo = true
+timeZone = "Asia/Kolkata"
 
 # ---------- Modules (CMS) ----------
 [module]
@@ -87,21 +88,32 @@ enable = true
 [params.headless_cms]
 engine = "sveltia"
 site_url = "https://hrishikeshgohain.netlify.app"
-media_folder = "static/images"
-public_folder = "/images"
 
 [params.headless_cms.backend]
 name = "github"
 repo = "neo-0007/archive"
 branch = "port/hugo"
 
-# --- Posts ---
+# =====================================================
+# POSTS
+# =====================================================
 [params.headless_cms.collections.posts]
 name = "posts"
 label = "Posts"
 folder = "content/posts"
 create = true
 extension = "md"
+media_folder = ""
+public_folder = ""
+
+[params.headless_cms.collections.posts.nested]
+depth = 3
+summary = "{{title}}"
+
+[params.headless_cms.collections.posts.meta.path]
+label = "Path"
+widget = "string"
+index_file = "index"
 
   [[params.headless_cms.collections.posts.fields]]
   label = "Title"
@@ -109,20 +121,62 @@ extension = "md"
   widget = "string"
 
   [[params.headless_cms.collections.posts.fields]]
+  label = "Summary"
+  name = "summary"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
   label = "Date"
   name = "date"
   widget = "datetime"
-
-  [[params.headless_cms.collections.posts.fields]]
-  label = "Description"
-  name = "description"
-  widget = "string"
   required = false
 
   [[params.headless_cms.collections.posts.fields]]
   label = "Tags"
   name = "tags"
   widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Categories"
+  name = "categories"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Table of contents"
+  name = "toc"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Show read time"
+  name = "readTime"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Auto-number headings"
+  name = "autonumber"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Math"
+  name = "math"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.posts.fields]]
+  label = "Show tags"
+  name = "showTags"
+  widget = "boolean"
+  default = false
   required = false
 
   [[params.headless_cms.collections.posts.fields]]
@@ -137,13 +191,26 @@ extension = "md"
   name = "body"
   widget = "markdown"
 
-# --- Experiments ---
+# =====================================================
+# EXPERIMENTS
+# =====================================================
 [params.headless_cms.collections.experiments]
-name = "Experiments"
+name = "experiments"
 label = "Experiments"
 folder = "content/experiments"
 create = true
 extension = "md"
+media_folder = ""
+public_folder = ""
+
+[params.headless_cms.collections.experiments.nested]
+depth = 3
+summary = "{{title}}"
+
+[params.headless_cms.collections.experiments.meta.path]
+label = "Path"
+widget = "string"
+index_file = "index"
 
   [[params.headless_cms.collections.experiments.fields]]
   label = "Title"
@@ -151,20 +218,62 @@ extension = "md"
   widget = "string"
 
   [[params.headless_cms.collections.experiments.fields]]
+  label = "Summary"
+  name = "summary"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
   label = "Date"
   name = "date"
   widget = "datetime"
-
-  [[params.headless_cms.collections.experiments.fields]]
-  label = "Description"
-  name = "description"
-  widget = "string"
   required = false
 
   [[params.headless_cms.collections.experiments.fields]]
   label = "Tags"
   name = "tags"
   widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Categories"
+  name = "categories"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Table of contents"
+  name = "toc"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Show read time"
+  name = "readTime"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Auto-number headings"
+  name = "autonumber"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Math"
+  name = "math"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.experiments.fields]]
+  label = "Show tags"
+  name = "showTags"
+  widget = "boolean"
+  default = false
   required = false
 
   [[params.headless_cms.collections.experiments.fields]]
@@ -179,13 +288,26 @@ extension = "md"
   name = "body"
   widget = "markdown"
 
-# --- How-to ---
+# =====================================================
+# HOW-TO
+# =====================================================
 [params.headless_cms.collections.howto]
-name = "How-to"
+name = "howto"
 label = "How-to"
 folder = "content/howto"
 create = true
 extension = "md"
+media_folder = ""
+public_folder = ""
+
+[params.headless_cms.collections.howto.nested]
+depth = 3
+summary = "{{title}}"
+
+[params.headless_cms.collections.howto.meta.path]
+label = "Path"
+widget = "string"
+index_file = "index"
 
   [[params.headless_cms.collections.howto.fields]]
   label = "Title"
@@ -193,20 +315,62 @@ extension = "md"
   widget = "string"
 
   [[params.headless_cms.collections.howto.fields]]
+  label = "Summary"
+  name = "summary"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
   label = "Date"
   name = "date"
   widget = "datetime"
-
-  [[params.headless_cms.collections.howto.fields]]
-  label = "Description"
-  name = "description"
-  widget = "string"
   required = false
 
   [[params.headless_cms.collections.howto.fields]]
   label = "Tags"
   name = "tags"
   widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Categories"
+  name = "categories"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Table of contents"
+  name = "toc"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Show read time"
+  name = "readTime"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Auto-number headings"
+  name = "autonumber"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Math"
+  name = "math"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.howto.fields]]
+  label = "Show tags"
+  name = "showTags"
+  widget = "boolean"
+  default = false
   required = false
 
   [[params.headless_cms.collections.howto.fields]]
