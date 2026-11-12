@@ -69,6 +69,10 @@ url  = "/experiments"
 name = "howto"
 url  = "/howto"
 
+[[params.menu]]
+name = "interpretations"
+url  = "/interpretations"
+
 [[params.social]]
 name = "github"
 url = "https://github.com/neo-0007"
@@ -381,6 +385,59 @@ index_file = "index"
   required = false
 
   [[params.headless_cms.collections.howto.fields]]
+  label = "Body"
+  name = "body"
+  widget = "markdown"
+
+[params.headless_cms.collections.interpretations]
+name = "interpretations"
+label = "Interpretations"
+folder = "content/interpretations"
+create = true
+extension = "md"
+media_folder = ""
+public_folder = ""
+
+[params.headless_cms.collections.interpretations.nested]
+depth = 3
+summary = "{{title}}"
+
+[params.headless_cms.collections.interpretations.meta.path]
+label = "Path"
+widget = "string"
+index_file = "index"
+
+  [[params.headless_cms.collections.interpretations.fields]]
+  label = "Title"
+  name = "title"
+  widget = "string"
+
+  [[params.headless_cms.collections.interpretations.fields]]
+  label = "Summary"
+  name = "summary"
+  widget = "string"
+  required = false
+
+  [[params.headless_cms.collections.interpretations.fields]]
+  label = "Date"
+  name = "date"
+  widget = "datetime"
+  required = false
+
+  [[params.headless_cms.collections.interpretations.fields]]
+  label = "Tags"
+  name = "tags"
+  widget = "list"
+  required = false
+
+  [[params.headless_cms.collections.interpretations.fields]]
+  label = "Draft"
+  name = "draft"
+  widget = "boolean"
+  default = false
+  required = false
+
+  [[params.headless_cms.collections.interpretations.fields]]
   label = "Body"
   name = "body"
   widget = "markdown"
